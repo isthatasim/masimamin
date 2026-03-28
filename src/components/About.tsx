@@ -3,6 +3,7 @@ import { MapPin, GraduationCap, BookOpen, FlaskConical, Users, ExternalLink } fr
 import { personal } from '../data/content';
 import SectionTitle from './ui/SectionTitle';
 import AnimatedSection, { StaggerContainer, StaggerItem } from './ui/AnimatedSection';
+import TiltCard from './ui/TiltCard';
 
 const highlights = [
   {
@@ -68,7 +69,8 @@ export default function About() {
                   href="https://www.unige.it"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-cyan-400 hover:text-cyan-300 transition-colors"
+                  className="text-cyan-400 hover:text-cyan-300 transition-colors cursor-pointer"
+                  data-cursor="button"
                 >
                   University of Genova
                 </a>
@@ -111,6 +113,7 @@ export default function About() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-outline text-xs"
+                  data-cursor="button"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
                   Google Scholar
@@ -120,6 +123,7 @@ export default function About() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-outline text-xs"
+                  data-cursor="button"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
                   LinkedIn
@@ -129,6 +133,7 @@ export default function About() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-outline text-xs"
+                  data-cursor="button"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
                   Reviewer Profile
@@ -145,17 +150,19 @@ export default function About() {
                 const cls = colorMap[h.color];
                 return (
                   <StaggerItem key={h.label}>
-                    <div className="glass-card p-5 flex items-start gap-4 hover:translate-y-[-2px] transition-transform duration-200">
-                      <div className={`shrink-0 w-10 h-10 rounded-lg border flex items-center justify-center ${cls}`}>
-                        <Icon className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <div className="text-xs font-mono text-slate-500 uppercase tracking-wider mb-1">
-                          {h.label}
+                    <TiltCard glowColor={`rgba(${h.color === 'cyan' ? '6,182,212' : h.color === 'indigo' ? '129,140,248' : h.color === 'emerald' ? '16,185,129' : '139,92,246'},0.2)`}>
+                      <div className="glass-card p-5 flex items-start gap-4">
+                        <div className={`shrink-0 w-10 h-10 rounded-lg border flex items-center justify-center ${cls}`}>
+                          <Icon className="w-5 h-5" />
                         </div>
-                        <div className="text-sm text-slate-200 font-medium">{h.value}</div>
+                        <div>
+                          <div className="text-xs font-mono text-slate-500 uppercase tracking-wider mb-1">
+                            {h.label}
+                          </div>
+                          <div className="text-sm text-slate-200 font-medium">{h.value}</div>
+                        </div>
                       </div>
-                    </div>
+                    </TiltCard>
                   </StaggerItem>
                 );
               })}
