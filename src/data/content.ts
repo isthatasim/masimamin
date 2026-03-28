@@ -1,14 +1,14 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// CONTENT DATA — Muhammad Asim Amin Portfolio
+// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// CONTENT DATA â Muhammad Asim Amin Portfolio
 // Single source of truth. Edit this file to update any section of the site.
-// ─────────────────────────────────────────────────────────────────────────────
+// âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 
 export const personal = {
   name: 'Muhammad Asim Amin',
   shortName: 'M. Asim Amin',
   initials: 'MAA',
-  title: 'PhD Researcher · AI-Driven Power Systems & Smart Grids',
-  subtitle: 'Marie Sklodowska-Curie Early Stage Researcher — CLOE Project (Horizon Europe)',
+  title: 'PhD Researcher Â· AI-Driven Power Systems & Smart Grids',
+  subtitle: 'Marie Sklodowska-Curie Early Stage Researcher â CLOE Project (Horizon Europe)',
   tagline: 'Advancing Energy Intelligence Through Machine Learning',
   location: 'Genoa, Italy',
   email: 'masim.amin@yahoo.com',
@@ -21,7 +21,7 @@ export const personal = {
   cvUrl: '/masimamin/cv/MAsimAmin_CV.pdf', // place your CV PDF in public/cv/
   summary: `PhD candidate in Electrical Engineering at the University of Genova, funded by the Marie Sklodowska-Curie
   Actions (CLOE Project, Horizon Europe). My research sits at the intersection of advanced machine learning and
-  modern power systems — applying deep reinforcement learning, federated learning, and predictive analytics to
+  modern power systems â applying deep reinforcement learning, federated learning, and predictive analytics to
   energy management systems, EV charging coordination, energy communities, and renewable energy forecasting.
   With over a decade of combined academic and industry experience across Italy, China, Serbia, and Pakistan,
   I bridge rigorous theoretical work with real-world implementation, from laboratory hardware-in-the-loop
@@ -108,7 +108,7 @@ export const experience = [
     org: 'University of Genova',
     department: 'DITEN Department',
     location: 'Genoa, Italy',
-    period: 'Jun 2023 — Jun 2026',
+    period: 'Jun 2023 â Jun 2026',
     type: 'Academic Research',
     current: true,
     highlights: [
@@ -123,10 +123,10 @@ export const experience = [
   {
     id: 'nis-visiting',
     role: 'Visiting Research Fellow (Marie Sklodowska-Curie)',
-    org: 'University of Niš',
+    org: 'University of NiÅ¡',
     department: 'Faculty of Electronic Engineering',
-    location: 'Niš, Serbia',
-    period: 'Jan 2025 — May 2025',
+    location: 'NiÅ¡, Serbia',
+    period: 'Jan 2025 â May 2025',
     type: 'Visiting Research',
     current: false,
     highlights: [
@@ -142,7 +142,7 @@ export const experience = [
     org: 'Tsinghua University (Shenzhen Campus)',
     department: '',
     location: 'Shenzhen, China',
-    period: 'Sep 2020 — Mar 2023',
+    period: 'Sep 2020 â Mar 2023',
     type: 'Academic Research',
     current: false,
     highlights: [
@@ -159,7 +159,7 @@ export const experience = [
     org: 'Growatt New Energy Technology',
     department: '',
     location: 'Shenzhen, China',
-    period: 'Oct 2019 — Apr 2020',
+    period: 'Oct 2019 â Apr 2020',
     type: 'Industry',
     current: false,
     highlights: [
@@ -174,7 +174,7 @@ export const experience = [
     org: 'CYG SUNRI CO., Ltd. (Shenzhen NARI)',
     department: '',
     location: 'Shenzhen, China',
-    period: 'Sep 2017 — Sep 2019',
+    period: 'Sep 2017 â Sep 2019',
     type: 'Industry',
     current: false,
     highlights: [
@@ -191,7 +191,7 @@ export const experience = [
     org: 'Renewable Stars (PVT) Limited',
     department: '',
     location: 'Islamabad, Pakistan',
-    period: 'Sep 2014 — Aug 2015',
+    period: 'Sep 2014 â Aug 2015',
     type: 'Industry',
     current: false,
     highlights: [
@@ -204,27 +204,27 @@ export const experience = [
 export const education = [
   {
     id: 'phd',
-    degree: 'PhD in Engineering — Electrical Engineering',
+    degree: 'PhD in Engineering â Electrical Engineering',
     specialization: 'Artificial Intelligence & Power Systems',
     institution: 'University of Genova',
     location: 'Genoa, Italy',
-    period: '2023 — 2026 (Expected)',
-    department: 'DITEN — Department of Electrical, Electronic and Telecommunications Engineering and Naval Architecture',
+    period: '2023 â 2026 (Expected)',
+    department: 'DITEN â Department of Electrical, Electronic and Telecommunications Engineering and Naval Architecture',
     thesis: 'Advanced Machine Learning Enabled Modern Power System',
-    scholarship: 'Marie Sklodowska-Curie Actions (MSCA) — CLOE Project (Horizon Europe)',
+    scholarship: 'Marie Sklodowska-Curie Actions (MSCA) â CLOE Project (Horizon Europe)',
     highlights: [
-      'MSCA Early Stage Researcher — CLOE Project, Horizon Europe framework',
-      'Visiting Research Fellow, University of Niš, Serbia (Jan–May 2025)',
+      'MSCA Early Stage Researcher â CLOE Project, Horizon Europe framework',
+      'Visiting Research Fellow, University of NiÅ¡, Serbia (JanâMay 2025)',
       'Research: deep RL, federated learning, EMS, energy communities, EV charging, PV forecasting',
     ],
   },
   {
     id: 'meng',
-    degree: 'Master of Engineering — Electrical Engineering',
+    degree: 'Master of Engineering â Electrical Engineering',
     specialization: '',
     institution: "Xi'an Jiaotong University",
     location: "Xi'an, China",
-    period: '2015 — 2017',
+    period: '2015 â 2017',
     department: 'School of Electrical Engineering',
     thesis: 'Control Design of Multi-terminal HVDC Grid and its Fault Analysis under DC Side Contingencies',
     scholarship: 'Chinese Government Scholarship (Full Scholarship)',
@@ -236,18 +236,18 @@ export const education = [
   },
   {
     id: 'beng',
-    degree: 'Bachelor of Engineering — Electrical (Power) Engineering',
+    degree: 'Bachelor of Engineering â Electrical (Power) Engineering',
     specialization: '',
     institution: 'The Islamia University of Bahawalpur',
     location: 'Bahawalpur, Pakistan',
-    period: '2010 — 2014',
+    period: '2010 â 2014',
     department: '',
     thesis: 'Smart Monitoring, Analysis & Control of Lab-based Micro-Grid Through Hardware-in-the-Loop (HIL) Simulation using Simulink',
     gpa: '3.45 / 4.00',
     pecReg: 'ELECT/48365',
     highlights: [
-      'Best Final Year Project in Power Engineering — IEEE AEPEX, UCET, IUB',
-      'ICT R&D Fund NGIRI Grant — PKR 100,000 for Bachelor Final Year Project',
+      'Best Final Year Project in Power Engineering â IEEE AEPEX, UCET, IUB',
+      'ICT R&D Fund NGIRI Grant â PKR 100,000 for Bachelor Final Year Project',
       'Focus: microgrid control, HIL simulation, power systems fundamentals',
     ],
   },
@@ -261,7 +261,7 @@ export const publications = {
       title: 'Energy Trading in Energy Communities Through Load Management Using Deep Reinforcement Learning.',
       venue: 'Energy',
       year: 2025,
-      status: 'Under Review — First Revision',
+      status: 'Under Review â First Revision',
       if: 9.4,
       note: 'Under Review',
     },
@@ -298,7 +298,7 @@ export const publications = {
       title: 'Renewable Energy Maximization for Pelagic Islands Network of Microgrids Through Battery Swapping Using Deep Reinforcement Learning.',
       venue: 'IEEE Access',
       year: 2023,
-      vol: 'Vol. 11, pp. 86196–86213',
+      vol: 'Vol. 11, pp. 86196â86213',
       status: 'Published',
     },
     {
@@ -307,7 +307,7 @@ export const publications = {
       title: 'Two-Stage Cooperative Intelligent Home Energy Management System for Optimal Scheduling.',
       venue: 'IEEE Transactions on Industry Applications',
       year: 2022,
-      vol: 'Vol. 58, No. 4, pp. 5423–5437',
+      vol: 'Vol. 58, No. 4, pp. 5423â5437',
       status: 'Published',
     },
     {
@@ -334,7 +334,7 @@ export const publications = {
       authors: 'M. Asim Amin, Jia Y.',
       title: 'Constrained Aggregated Approach for Charging Station Using Federated Multi-Agent Deep Reinforcement Learning.',
       venue: 'Journal of Cleaner Production',
-      status: 'Under Review — First Revision',
+      status: 'Under Review â First Revision',
       if: 10.0,
     },
     {
@@ -353,7 +353,7 @@ export const publications = {
       title: 'Future Trends and Challenges in AI-Powered Energy Management Systems.',
       venue: "Taylor & Francis Series in Sustainable Engineering and Science",
       year: 2025,
-      status: 'Under Review — Revision Submitted',
+      status: 'Under Review â Revision Submitted',
     },
   ],
   workingPapers: [
@@ -433,7 +433,7 @@ export const projects = [
     problem: 'Coordinating distributed energy resources (PV, storage, EVs, flexible loads) in a real university campus energy community to minimize costs and maximize renewable self-consumption.',
     method: 'Deep reinforcement learning (SAC/PPO) combined with PV forecasting (LSTM + ensemble) for real-time dispatch optimization and demand flexibility management.',
     tools: ['Python', 'TensorFlow', 'OpenAI Gym', 'MATLAB', 'OpenDSS'],
-    contribution: 'End-to-end EMS platform integrating forecasting, RL-based dispatch, and demand response — deployed on a real campus pilot with measurable performance improvements.',
+    contribution: 'End-to-end EMS platform integrating forecasting, RL-based dispatch, and demand response â deployed on a real campus pilot with measurable performance improvements.',
     tags: ['Deep RL', 'EMS', 'PV Forecasting', 'Energy Community', 'Real Pilot'],
     color: 'cyan',
     status: 'Ongoing',
@@ -443,7 +443,7 @@ export const projects = [
     title: 'Federated Multi-Agent RL for EV Charging Stations',
     subtitle: 'Distributed Coordination Under Privacy Constraints',
     problem: 'Managing multiple EV charging stations in a distribution network while preserving user data privacy and handling heterogeneous charging patterns at scale.',
-    method: 'Federated multi-agent deep reinforcement learning with a constrained aggregation approach — agents learn locally and share only model updates, not raw data.',
+    method: 'Federated multi-agent deep reinforcement learning with a constrained aggregation approach â agents learn locally and share only model updates, not raw data.',
     tools: ['Python', 'PyTorch', 'Federated Learning', 'OpenAI Gym', 'OpenDSS'],
     contribution: 'Novel privacy-preserving framework achieving competitive charging performance with centralized baselines; submitted to Journal of Cleaner Production (IF: 10.0).',
     tags: ['Federated RL', 'MARL', 'EV Charging', 'Privacy-Preserving', 'Distribution Networks'],
@@ -460,7 +460,7 @@ export const projects = [
     contribution: 'Demonstrated STL-ensemble approach outperforms individual models; applicable to operational EMS with minimal computational overhead.',
     tags: ['PV Nowcasting', 'STL Decomposition', 'Ensemble Learning', 'XGBoost', 'LSTM'],
     color: 'amber',
-    status: 'Published — ATEE 2025',
+    status: 'Published â ATEE 2025',
   },
   {
     id: 'microgrid-dispatch',
@@ -477,7 +477,7 @@ export const projects = [
   {
     id: 'hil-platform',
     title: 'Hardware-in-the-Loop Energy Systems Platform',
-    subtitle: 'Lab-Based Real-Time Validation at University of Niš',
+    subtitle: 'Lab-Based Real-Time Validation at University of NiÅ¡',
     problem: 'Bridging the gap between algorithm simulation and real-world deployment through laboratory-grade real-time hardware validation.',
     method: 'HIL simulation platform using PSCAD, MATLAB/Simulink, and real-time target hardware to validate energy management and control algorithms before deployment.',
     tools: ['PSCAD', 'MATLAB/Simulink', 'HIL Hardware', 'Real-Time Target'],
@@ -496,7 +496,7 @@ export const projects = [
     contribution: 'Published in IEEE Transactions on Industry Applications; demonstrated cost reductions >20% vs. non-cooperative baselines.',
     tags: ['HEMS', 'Multi-Agent', 'DRL', 'IEEE TIA', 'Home Energy'],
     color: 'violet',
-    status: 'Published — IEEE TIA 2022',
+    status: 'Published â IEEE TIA 2022',
   },
 ];
 
@@ -538,7 +538,7 @@ export const awards = [
   {
     id: 'msca',
     title: 'Marie Sklodowska-Curie Actions (MSCA) Fellowship',
-    org: 'European Commission — Horizon Europe',
+    org: 'European Commission â Horizon Europe',
     year: '2023',
     description: 'Prestigious EU-funded Early Stage Researcher position under the CLOE (Community Learning and Optimization for Energy) project. Competitively selected from international applicants.',
     tier: 'major',
@@ -548,12 +548,12 @@ export const awards = [
     title: 'Chinese Government Scholarship (Full)',
     org: "Ministry of Education, China / Xi'an Jiaotong University",
     year: '2015',
-    description: 'Full merit-based scholarship covering tuition, accommodation, and living stipend for Master of Engineering programme at Xi'an Jiaotong University.',
+    description: "Full merit-based scholarship covering tuition, accommodation, and living stipend for Master of Engineering programme at Xi'an Jiaotong University.",
     tier: 'major',
   },
   {
     id: 'fyp-award',
-    title: 'Best Final Year Project — Power Engineering',
+    title: 'Best Final Year Project â Power Engineering',
     org: 'IEEE AEPEX, UCET, IUB',
     year: '2014',
     description: 'Awarded Best Final Year Project in Power Engineering for the HIL-based microgrid monitoring and control system at the IEEE Annual Exhibition of Projects (AEPEX).',
@@ -561,7 +561,7 @@ export const awards = [
   },
   {
     id: 'ngiri',
-    title: 'ICT R&D Fund — National Grassroots Research Initiative Grant',
+    title: 'ICT R&D Fund â National Grassroots Research Initiative Grant',
     org: 'ICT R&D Fund, Pakistan',
     year: '2014',
     description: 'Competitive research grant (PKR 100,000) awarded for the Bachelor Final Year Project on smart microgrid monitoring through HIL simulation.',
@@ -576,7 +576,7 @@ export const peerReview = [
   'Computers & Electrical Engineering (Elsevier)',
   'Renewable and Sustainable Energy Reviews (Elsevier)',
   'Energy Reports (Elsevier)',
-  'Machine Learning — Springer Nature',
+  'Machine Learning â Springer Nature',
   'Frontiers in Energy Research',
 ];
 
@@ -592,12 +592,12 @@ export const professionalDevelopment = [
     year: '2023',
   },
   {
-    title: 'Community Renewable Energy — Financing, Participation & Environmental Protection',
-    org: 'Summer School Energy 2023, Leuphana Universität Lüneburg, Germany',
+    title: 'Community Renewable Energy â Financing, Participation & Environmental Protection',
+    org: 'Summer School Energy 2023, Leuphana UniversitÃ¤t LÃ¼neburg, Germany',
     year: '2023',
   },
   {
-    title: 'IEEE Webinar Courses — Power Systems & Smart Grid',
+    title: 'IEEE Webinar Courses â Power Systems & Smart Grid',
     org: 'IEEE',
     year: 'Various',
   },
