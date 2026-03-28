@@ -17,7 +17,7 @@ export default function SectionTitle({
   accentWord,
 }: SectionTitleProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-60px 0px' });
+  const isInView = useInView(ref, { once: true, margin: '-80px 0px' });
   const alignClass = align === 'center' ? 'items-center text-center' : 'items-start';
 
   // Highlight accent word in title
@@ -27,7 +27,9 @@ export default function SectionTitle({
     return (
       <>
         {parts[0]}
-        <span className="text-gradient-cyan">{accentWord}</span>
+        <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+          {accentWord}
+        </span>
         {parts[1]}
       </>
     );
@@ -39,39 +41,64 @@ export default function SectionTitle({
       className={`flex flex-col gap-3 ${alignClass}`}
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
+      transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
     >
       {eyebrow && (
-        <div className="flex items-center gap-3">
+        <motion.div
+          className="flex items-center gap-3"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
           {align === 'left' && (
             <span className="w-8 h-px bg-cyan-500/60" />
           )}
-          <span className="font-mono text-xs font-medium tracking-[0.2em] text-cyan-500 uppercase">
+          <span className="font-mono text-xs font-medium tracking-[0.2em] text-cyan-400 uppercase">
             {eyebrow}
           </span>
-        </div>
+        </motion.div>
       )}
 
-      <h2 className="text-3xl sm:text-4xl font-display font-bold text-slate-100 leading-tight">
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-slate-100 leading-tight tracking-tight">
         {renderTitle()}
       </h2>
 
       {subtitle && (
-        <p className="text-base sm:text-lg text-slate-400 font-light max-w-2xl leading-relaxed">
+        <motion.p
+          className="text-base sm:text-lg text-slate-400 font-light max-w-2xl leading-relaxed"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.7, delay: 0.15 }}
+        >
           {subtitle}
-        </p>
+        </motion.p>
       )}
 
-      {/* Decorative underline */}
+      {/* Decorative underline with spring animation */}
       <motion.div
         className="flex items-center gap-1.5 mt-1"
-        initial={{ scaleX: 0, originX: align === 'center' ? 0.5 : 0 }}
-        animate={isInView ? { scaleX: 1 } : {}}
-        transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
+        initial={{ width: 0, originX: align === 'center' ? 0.5 : 0 }}
+        animate={isInView ? { width: 'auto' } : {}}
+        transition={{ duration: 0.8, delay: 0.2, type: 'spring', stiffness: 200, damping: 20 }}
       >
-        <span className="w-12 h-0.5 bg-cyan-500 rounded-full" />
-        <span className="w-3 h-0.5 bg-cyan-500/40 rounded-full" />
-        <span className="w-1.5 h-0.5 bg-cyan-500/20 rounded-full" />
+        <motion.span
+          className="h-0.5 bg-cyan-500 rounded-full"
+          initial={{ width: 0 }}
+          animate={isInView ? { width: 48 } : {}}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        />
+        <motion.span
+          className="h-0.5 bg-cyan-500/40 rounded-full"
+          initial={{ width: 0 }}
+          animate={isInView ? { width: 12 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        />
+        <motion.span
+          className="h-0.5 bg-cyan-500/20 rounded-full"
+          initial={{ width: 0 }}
+          animate={isInView ? { width: 6 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        />
       </motion.div>
     </motion.div>
   );
