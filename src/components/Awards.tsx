@@ -4,18 +4,19 @@ import { awards, peerReview, professionalDevelopment } from '../data/content';
 import SectionTitle from './ui/SectionTitle';
 import { StaggerContainer, StaggerItem } from './ui/AnimatedSection';
 import AnimatedSection from './ui/AnimatedSection';
+import TiltCard from './ui/TiltCard';
 
 const tierConfig: Record<string, {
-  icon: ElementType; iconColor: string; iconBg: string; border: string; label: string;
+  icon: ElementType; iconColor: string; iconBg: string; border: string; label: string; glow: string;
 }> = {
-  major: { icon: Star,         iconColor: 'text-amber-400',   iconBg: 'bg-amber-500/10 border-amber-500/20',  border: 'border-amber-500/20',  label: 'Major Award'  },
-  award: { icon: Award,        iconColor: 'text-cyan-400',    iconBg: 'bg-cyan-500/10 border-cyan-500/20',    border: 'border-cyan-500/20',   label: 'Award'        },
-  grant: { icon: Gift,         iconColor: 'text-violet-400',  iconBg: 'bg-violet-500/10 border-violet-500/20',border: 'border-violet-500/20', label: 'Research Grant'},
+  major: { icon: Star,         iconColor: 'text-amber-400',   iconBg: 'bg-amber-500/10 border-amber-500/20',  border: 'border-amber-500/20',  label: 'Major Award',   glow: 'rgba(251,191,36,0.2)' },
+  award: { icon: Award,        iconColor: 'text-cyan-400',    iconBg: 'bg-cyan-500/10 border-cyan-500/20',    border: 'border-cyan-500/20',   label: 'Award',        glow: 'rgba(6,182,212,0.2)' },
+  grant: { icon: Gift,         iconColor: 'text-violet-400',  iconBg: 'bg-violet-500/10 border-violet-500/20',border: 'border-violet-500/20', label: 'Research Grant', glow: 'rgba(139,92,246,0.2)' },
 };
 
 export default function Awards() {
   return (
-    <section id="awards" className="relative py-24 bg-[#060e1c] overflow-hidden">
+    <section id="awards" className="relative py-24 bg-navy-900 overflow-hidden">
       <div
         aria-hidden
         className="absolute inset-0 pointer-events-none"
@@ -40,25 +41,27 @@ export default function Awards() {
               const Icon = tc.icon;
               return (
                 <StaggerItem key={award.id}>
-                  <div className={`glass-card p-6 h-full flex flex-col gap-4 border ${tc.border} hover:-translate-y-0.5 transition-transform duration-200`}>
-                    <div className="flex items-start gap-4">
-                      <div className={`shrink-0 w-11 h-11 rounded-xl flex items-center justify-center border ${tc.iconBg}`}>
-                        <Icon className={`w-5 h-5 ${tc.iconColor}`} />
-                      </div>
-                      <div className="flex flex-col gap-1 flex-1 min-w-0">
-                        <div className="flex items-start justify-between gap-2 flex-wrap">
-                          <h3 className="font-display font-semibold text-slate-100 text-sm leading-snug">
-                            {award.title}
-                          </h3>
-                          <span className="shrink-0 font-mono text-xs text-slate-500 bg-slate-800/60 px-2 py-0.5 rounded">
-                            {award.year}
-                          </span>
+                  <TiltCard glowColor={tc.glow}>
+                    <div className={`glass-card p-6 h-full flex flex-col gap-4 border ${tc.border} hover:-translate-y-0.5 transition-transform duration-200`}>
+                      <div className="flex items-start gap-4">
+                        <div className={`shrink-0 w-11 h-11 rounded-xl flex items-center justify-center border ${tc.iconBg}`}>
+                          <Icon className={`w-5 h-5 ${tc.iconColor}`} />
                         </div>
-                        <p className="text-xs font-medium text-slate-400">{award.org}</p>
+                        <div className="flex flex-col gap-1 flex-1 min-w-0">
+                          <div className="flex items-start justify-between gap-2 flex-wrap">
+                            <h3 className="font-display font-semibold text-slate-100 text-sm leading-snug">
+                              {award.title}
+                            </h3>
+                            <span className="shrink-0 font-mono text-xs text-slate-500 bg-slate-800/60 px-2 py-0.5 rounded">
+                              {award.year}
+                            </span>
+                          </div>
+                          <p className="text-xs font-medium text-slate-400">{award.org}</p>
+                        </div>
                       </div>
+                      <p className="text-xs text-slate-400 leading-relaxed">{award.description}</p>
                     </div>
-                    <p className="text-xs text-slate-400 leading-relaxed">{award.description}</p>
-                  </div>
+                  </TiltCard>
                 </StaggerItem>
               );
             })}
@@ -75,7 +78,7 @@ export default function Awards() {
               </div>
               <div className="flex flex-col gap-3">
                 {professionalDevelopment.map((item, i) => (
-                  <div key={i} className="flex items-start gap-3 pb-3 border-b border-slate-800/50 last:border-0 last:pb-0">
+                  <div key={i} className="flex items-start gap-3 pb-3 border-b border-slate-800/50 last:border-0 last:pb-0 hover:bg-slate-800/30 -mx-6 px-6 py-2 rounded transition-colors">
                     <span className="shrink-0 mt-1.5 w-1 h-1 rounded-full bg-indigo-400/60" />
                     <div>
                       <p className="text-xs text-slate-200 font-medium">{item.title}</p>
