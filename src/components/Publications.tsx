@@ -47,7 +47,7 @@ function PubEntry({
   };
 
   return (
-    <div className="pub-entry group hover:bg-slate-800/20 transition-colors duration-150 rounded-r-lg pr-3">
+    <div className="pub-entry group hover:bg-slate-800/20 transition-colors duration-150 rounded-r-lg pr-3 border-l-2 border-cyan-500/30 hover:border-cyan-500/60">
       <div className="flex flex-col gap-1.5">
         {/* Authors */}
         <div className="leading-snug">{renderAuthors(authors)}</div>
@@ -68,6 +68,7 @@ function PubEntry({
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-0.5 text-xs text-slate-500 hover:text-cyan-400 transition-colors"
+              data-cursor="button"
             >
               DOI <ExternalLink className="w-2.5 h-2.5" />
             </a>
@@ -150,6 +151,7 @@ export default function Publications() {
                         ? 'text-cyan-400 bg-slate-900/80 border border-b-0 border-slate-700/60'
                         : 'text-slate-500 hover:text-slate-300 hover:bg-slate-800/30'
                     }`}
+                    data-cursor="button"
                   >
                     <Icon className="w-3.5 h-3.5" />
                     <span className="hidden sm:inline">{tab.label}</span>
@@ -250,6 +252,7 @@ export default function Publications() {
                     <button
                       onClick={() => setShowAllConf(true)}
                       className="flex items-center gap-2 text-sm text-slate-500 hover:text-cyan-400 transition-colors mt-2 self-start"
+                      data-cursor="button"
                     >
                       <ChevronDown className="w-4 h-4" />
                       Show all {publications.selectedConferences.length} selected papers
@@ -281,7 +284,7 @@ export default function Publications() {
                     </p>
                     <div className="flex flex-col gap-3">
                       {publications.workingPapers.map((p) => (
-                        <div key={p.id} className="pub-entry">
+                        <div key={p.id} className="pub-entry border-l-2 border-indigo-500/30">
                           <p className="text-sm text-slate-200 font-medium leading-snug">{p.title}</p>
                           <span className="text-[10px] font-mono text-slate-500 mt-1 inline-block">[{p.id}] · {p.status}</span>
                         </div>
