@@ -25,7 +25,7 @@ export default function AnimatedSection({
   once = true,
 }: AnimatedSectionProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once, margin: '-80px 0px' });
+  const isInView = useInView(ref, { once, margin: '-100px 0px' });
   const offset = directionMap[direction];
 
   return (
@@ -35,7 +35,7 @@ export default function AnimatedSection({
       initial={{ opacity: 0, ...offset }}
       animate={isInView ? { opacity: 1, y: 0, x: 0 } : { opacity: 0, ...offset }}
       transition={{
-        duration: 0.65,
+        duration: 0.7,
         delay,
         ease: [0.21, 0.47, 0.32, 0.98],
       }}
@@ -58,7 +58,7 @@ export function StaggerContainer({
   once?: boolean;
 }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once, margin: '-60px 0px' });
+  const isInView = useInView(ref, { once, margin: '-80px 0px' });
 
   return (
     <motion.div
@@ -89,7 +89,7 @@ export function StaggerItem({
       className={className}
       variants={{
         hidden:  { opacity: 0, y: 24 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.21, 0.47, 0.32, 0.98] } },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] } },
       }}
     >
       {children}
