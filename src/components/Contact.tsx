@@ -4,6 +4,7 @@ import { personal } from '../data/content';
 import SectionTitle from './ui/SectionTitle';
 import AnimatedSection, { StaggerContainer, StaggerItem } from './ui/AnimatedSection';
 import GridBackground from './ui/GridBackground';
+import TiltCard from './ui/TiltCard';
 
 const contactLinks = [
   {
@@ -48,12 +49,12 @@ const contactLinks = [
   },
 ];
 
-const colorConf: Record<string, { icon: string; border: string; bg: string }> = {
-  cyan:   { icon: 'text-cyan-400',   border: 'border-cyan-500/25',   bg: 'bg-cyan-500/5 hover:bg-cyan-500/10' },
-  indigo: { icon: 'text-indigo-400', border: 'border-indigo-500/25', bg: 'bg-indigo-500/5 hover:bg-indigo-500/10' },
-  slate:  { icon: 'text-slate-300',  border: 'border-slate-600/40',  bg: 'bg-slate-800/50 hover:bg-slate-800/80' },
-  amber:  { icon: 'text-amber-400',  border: 'border-amber-500/25',  bg: 'bg-amber-500/5 hover:bg-amber-500/10' },
-  emerald:{ icon: 'text-emerald-400',border: 'border-emerald-500/25',bg: 'bg-emerald-500/5 hover:bg-emerald-500/10' },
+const colorConf: Record<string, { icon: string; border: string; bg: string; glow: string }> = {
+  cyan:   { icon: 'text-cyan-400',   border: 'border-cyan-500/25',   bg: 'bg-cyan-500/5 hover:bg-cyan-500/10', glow: 'rgba(6,182,212,0.2)' },
+  indigo: { icon: 'text-indigo-400', border: 'border-indigo-500/25', bg: 'bg-indigo-500/5 hover:bg-indigo-500/10', glow: 'rgba(129,140,248,0.2)' },
+  slate:  { icon: 'text-slate-300',  border: 'border-slate-600/40',  bg: 'bg-slate-800/50 hover:bg-slate-800/80', glow: 'rgba(148,163,184,0.2)' },
+  amber:  { icon: 'text-amber-400',  border: 'border-amber-500/25',  bg: 'bg-amber-500/5 hover:bg-amber-500/10', glow: 'rgba(251,191,36,0.2)' },
+  emerald:{ icon: 'text-emerald-400',border: 'border-emerald-500/25',bg: 'bg-emerald-500/5 hover:bg-emerald-500/10', glow: 'rgba(52,211,153,0.2)' },
 };
 
 function CopyEmail() {
@@ -66,8 +67,9 @@ function CopyEmail() {
   return (
     <button
       onClick={copy}
-      className="flex items-center gap-1.5 text-xs text-slate-500 hover:text-cyan-400 transition-colors"
+      className="flex items-center gap-1.5 text-xs text-slate-500 hover:text-cyan-400 transition-colors cursor-pointer"
       title="Copy email"
+      data-cursor="button"
     >
       {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
       {copied ? 'Copied!' : 'Copy email'}
@@ -77,7 +79,7 @@ function CopyEmail() {
 
 export default function Contact() {
   return (
-    <section id="contact" className="relative py-24 bg-navy-950 overflow-hidden">
+    <section id="contact" className="relative py-24 bg-gradient-to-b from-navy-950 to-navy-900 overflow-hidden">
       <GridBackground />
 
       <div
@@ -110,11 +112,11 @@ export default function Contact() {
                   I would be glad to connect.
                 </p>
                 <div className="flex flex-wrap justify-center gap-3">
-                  <a href={`mailto:${personal.email}`} className="btn-primary text-sm">
+                  <a href={`mailto:${personal.email}`} className="btn-primary text-sm" data-cursor="button">
                     <Mail className="w-4 h-4" />
                     Get in Touch
                   </a>
-                  <a href={personal.cvUrl} download className="btn-outline text-sm">
+                  <a href={personal.cvUrl} download className="btn-outline text-sm" data-cursor="button">
                     <Download className="w-4 h-4" />
                     Download Full CV
                   </a>
@@ -129,25 +131,28 @@ export default function Contact() {
                 const c = colorConf[link.color] ?? colorConf['slate'];
                 return (
                   <StaggerItem key={link.label}>
-                    <a
-                      href={link.href}
-                      target={link.href.startsWith('mailto') ? undefined : '_blank'}
-                      rel={link.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
-                      className={`flex items-start gap-4 p-4 rounded-xl border transition-all duration-200 group
-                        ${c.border} ${c.bg}`}
-                    >
-                      <div className={`shrink-0 w-10 h-10 rounded-lg flex items-center justify-center bg-slate-900/60 border ${c.border}`}>
-                        <Icon className={`w-5 h-5 ${c.icon}`} />
-                      </div>
-                      <div className="flex flex-col gap-0.5 min-w-0 flex-1">
-                        <div className="flex items-center gap-1.5">
-                          <span className="text-sm font-semibold text-slate-200 group-hover:text-slate-100">{link.label}</span>
-                          <ExternalLink className="w-3 h-3 text-slate-600 group-hover:text-slate-400 transition-colors" />
+                    <TiltCard glowColor={c.glow}>
+                      <a
+                        href={link.href}
+                        target={link.href.startsWith('mailto') ? undefined : '_blank'}
+                        rel={link.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+                        className={`flex items-start gap-4 p-4 rounded-xl border transition-all duration-200 group
+                          ${c.border} ${c.bg} cursor-pointer h-full`}
+                        data-cursor="button"
+                      >
+                        <div className={`shrink-0 w-10 h-10 rounded-lg flex items-center justify-center bg-slate-900/60 border ${c.border}`}>
+                          <Icon className={`w-5 h-5 ${c.icon}`} />
                         </div>
-                        <span className={`text-xs font-mono truncate ${c.icon}`}>{link.value}</span>
-                        <span className="text-xs text-slate-500 leading-snug mt-0.5">{link.description}</span>
-                      </div>
-                    </a>
+                        <div className="flex flex-col gap-0.5 min-w-0 flex-1">
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-sm font-semibold text-slate-200 group-hover:text-slate-100">{link.label}</span>
+                            <ExternalLink className="w-3 h-3 text-slate-600 group-hover:text-slate-400 transition-colors" />
+                          </div>
+                          <span className={`text-xs font-mono truncate ${c.icon}`}>{link.value}</span>
+                          <span className="text-xs text-slate-500 leading-snug mt-0.5">{link.description}</span>
+                        </div>
+                      </a>
+                    </TiltCard>
                   </StaggerItem>
                 );
               })}
