@@ -4,16 +4,17 @@ import { ChevronDown, Wrench, Target, Lightbulb, Tag, CheckCircle2, Clock, BookO
 import { projects } from '../data/content';
 import SectionTitle from './ui/SectionTitle';
 import { StaggerContainer, StaggerItem } from './ui/AnimatedSection';
+import TiltCard from './ui/TiltCard';
 
 const colorTokens: Record<string, {
-  border: string; icon: string; badge: string; statusBg: string;
+  border: string; icon: string; badge: string; statusBg: string; glow: string;
 }> = {
-  cyan:    { border: 'border-cyan-500/30',    icon: 'text-cyan-400',    badge: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',    statusBg: 'bg-cyan-500/5' },
-  indigo:  { border: 'border-indigo-500/30',  icon: 'text-indigo-400',  badge: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20',  statusBg: 'bg-indigo-500/5' },
-  amber:   { border: 'border-amber-500/30',   icon: 'text-amber-400',   badge: 'bg-amber-500/10 text-amber-400 border-amber-500/20',   statusBg: 'bg-amber-500/5' },
-  emerald: { border: 'border-emerald-500/30', icon: 'text-emerald-400', badge: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20', statusBg: 'bg-emerald-500/5' },
-  teal:    { border: 'border-teal-500/30',    icon: 'text-teal-400',    badge: 'bg-teal-500/10 text-teal-400 border-teal-500/20',    statusBg: 'bg-teal-500/5' },
-  violet:  { border: 'border-violet-500/30',  icon: 'text-violet-400',  badge: 'bg-violet-500/10 text-violet-400 border-violet-500/20',  statusBg: 'bg-violet-500/5' },
+  cyan:    { border: 'border-cyan-500/30',    icon: 'text-cyan-400',    badge: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',    statusBg: 'bg-cyan-500/5', glow: 'rgba(6,182,212,0.2)' },
+  indigo:  { border: 'border-indigo-500/30',  icon: 'text-indigo-400',  badge: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20',  statusBg: 'bg-indigo-500/5', glow: 'rgba(129,140,248,0.2)' },
+  amber:   { border: 'border-amber-500/30',   icon: 'text-amber-400',   badge: 'bg-amber-500/10 text-amber-400 border-amber-500/20',   statusBg: 'bg-amber-500/5', glow: 'rgba(251,191,36,0.2)' },
+  emerald: { border: 'border-emerald-500/30', icon: 'text-emerald-400', badge: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20', statusBg: 'bg-emerald-500/5', glow: 'rgba(52,211,153,0.2)' },
+  teal:    { border: 'border-teal-500/30',    icon: 'text-teal-400',    badge: 'bg-teal-500/10 text-teal-400 border-teal-500/20',    statusBg: 'bg-teal-500/5', glow: 'rgba(20,184,166,0.2)' },
+  violet:  { border: 'border-violet-500/30',  icon: 'text-violet-400',  badge: 'bg-violet-500/10 text-violet-400 border-violet-500/20',  statusBg: 'bg-violet-500/5', glow: 'rgba(139,92,246,0.2)' },
 };
 
 function StatusBadge({ status }: { status: string }) {
@@ -44,7 +45,7 @@ export default function Projects() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   return (
-    <section id="projects" className="relative py-24 bg-[#060e1c] overflow-hidden">
+    <section id="projects" className="relative py-24 bg-navy-900 overflow-hidden">
       <div
         aria-hidden
         className="absolute inset-0 pointer-events-none"
@@ -72,95 +73,98 @@ export default function Projects() {
 
               return (
                 <StaggerItem key={proj.id}>
-                  <motion.div
-                    className={`glass-card flex flex-col overflow-hidden cursor-pointer h-full border ${c.border}
-                      hover:-translate-y-1 transition-transform duration-200`}
-                    onClick={() => setExpandedId(isExpanded ? null : proj.id)}
-                    layout
-                  >
-                    {/* Header */}
-                    <div className="p-5 flex flex-col gap-3">
-                      <div className="flex items-start justify-between gap-2">
-                        <div>
-                          <h3 className="font-display font-semibold text-slate-100 text-sm leading-snug">
-                            {proj.title}
-                          </h3>
-                          <p className="text-xs text-slate-500 mt-1">{proj.subtitle}</p>
+                  <TiltCard glowColor={c.glow}>
+                    <motion.div
+                      className={`glass-card flex flex-col overflow-hidden cursor-pointer h-full border ${c.border}
+                        hover:-translate-y-1 transition-transform duration-200`}
+                      onClick={() => setExpandedId(isExpanded ? null : proj.id)}
+                      layout
+                      data-cursor="button"
+                    >
+                      {/* Header */}
+                      <div className="p-5 flex flex-col gap-3">
+                        <div className="flex items-start justify-between gap-2">
+                          <div>
+                            <h3 className="font-display font-semibold text-slate-100 text-sm leading-snug">
+                              {proj.title}
+                            </h3>
+                            <p className="text-xs text-slate-500 mt-1">{proj.subtitle}</p>
+                          </div>
+                          <ChevronDown className={`shrink-0 w-4 h-4 text-slate-500 transition-transform duration-300 mt-0.5 ${isExpanded ? 'rotate-180' : ''}`} />
                         </div>
-                        <ChevronDown className={`shrink-0 w-4 h-4 text-slate-500 transition-transform duration-300 mt-0.5 ${isExpanded ? 'rotate-180' : ''}`} />
+                        <StatusBadge status={proj.status} />
+
+                        {/* Tags */}
+                        <div className="flex flex-wrap gap-1.5">
+                          {proj.tags.slice(0, 3).map((t) => (
+                            <span key={t} className={`inline-flex px-2 py-0.5 rounded text-[10px] font-mono border ${c.badge}`}>
+                              {t}
+                            </span>
+                          ))}
+                          {proj.tags.length > 3 && (
+                            <span className="text-[10px] text-slate-500 font-mono py-0.5">+{proj.tags.length - 3}</span>
+                          )}
+                        </div>
                       </div>
-                      <StatusBadge status={proj.status} />
 
-                      {/* Tags */}
-                      <div className="flex flex-wrap gap-1.5">
-                        {proj.tags.slice(0, 3).map((t) => (
-                          <span key={t} className={`inline-flex px-2 py-0.5 rounded text-[10px] font-mono border ${c.badge}`}>
-                            {t}
-                          </span>
-                        ))}
-                        {proj.tags.length > 3 && (
-                          <span className="text-[10px] text-slate-500 font-mono py-0.5">+{proj.tags.length - 3}</span>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Expandable detail */}
-                    <AnimatePresence initial={false}>
-                      {isExpanded && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: 'auto', opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.3, ease: 'easeInOut' }}
-                          className="overflow-hidden"
-                        >
-                          <div className="px-5 pb-5 border-t border-slate-800/60 pt-4 flex flex-col gap-4">
-                            {/* Problem */}
-                            <div className="flex gap-2.5">
-                              <Target className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${c.icon}`} />
-                              <div>
-                                <p className="text-[10px] font-mono text-slate-500 uppercase tracking-wider mb-1">Problem</p>
-                                <p className="text-xs text-slate-400 leading-relaxed">{proj.problem}</p>
+                      {/* Expandable detail */}
+                      <AnimatePresence initial={false}>
+                        {isExpanded && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: 'easeInOut' }}
+                            className="overflow-hidden"
+                          >
+                            <div className="px-5 pb-5 border-t border-slate-800/60 pt-4 flex flex-col gap-4">
+                              {/* Problem */}
+                              <div className="flex gap-2.5">
+                                <Target className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${c.icon}`} />
+                                <div>
+                                  <p className="text-[10px] font-mono text-slate-500 uppercase tracking-wider mb-1">Problem</p>
+                                  <p className="text-xs text-slate-400 leading-relaxed">{proj.problem}</p>
+                                </div>
                               </div>
-                            </div>
 
-                            {/* Method */}
-                            <div className="flex gap-2.5">
-                              <Lightbulb className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${c.icon}`} />
-                              <div>
-                                <p className="text-[10px] font-mono text-slate-500 uppercase tracking-wider mb-1">Approach</p>
-                                <p className="text-xs text-slate-400 leading-relaxed">{proj.method}</p>
+                              {/* Method */}
+                              <div className="flex gap-2.5">
+                                <Lightbulb className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${c.icon}`} />
+                                <div>
+                                  <p className="text-[10px] font-mono text-slate-500 uppercase tracking-wider mb-1">Approach</p>
+                                  <p className="text-xs text-slate-400 leading-relaxed">{proj.method}</p>
+                                </div>
                               </div>
-                            </div>
 
-                            {/* Tools */}
-                            <div className="flex gap-2.5">
-                              <Wrench className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${c.icon}`} />
-                              <div>
-                                <p className="text-[10px] font-mono text-slate-500 uppercase tracking-wider mb-1.5">Tools</p>
-                                <div className="flex flex-wrap gap-1">
-                                  {proj.tools.map((t) => (
-                                    <span key={t} className="text-[10px] px-2 py-0.5 rounded bg-slate-800 border border-slate-700/60 text-slate-400 font-mono">
-                                      {t}
-                                    </span>
-                                  ))}
+                              {/* Tools */}
+                              <div className="flex gap-2.5">
+                                <Wrench className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${c.icon}`} />
+                                <div>
+                                  <p className="text-[10px] font-mono text-slate-500 uppercase tracking-wider mb-1.5">Tools</p>
+                                  <div className="flex flex-wrap gap-1">
+                                    {proj.tools.map((t) => (
+                                      <span key={t} className="text-[10px] px-2 py-0.5 rounded bg-slate-800 border border-slate-700/60 text-slate-400 font-mono">
+                                        {t}
+                                      </span>
+                                    ))}
+                                  </div>
+                                </div>
+                              </div>
+
+                              {/* Contribution */}
+                              <div className="flex gap-2.5">
+                                <Tag className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${c.icon}`} />
+                                <div>
+                                  <p className="text-[10px] font-mono text-slate-500 uppercase tracking-wider mb-1">Contribution</p>
+                                  <p className="text-xs text-slate-300 leading-relaxed font-medium">{proj.contribution}</p>
                                 </div>
                               </div>
                             </div>
-
-                            {/* Contribution */}
-                            <div className="flex gap-2.5">
-                              <Tag className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${c.icon}`} />
-                              <div>
-                                <p className="text-[10px] font-mono text-slate-500 uppercase tracking-wider mb-1">Contribution</p>
-                                <p className="text-xs text-slate-300 leading-relaxed font-medium">{proj.contribution}</p>
-                              </div>
-                            </div>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </motion.div>
+                  </TiltCard>
                 </StaggerItem>
               );
             })}
