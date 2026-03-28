@@ -1,3 +1,4 @@
+import CustomCursor from './components/ui/CustomCursor';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -13,7 +14,8 @@ import Footer from './components/Footer';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-navy-950 text-slate-100 antialiased">
+    <div className="min-h-screen bg-navy-950 text-slate-100 antialiased overflow-x-hidden">
+      <CustomCursor />
       <Navbar />
 
       <main>
