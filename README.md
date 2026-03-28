@@ -2,8 +2,7 @@
 
 **Live site:** [https://isthatasim.github.io/masimamin/](https://isthatasim.github.io/masimamin/)
 
-A premium academic and research portfolio for **Muhammad Asim Amin**, PhD Researcher in AI-Driven Power Systems & Smart Grids at the University of Genova (MSCA CLOE Project, Horizon Europe).
-
+A academic and research portfolio for **Muhammad Asim Amin**, PhD Researcher in AI-Driven Power Systems & Smart Grids.
 ---
 
 ## Tech Stack
