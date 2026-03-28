@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Download, Mail, ChevronDown } from 'lucide-react';
 import { personal, stats } from '../data/content';
 import GridBackground from './ui/GridBackground';
+import PortraitCard from './ui/PortraitCard';
+import EnergyParticles from './ui/EnergyParticles';
 
 // ── Smart-Grid Network SVG ──────────────────────────────────────────────────
 // 7 outer nodes (Solar, Wind, EV, Prosumer, Storage, Grid, Community)
@@ -39,7 +41,7 @@ const containerVariants = {
 
 const itemVariants = {
   hidden:  { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] } },
 };
 
 export default function Hero() {
@@ -49,6 +51,7 @@ export default function Hero() {
       className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-navy-950"
     >
       <GridBackground />
+      <EnergyParticles />
 
       {/* Ambient glow blobs */}
       <div aria-hidden className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -77,10 +80,12 @@ export default function Hero() {
             {/* Name */}
             <motion.div variants={itemVariants}>
               <h1 className="font-display font-bold leading-[1.05] text-slate-100">
-                <span className="text-4xl sm:text-5xl lg:text-6xl block">Muhammad</span>
-                <span className="text-4xl sm:text-5xl lg:text-6xl block">
+                <span className="text-5xl sm:text-6xl lg:text-7xl block">Muhammad</span>
+                <span className="text-5xl sm:text-6xl lg:text-7xl block">
                   Asim{' '}
-                  <span className="text-gradient-cyan">Amin</span>
+                  <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                    Amin
+                  </span>
                 </span>
               </h1>
             </motion.div>
@@ -107,17 +112,19 @@ export default function Hero() {
               <button
                 onClick={() => document.getElementById('publications')?.scrollIntoView({ behavior: 'smooth' })}
                 className="btn-primary"
+                data-cursor="button"
               >
                 View Research
                 <ArrowRight className="w-4 h-4" />
               </button>
-              <a href={personal.cvUrl} download className="btn-outline">
+              <a href={personal.cvUrl} download className="btn-outline" data-cursor="button">
                 <Download className="w-4 h-4" />
                 Download CV
               </a>
               <button
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                 className="btn-outline"
+                data-cursor="button"
               >
                 <Mail className="w-4 h-4" />
                 Contact Me
@@ -132,7 +139,7 @@ export default function Hero() {
               {stats.map((s) => (
                 <div
                   key={s.label}
-                  className="glass-card px-3 py-3 flex flex-col gap-0.5"
+                  className="glass-card px-3 py-3 flex flex-col gap-0.5 hover:scale-105 transition-transform duration-200"
                 >
                   <span className="font-display font-bold text-2xl text-cyan-400">
                     {s.value}
@@ -144,18 +151,28 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* ── Right Column: SVG Energy Grid Visual ──────────────────── */}
+          {/* ── Right Column: Portrait Card ──────────────────────────── */}
           <motion.div
             className="flex justify-center items-center lg:justify-end"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, delay: 0.4, ease: [0.21, 0.47, 0.32, 0.98] }}
           >
-            <div className="relative w-[340px] h-[340px] sm:w-[400px] sm:h-[400px] animate-float">
-              <EnergyGridSVG />
-            </div>
+            <PortraitCard className="w-full max-w-md" />
           </motion.div>
         </div>
+
+        {/* Energy grid decoration (secondary, smaller) */}
+        <motion.div
+          className="flex justify-center items-center mt-12 opacity-50"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 0.4, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.8 }}
+        >
+          <div className="relative w-48 h-48 sm:w-56 sm:h-56 animate-float-slow">
+            <EnergyGridSVG />
+          </div>
+        </motion.div>
       </div>
 
       {/* Scroll indicator */}
