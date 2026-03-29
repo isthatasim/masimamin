@@ -17,7 +17,7 @@ export default function Experience() {
   const [expandedId, setExpandedId] = useState<string | null>('unige-phd');
 
   return (
-    <section id="experience" className="relative py-24 bg-navy-950 overflow-hidden">
+    <section id="experience" className="relative py-24 overflow-hidden" style={{ background: 'rgba(11,21,37,0.90)' }}>
       <div
         aria-hidden
         className="absolute inset-0 pointer-events-none"
