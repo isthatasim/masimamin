@@ -45,7 +45,7 @@ export default function Projects() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   return (
-    <section id="projects" className="relative py-24 bg-navy-900 overflow-hidden">
+    <section id="projects" className="relative py-24 overflow-hidden" style={{ background: 'rgba(10,22,40,0.88)' }}>
       <div
         aria-hidden
         className="absolute inset-0 pointer-events-none"
@@ -64,7 +64,7 @@ export default function Projects() {
           />
 
           <StaggerContainer
-            className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"
+            className="hover-fade-group grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4"
             staggerDelay={0.08}
           >
             {projects.map((proj) => {
@@ -75,8 +75,7 @@ export default function Projects() {
                 <StaggerItem key={proj.id}>
                   <TiltCard glowColor={c.glow}>
                     <motion.div
-                      className={`glass-card flex flex-col overflow-hidden cursor-pointer h-full border ${c.border}
-                        hover:-translate-y-1 transition-transform duration-200`}
+                      className={`hover-fade glass-card flex flex-col overflow-hidden cursor-pointer h-full border ${c.border}`}
                       onClick={() => setExpandedId(isExpanded ? null : proj.id)}
                       layout
                       data-cursor="button"
