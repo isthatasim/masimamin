@@ -22,7 +22,7 @@ export default function Footer() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
-    <footer className="relative bg-[#030912] border-t border-slate-800/60 overflow-hidden">
+    <footer className="relative border-t border-white/[0.06] overflow-hidden" style={{ background: 'rgba(8,16,28,0.96)' }}>
       {/* Subtle grid */}
       <div
         aria-hidden
