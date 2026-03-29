@@ -14,7 +14,7 @@ const colorClasses = {
 
 export default function Education() {
   return (
-    <section id="education" className="relative py-24 bg-navy-900 overflow-hidden">
+    <section id="education" className="relative py-24 overflow-hidden" style={{ background: 'rgba(11,21,37,0.88)' }}>
       <div
         aria-hidden
         className="absolute inset-0 pointer-events-none"
