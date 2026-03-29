@@ -50,9 +50,10 @@ export default function Navbar() {
       <motion.header
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
           scrolled
-            ? 'bg-navy-950/85 backdrop-blur-lg border-b border-cyan-500/20 shadow-[0_1px_20px_rgba(0,0,0,0.5)]'
+            ? 'backdrop-blur-xl border-b border-cyan-500/15 shadow-[0_1px_30px_rgba(0,0,0,0.6)]'
             : 'bg-transparent border-b border-transparent'
         }`}
+        style={scrolled ? { background: 'rgba(10,22,40,0.82)' } : {}}
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
