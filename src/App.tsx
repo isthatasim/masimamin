@@ -1,3 +1,4 @@
+import SiteBackground from './components/ui/SiteBackground';
 import CustomCursor from './components/ui/CustomCursor';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -14,11 +15,14 @@ import Footer from './components/Footer';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-navy-950 text-slate-100 antialiased overflow-x-hidden">
+    <div className="min-h-screen text-slate-100 antialiased overflow-x-hidden" style={{ background: '#0a1628' }}>
+      {/* Full-viewport animated network mesh — sits behind everything */}
+      <SiteBackground />
+
       <CustomCursor />
       <Navbar />
 
-      <main>
+      <main className="relative z-10">
         <Hero />
         <About />
         <ResearchFocus />
