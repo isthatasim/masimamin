@@ -1,68 +1,58 @@
+/**
+ * Publications — clean academic layout.
+ * Removed: status badges, IF badges, bracket ID tags.
+ * Kept: authors (MAA highlighted), title, venue, year, DOI.
+ */
 import { useState } from 'react';
 import type { ElementType } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BookOpen, Clock, ChevronDown, ExternalLink, FileText, BookMarked, Microscope } from 'lucide-react';
+import { BookOpen, ChevronDown, ExternalLink, FileText, BookMarked, Microscope } from 'lucide-react';
 import { publications } from '../data/content';
 import SectionTitle from './ui/SectionTitle';
 import AnimatedSection from './ui/AnimatedSection';
-import GridBackground from './ui/GridBackground';
 
 type Tab = 'published' | 'review' | 'conferences' | 'other';
 
-const tabs: { id: Tab; label: string; icon: ElementType; count: number }[] = [
-  { id: 'published',   label: 'Published Journals',  icon: BookOpen,    count: publications.journalsPublished.length },
-  { id: 'review',      label: 'Under Review',         icon: Clock,       count: publications.journalsUnderReview.length },
-  { id: 'conferences', label: 'Conference Papers',    icon: FileText,    count: 17 },
-  { id: 'other',       label: 'Book Chapter & WIP',   icon: BookMarked,  count: publications.bookChapters.length + publications.workingPapers.length },
+const tabs: { id: Tab; label: string; icon: ElementType }[] = [
+  { id: 'published',   label: 'Published Journals',  icon: BookOpen   },
+  { id: 'review',      label: 'Under Review',         icon: FileText   },
+  { id: 'conferences', label: 'Conference Papers',    icon: FileText   },
+  { id: 'other',       label: 'Book Chapter & WIP',   icon: BookMarked },
 ];
 
-function IFBadge({ value }: { value?: number }) {
-  if (!value) return null;
+function renderAuthors(raw: string) {
+  const parts = raw.split('M. Asim Amin');
+  if (parts.length === 1) return <span className="text-slate-400 text-xs leading-relaxed">{raw}</span>;
   return (
-    <span className="shrink-0 inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/10 border border-emerald-500/20 text-emerald-400">
-      IF {value}
+    <span className="text-slate-400 text-xs leading-relaxed">
+      {parts[0]}
+      <span className="font-semibold text-slate-200">M. Asim Amin</span>
+      {parts[1]}
     </span>
   );
 }
 
 function PubEntry({
-  id, authors, title, venue, year, vol, doi, status, ifVal, note
+  authors, title, venue, year, vol, doi,
 }: {
-  id: string; authors: string; title: string; venue: string;
-  year?: number; vol?: string; doi?: string; status?: string;
-  ifVal?: number; note?: string;
+  authors: string; title: string; venue: string;
+  year?: number; vol?: string; doi?: string;
 }) {
-  const isMyName = (a: string) => a.includes('M. Asim Amin');
-
-  const renderAuthors = (raw: string) => {
-    const parts = raw.split('M. Asim Amin');
-    if (parts.length === 1) return <span className="text-slate-400 text-xs">{raw}</span>;
-    return (
-      <span className="text-slate-400 text-xs">
-        {parts[0]}
-        <span className="font-semibold text-slate-200">M. Asim Amin</span>
-        {parts[1]}
-      </span>
-    );
-  };
-
   return (
-    <div className="pub-entry group hover:bg-slate-800/20 transition-colors duration-150 rounded-r-lg pr-3 border-l-2 border-cyan-500/30 hover:border-cyan-500/60">
+    <div className="pub-entry hover:bg-white/[0.015]">
       <div className="flex flex-col gap-1.5">
         {/* Authors */}
-        <div className="leading-snug">{renderAuthors(authors)}</div>
+        <div className="leading-relaxed">{renderAuthors(authors)}</div>
 
         {/* Title */}
-        <p className="text-sm text-slate-200 font-medium leading-snug">
-          {title}
-        </p>
+        <p className="text-sm text-slate-100 font-medium leading-snug">{title}</p>
 
         {/* Venue + meta */}
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+        <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1">
           <span className="text-xs text-cyan-400 font-medium italic">{venue}</span>
-          {vol && <span className="text-xs text-slate-500">{vol}</span>}
+          {vol  && <span className="text-xs text-slate-500">{vol}</span>}
           {year && <span className="text-xs text-slate-500 font-mono">{year}</span>}
-          {doi && (
+          {doi  && (
             <a
               href={`https://doi.org/${doi}`}
               target="_blank"
@@ -73,23 +63,6 @@ function PubEntry({
               DOI <ExternalLink className="w-2.5 h-2.5" />
             </a>
           )}
-        </div>
-
-        {/* Status / IF row */}
-        <div className="flex flex-wrap items-center gap-2">
-          {status && (
-            <span className={`text-[10px] font-mono px-2 py-0.5 rounded border ${
-              status.includes('Published')
-                ? 'bg-emerald-500/5 border-emerald-500/20 text-emerald-400'
-                : status.includes('Review')
-                ? 'bg-amber-500/5 border-amber-500/20 text-amber-400'
-                : 'bg-slate-800 border-slate-700 text-slate-400'
-            }`}>
-              {status}
-            </span>
-          )}
-          <IFBadge value={ifVal} />
-          <span className="text-[10px] font-mono text-slate-600">[{id}]</span>
         </div>
       </div>
     </div>
@@ -102,25 +75,28 @@ export default function Publications() {
 
   const confToShow = showAllConf
     ? publications.selectedConferences
-    : publications.selectedConferences.slice(0, 4);
+    : publications.selectedConferences.slice(0, 5);
 
   return (
-    <section id="publications" className="relative py-24 bg-navy-950 overflow-hidden">
-      <GridBackground />
-
+    <section
+      id="publications"
+      className="relative py-24 overflow-hidden"
+      style={{ background: 'rgba(10,22,40,0.92)' }}
+    >
       <div className="section-container relative z-10">
         <div className="flex flex-col gap-10">
+
+          {/* Header row */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
             <SectionTitle
               eyebrow="Publications"
               title="Research Output"
-              subtitle="Peer-reviewed journals, conference proceedings, book chapters, and working papers."
+              subtitle="Peer-reviewed journals, conference proceedings, and book chapters."
               accentWord="Research"
             />
 
-            {/* Stats summary */}
             <AnimatedSection delay={0.2} className="shrink-0">
-              <div className="glass-card p-4 flex gap-4">
+              <div className="glass-card p-4 flex gap-5">
                 {[
                   { v: '6',  l: 'Published' },
                   { v: '4',  l: 'Under Review' },
@@ -138,7 +114,7 @@ export default function Publications() {
 
           {/* Tabs */}
           <AnimatedSection delay={0.1}>
-            <div className="flex flex-wrap gap-2 border-b border-slate-800/60 pb-0">
+            <div className="flex flex-wrap gap-1 border-b border-white/[0.06] pb-0">
               {tabs.map((tab) => {
                 const Icon = tab.icon;
                 const isActive = activeTab === tab.id;
@@ -148,19 +124,14 @@ export default function Publications() {
                     onClick={() => setActiveTab(tab.id)}
                     className={`relative flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-t-lg transition-all duration-200 ${
                       isActive
-                        ? 'text-cyan-400 bg-slate-900/80 border border-b-0 border-slate-700/60'
-                        : 'text-slate-500 hover:text-slate-300 hover:bg-slate-800/30'
+                        ? 'text-cyan-400 bg-white/[0.04] border border-b-0 border-white/[0.07]'
+                        : 'text-slate-500 hover:text-slate-300 hover:bg-white/[0.02]'
                     }`}
                     data-cursor="button"
                   >
                     <Icon className="w-3.5 h-3.5" />
                     <span className="hidden sm:inline">{tab.label}</span>
                     <span className="sm:hidden">{tab.label.split(' ')[0]}</span>
-                    <span className={`text-[10px] px-1.5 py-0.5 rounded font-mono ${
-                      isActive ? 'bg-cyan-500/20 text-cyan-400' : 'bg-slate-800 text-slate-500'
-                    }`}>
-                      {tab.count}
-                    </span>
                     {isActive && (
                       <motion.div
                         className="absolute bottom-0 inset-x-0 h-px bg-cyan-500"
@@ -181,83 +152,61 @@ export default function Publications() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.25 }}
+              transition={{ duration: 0.22 }}
             >
               {activeTab === 'published' && (
-                <div className="flex flex-col gap-2">
-                  {publications.journalsPublished.map((p) => (
+                <div className="flex flex-col gap-1.5">
+                  {publications.journalsPublished.map((p, i) => (
                     <PubEntry
-                      key={p.id} id={p.id} authors={p.authors} title={p.title}
-                      venue={p.venue} year={p.year} vol={(p as any).vol} doi={(p as any).doi}
-                      status={p.status} ifVal={(p as any).if} note={(p as any).note}
+                      key={i}
+                      authors={p.authors}
+                      title={p.title}
+                      venue={p.venue}
+                      year={(p as any).year}
+                      vol={(p as any).vol}
+                      doi={(p as any).doi}
                     />
                   ))}
                 </div>
               )}
 
               {activeTab === 'review' && (
-                <div className="flex flex-col gap-6">
-                  {/* Under Review journals */}
-                  <div>
-                    <p className="text-xs font-mono text-slate-500 uppercase tracking-wider mb-4 flex items-center gap-2">
-                      <Clock className="w-3.5 h-3.5" />
-                      Journals Under Review — cumulative IF up to 11.9
-                    </p>
-                    <div className="flex flex-col gap-2">
-                      {publications.journalsUnderReview.map((p) => (
-                        <PubEntry
-                          key={p.id} id={p.id} authors={p.authors} title={p.title}
-                          venue={p.venue} status={p.status} ifVal={p.if}
-                        />
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Book chapter */}
-                  <div>
-                    <p className="text-xs font-mono text-slate-500 uppercase tracking-wider mb-4 flex items-center gap-2">
-                      <BookMarked className="w-3.5 h-3.5" />
-                      Book Chapter (Under Review)
-                    </p>
-                    <div className="flex flex-col gap-2">
-                      {publications.bookChapters.map((p) => (
-                        <PubEntry
-                          key={p.id} id={p.id} authors={p.authors} title={p.title}
-                          venue={p.venue} year={p.year} status={p.status}
-                        />
-                      ))}
-                    </div>
-                  </div>
+                <div className="flex flex-col gap-1.5">
+                  {publications.journalsUnderReview.map((p, i) => (
+                    <PubEntry
+                      key={i}
+                      authors={p.authors}
+                      title={p.title}
+                      venue={p.venue}
+                    />
+                  ))}
                 </div>
               )}
 
               {activeTab === 'conferences' && (
-                <div className="flex flex-col gap-3">
-                  <p className="text-xs text-slate-500 mb-2">
-                    17 conference papers total (2021–2025). Showing selected highlights.
-                  </p>
-                  <div className="flex flex-col gap-2">
-                    {confToShow.map((p) => (
-                      <PubEntry
-                        key={p.id} id={p.id}
-                        authors={p.authors}
-                        title={p.title}
-                        venue={`${p.venue}${p.location ? `, ${p.location}` : ''}`}
-                        year={p.year}
-                        status="Published"
-                      />
-                    ))}
-                  </div>
-                  {!showAllConf && publications.selectedConferences.length > 4 && (
+                <div className="flex flex-col gap-1.5">
+                  {confToShow.map((p, i) => (
+                    <PubEntry
+                      key={i}
+                      authors={p.authors}
+                      title={p.title}
+                      venue={`${p.venue}${(p as any).location ? `, ${(p as any).location}` : ''}`}
+                      year={p.year}
+                    />
+                  ))}
+                  {!showAllConf && publications.selectedConferences.length > 5 && (
                     <button
                       onClick={() => setShowAllConf(true)}
-                      className="flex items-center gap-2 text-sm text-slate-500 hover:text-cyan-400 transition-colors mt-2 self-start"
+                      className="flex items-center gap-2 text-sm text-slate-500 hover:text-cyan-400 transition-colors mt-3 self-start"
                       data-cursor="button"
                     >
                       <ChevronDown className="w-4 h-4" />
                       Show all {publications.selectedConferences.length} selected papers
                     </button>
                   )}
+                  <p className="text-xs text-slate-600 mt-3 font-mono">
+                    17 total conference papers (2021–2025). Showing selected highlights.
+                  </p>
                 </div>
               )}
 
@@ -268,11 +217,14 @@ export default function Publications() {
                       <BookMarked className="w-3.5 h-3.5" />
                       Book Chapter
                     </p>
-                    <div className="flex flex-col gap-2">
-                      {publications.bookChapters.map((p) => (
+                    <div className="flex flex-col gap-1.5">
+                      {publications.bookChapters.map((p, i) => (
                         <PubEntry
-                          key={p.id} id={p.id} authors={p.authors} title={p.title}
-                          venue={p.venue} year={p.year} status={p.status}
+                          key={i}
+                          authors={p.authors}
+                          title={p.title}
+                          venue={p.venue}
+                          year={(p as any).year}
                         />
                       ))}
                     </div>
@@ -282,11 +234,10 @@ export default function Publications() {
                       <Microscope className="w-3.5 h-3.5" />
                       Working Papers
                     </p>
-                    <div className="flex flex-col gap-3">
-                      {publications.workingPapers.map((p) => (
-                        <div key={p.id} className="pub-entry border-l-2 border-indigo-500/30">
+                    <div className="flex flex-col gap-2">
+                      {publications.workingPapers.map((p, i) => (
+                        <div key={i} className="pub-entry border-l-2 border-indigo-500/25">
                           <p className="text-sm text-slate-200 font-medium leading-snug">{p.title}</p>
-                          <span className="text-[10px] font-mono text-slate-500 mt-1 inline-block">[{p.id}] · {p.status}</span>
                         </div>
                       ))}
                     </div>
@@ -297,7 +248,7 @@ export default function Publications() {
           </AnimatePresence>
 
           {/* Peer review service */}
-          <AnimatedSection delay={0.2} className="mt-4">
+          <AnimatedSection delay={0.2} className="mt-2">
             <div className="glass-card p-5">
               <div className="flex items-center gap-2 mb-3">
                 <Microscope className="w-4 h-4 text-cyan-400" />
@@ -314,13 +265,14 @@ export default function Publications() {
                   'Machine Learning — Springer',
                   'Frontiers in Energy Research',
                 ].map((v) => (
-                  <span key={v} className="text-xs px-2.5 py-1 rounded border border-slate-700/60 text-slate-400 bg-slate-800/40">
+                  <span key={v} className="text-xs px-2.5 py-1 rounded border border-white/[0.07] text-slate-400 bg-white/[0.02]">
                     {v}
                   </span>
                 ))}
               </div>
             </div>
           </AnimatedSection>
+
         </div>
       </div>
     </section>
