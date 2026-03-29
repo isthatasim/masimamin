@@ -23,7 +23,7 @@ const nodes = nodeData.map((n, i) => {
   return { ...n, x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) };
 });
 
-const crossEdges = [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,0]];
+const crossEdges: [number, number][] = [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,0]];
 
 // Stagger animations
 const containerVariants = {
@@ -32,7 +32,7 @@ const containerVariants = {
 };
 const itemVariants = {
   hidden:  { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.21,0.47,0.32,0.98] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.21,0.47,0.32,0.98] as number[] } },
 };
 
 export default function Hero() {
@@ -132,7 +132,7 @@ export default function Hero() {
               className="relative w-full"
               initial={{ opacity: 0, scale: 0.88 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.1, delay: 0.3, ease: [0.22, 0.61, 0.36, 1] }}
+              transition={{ duration: 1.1, delay: 0.3, ease: [0.22, 0.61, 0.36, 1] as number[] }}
             >
               {/* Outer glow behind SVG */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden>
@@ -175,8 +175,8 @@ export default function Hero() {
                     x1={nodes[a].x} y1={nodes[a].y}
                     x2={nodes[b].x} y2={nodes[b].y}
                     stroke="rgba(6,182,212,0.18)" strokeWidth="1"
-                    initial={{ pathLength: 0 }}
-                    animate={{ pathLength: 1 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                     transition={{ duration: 1.4, delay: 0.6 + idx * 0.08, ease: 'easeOut' }}
                   />
                 ))}
@@ -204,12 +204,13 @@ export default function Hero() {
                     transition={{ duration: 0.5, delay: 0.5 + i * 0.1, ease: 'backOut' }}
                     style={{ transformOrigin: `${n.x}px ${n.y}px` }}
                   >
-                    {/* Pulse ring */}
+                    {/* Pulse ring — uses scale instead of r animation for TypeScript compat */}
                     <motion.circle
-                      cx={n.x} cy={n.y}
+                      cx={n.x} cy={n.y} r={16}
                       fill="none" stroke={n.color} strokeWidth="0.8"
-                      animate={{ r: [10, 22], opacity: [0.6, 0] }}
+                      animate={{ scale: [0.6, 1.4], opacity: [0.6, 0] }}
                       transition={{ duration: 2.5, delay: i * 0.4, repeat: Infinity, ease: 'easeOut' }}
+                      style={{ transformOrigin: `${n.x}px ${n.y}px` }}
                     />
                     {/* Outer glow */}
                     <circle cx={n.x} cy={n.y} r="15"
@@ -244,12 +245,13 @@ export default function Hero() {
                   transition={{ duration: 0.8, delay: 1.2, ease: 'backOut' }}
                   style={{ transformOrigin: `${cx}px ${cy}px` }}
                 >
-                  {/* Multi-layer glow */}
+                  {/* Multi-layer glow — scale pulse instead of r animation */}
                   <motion.circle
-                    cx={cx} cy={cy} r="36"
+                    cx={cx} cy={cy} r={43}
                     fill="none" stroke="rgba(6,182,212,0.12)"
-                    animate={{ r: [36, 50], opacity: [0.4, 0] }}
+                    animate={{ scale: [0.84, 1.16], opacity: [0.4, 0] }}
                     transition={{ duration: 3, repeat: Infinity, ease: 'easeOut' }}
+                    style={{ transformOrigin: `${cx}px ${cy}px` }}
                   />
                   <circle cx={cx} cy={cy} r="32"
                     fill="rgba(6,182,212,0.06)" stroke="rgba(6,182,212,0.25)" strokeWidth="1" />
