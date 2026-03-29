@@ -62,7 +62,7 @@ const colorConf: Record<string, { iconBg: string; icon: string; border: string; 
 
 export default function Skills() {
   return (
-    <section id="skills" className="relative py-24 bg-navy-950 overflow-hidden">
+    <section id="skills" className="relative py-24 overflow-hidden" style={{ background: 'rgba(10,22,40,0.90)' }}>
       <div
         aria-hidden
         className="absolute inset-0 pointer-events-none"
