@@ -1,32 +1,22 @@
-// Subtle animated grid backdrop with breathing effect — used behind hero and across sections
+// Subtle animated dot-grid backdrop — used across sections.
+// More modern than pure grid lines; plays well with the SiteBackground canvas.
 export default function GridBackground({ className = '' }: { className?: string }) {
   return (
     <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`} aria-hidden="true">
-      {/* Grid lines — subtler, larger cells */}
-      <div
-        className="absolute inset-0 animate-breath"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(6, 182, 212, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(6, 182, 212, 0.03) 1px, transparent 1px)
-          `,
-          backgroundSize: '80px 80px',
-        }}
-      />
-      {/* Radial glow — brighter in center, fades to edges */}
+      {/* Dot grid — very subtle */}
       <div
         className="absolute inset-0"
         style={{
-          background:
-            'radial-gradient(ellipse 80% 60% at 50% 40%, rgba(6,182,212,0.12) 0%, transparent 70%)',
+          backgroundImage: `radial-gradient(circle, rgba(6,182,212,0.07) 1px, transparent 1px)`,
+          backgroundSize: '40px 40px',
+          opacity: 0.6,
         }}
       />
-      {/* Vignette — dark edges */}
+      {/* Section-center radial glow */}
       <div
         className="absolute inset-0"
         style={{
-          background:
-            'radial-gradient(ellipse 100% 100% at 50% 50%, transparent 50%, rgba(13, 27, 42, 0.8) 100%)',
+          background: 'radial-gradient(ellipse 70% 50% at 50% 30%, rgba(6,182,212,0.06) 0%, transparent 70%)',
         }}
       />
     </div>
