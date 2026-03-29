@@ -1,342 +1,334 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Download, Mail, ChevronDown } from 'lucide-react';
 import { personal, stats } from '../data/content';
-import GridBackground from './ui/GridBackground';
 import PortraitCard from './ui/PortraitCard';
 import EnergyParticles from './ui/EnergyParticles';
 
-// ── Smart-Grid Network SVG ──────────────────────────────────────────────────
-// 7 outer nodes (Solar, Wind, EV, Prosumer, Storage, Grid, Community)
-// + 1 central AI-EMS node
-// All coordinates on a 400×400 viewBox
-
-const cx = 200; const cy = 200; const r = 155;
+// ── Smart-Grid Network Diagram ──────────────────────────────────
+const cx = 220; const cy = 220; const r = 165;
 const nodeCount = 7;
 
 const nodeData = [
-  { label: 'Solar PV',   symbol: '☀',  color: '#fbbf24', glow: 'rgba(251,191,36,0.5)'  },
-  { label: 'Wind',       symbol: '⟳',  color: '#22d3ee', glow: 'rgba(34,211,238,0.5)'  },
-  { label: 'EV Fleet',   symbol: '⚡',  color: '#818cf8', glow: 'rgba(129,140,248,0.5)' },
-  { label: 'Prosumer',   symbol: '🏠', color: '#34d399', glow: 'rgba(52,211,153,0.5)'  },
-  { label: 'Storage',    symbol: '▣',  color: '#f472b6', glow: 'rgba(244,114,182,0.5)' },
-  { label: 'Grid',       symbol: '≋',  color: '#06b6d4', glow: 'rgba(6,182,212,0.5)'   },
-  { label: 'Community',  symbol: '◉',  color: '#a78bfa', glow: 'rgba(167,139,250,0.5)' },
+  { label: 'Solar PV',   symbol: '☀',  color: '#fbbf24', glow: 'rgba(251,191,36,0.55)'  },
+  { label: 'Wind',       symbol: '⟳',  color: '#22d3ee', glow: 'rgba(34,211,238,0.55)'  },
+  { label: 'EV Fleet',   symbol: '⚡',  color: '#818cf8', glow: 'rgba(129,140,248,0.55)' },
+  { label: 'Prosumer',   symbol: '⌂',  color: '#34d399', glow: 'rgba(52,211,153,0.55)'  },
+  { label: 'Storage',    symbol: '▣',  color: '#f472b6', glow: 'rgba(244,114,182,0.55)' },
+  { label: 'Grid',       symbol: '≋',  color: '#06b6d4', glow: 'rgba(6,182,212,0.55)'   },
+  { label: 'Community',  symbol: '◉',  color: '#a78bfa', glow: 'rgba(167,139,250,0.55)' },
 ];
 
-// Compute positions (start at top, clockwise)
 const nodes = nodeData.map((n, i) => {
-  const angle = (Math.PI * 2 * i) / nodeCount - Math.PI / 2; // start top
+  const angle = (Math.PI * 2 * i) / nodeCount - Math.PI / 2;
   return { ...n, x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) };
 });
 
-// Which pairs get cross-connections (between adjacent outer nodes)
-const crossEdges = [
-  [0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6], [6, 0],
-];
+const crossEdges = [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,0]];
 
+// Stagger animations
 const containerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.3 } },
+  visible: { transition: { staggerChildren: 0.09, delayChildren: 0.2 } },
 };
-
 const itemVariants = {
-  hidden:  { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] } },
+  hidden:  { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.21,0.47,0.32,0.98] } },
 };
 
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-navy-950"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
+      style={{ background: 'rgba(10,22,40,0.90)' }}
     >
-      <GridBackground />
       <EnergyParticles />
 
-      {/* Ambient glow blobs */}
+      {/* Radial ambient glows */}
       <div aria-hidden className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-40 -left-40 w-[700px] h-[700px] rounded-full bg-cyan-500/[0.04] blur-3xl" />
-        <div className="absolute top-1/2 -right-60 w-[600px] h-[600px] rounded-full bg-indigo-500/[0.04] blur-3xl" />
+        <div className="absolute -top-48 -left-48 w-[800px] h-[800px] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.05) 0%, transparent 65%)' }} />
+        <div className="absolute top-1/2 -right-64 w-[700px] h-[700px] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(99,102,241,0.05) 0%, transparent 65%)' }} />
+        <div className="absolute -bottom-40 left-1/2 -translate-x-1/2 w-[900px] h-[400px] rounded-full"
+          style={{ background: 'radial-gradient(ellipse, rgba(6,182,212,0.03) 0%, transparent 65%)' }} />
       </div>
 
       <div className="section-container relative z-10 pt-24 pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-6 items-center">
 
-          {/* ── Left Column: Text ─────────────────────────────────────── */}
+          {/* ── Left Column: Text ─────────────────────────────────── */}
           <motion.div
             className="flex flex-col gap-6"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            {/* Eyebrow badge */}
+            {/* Badge */}
             <motion.div variants={itemVariants}>
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-500/25 bg-cyan-500/5 text-xs font-mono text-cyan-400 tracking-wider">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-cyan-500/25 bg-cyan-500/[0.07] text-xs font-mono text-cyan-400 tracking-wider">
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                MSCA Early Stage Researcher · Horizon Europe CLOE Project
+                MSCA Early Stage Researcher · Horizon Europe CLOE
               </span>
             </motion.div>
 
             {/* Name */}
-            <motion.div variants={itemVariants}>
-              <h1 className="font-display font-bold leading-[1.05] text-slate-100">
-                <span className="text-5xl sm:text-6xl lg:text-7xl block">Muhammad</span>
-                <span className="text-5xl sm:text-6xl lg:text-7xl block">
-                  Asim{' '}
-                  <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                    Amin
-                  </span>
-                </span>
+            <motion.div variants={itemVariants} className="flex flex-col gap-0.5">
+              <div className="text-sm text-slate-500 font-mono tracking-widest uppercase mb-1">
+                Muhammad Asim Amin
+              </div>
+              <h1 className="text-4xl sm:text-5xl xl:text-6xl font-display font-bold leading-[1.08] tracking-tight">
+                <span className="text-gradient-primary">AI-Driven</span>
+                <br />
+                <span className="text-slate-100">Power Systems</span>
+                <br />
+                <span className="text-gradient-cyan">Researcher</span>
               </h1>
             </motion.div>
 
-            {/* Title */}
-            <motion.div variants={itemVariants} className="flex flex-col gap-1">
-              <p className="text-lg sm:text-xl text-slate-300 font-medium leading-snug">
-                PhD Researcher · AI-Driven Power Systems & Smart Grids
-              </p>
-              <p className="text-sm text-slate-500">
-                University of Genova · DITEN Department · Genoa, Italy
-              </p>
-            </motion.div>
-
-            {/* Value prop */}
+            {/* Tagline */}
             <motion.p variants={itemVariants} className="text-slate-400 text-base leading-relaxed max-w-lg">
-              Applying deep reinforcement learning, federated AI, and predictive analytics
-              to energy communities, EV charging coordination, and smart grid optimization —
-              bridging theoretical research with real-world deployment.
+              PhD candidate at <span className="text-slate-200 font-medium">University of Genova</span>, applying deep reinforcement learning, federated learning, and predictive analytics to modern power systems, EV charging, and energy communities.
             </motion.p>
 
-            {/* CTA buttons */}
+            {/* CTAs */}
             <motion.div variants={itemVariants} className="flex flex-wrap gap-3">
-              <button
-                onClick={() => document.getElementById('publications')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-primary"
-                data-cursor="button"
-              >
-                View Research
-                <ArrowRight className="w-4 h-4" />
-              </button>
-              <a href={personal.cvUrl} download className="btn-outline" data-cursor="button">
-                <Download className="w-4 h-4" />
-                Download CV
+              <a href="#publications" className="btn-primary" data-cursor="button">
+                View Research <ArrowRight className="w-4 h-4" />
               </a>
-              <button
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-outline"
-                data-cursor="button"
-              >
-                <Mail className="w-4 h-4" />
-                Contact Me
-              </button>
+              <a href="#contact" className="btn-outline" data-cursor="button">
+                <Mail className="w-4 h-4" /> Contact
+              </a>
+              {personal.cvUrl && (
+                <a href={personal.cvUrl} download className="btn-outline" data-cursor="button">
+                  <Download className="w-4 h-4" /> Download CV
+                </a>
+              )}
             </motion.div>
 
-            {/* Stats row */}
-            <motion.div
-              variants={itemVariants}
-              className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2"
-            >
+            {/* Stats */}
+            <motion.div variants={itemVariants} className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
               {stats.map((s) => (
                 <div
                   key={s.label}
-                  className="glass-card px-3 py-3 flex flex-col gap-0.5 hover:scale-105 transition-transform duration-200"
+                  className="glass-card p-3 flex flex-col gap-0.5"
+                  style={{ background: 'rgba(255,255,255,0.03)' }}
                 >
-                  <span className="font-display font-bold text-2xl text-cyan-400">
-                    {s.value}
-                  </span>
-                  <span className="text-xs text-slate-300 font-medium leading-tight">{s.label}</span>
-                  <span className="text-[10px] text-slate-500">{s.sublabel}</span>
+                  <span className="font-display font-bold text-2xl text-cyan-400">{s.value}</span>
+                  <span className="text-[11px] text-slate-400 leading-tight">{s.label}</span>
+                  {s.sublabel && (
+                    <span className="text-[10px] text-slate-600 font-mono">{s.sublabel}</span>
+                  )}
                 </div>
               ))}
             </motion.div>
           </motion.div>
 
-          {/* ── Right Column: Portrait Card ──────────────────────────── */}
-          <motion.div
-            className="flex justify-center items-center lg:justify-end"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.9, delay: 0.4, ease: [0.21, 0.47, 0.32, 0.98] }}
-          >
-            <PortraitCard className="w-full max-w-md" />
-          </motion.div>
+          {/* ── Right Column: Diagram + Portrait ──────────────────── */}
+          <div className="relative flex flex-col items-center gap-6">
+
+            {/* Smart-Grid Network Diagram — big and central */}
+            <motion.div
+              className="relative w-full"
+              initial={{ opacity: 0, scale: 0.88 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.1, delay: 0.3, ease: [0.22, 0.61, 0.36, 1] }}
+            >
+              {/* Outer glow behind SVG */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden>
+                <div
+                  className="w-80 h-80 rounded-full"
+                  style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.09) 0%, transparent 70%)' }}
+                />
+              </div>
+
+              <svg
+                viewBox="0 0 440 440"
+                className="w-full max-w-[460px] mx-auto"
+                aria-label="Smart-grid network diagram"
+                role="img"
+              >
+                {/* Outer decorative rings */}
+                <motion.circle
+                  cx={cx} cy={cy} r={r + 26}
+                  fill="none" stroke="rgba(6,182,212,0.07)" strokeWidth="1"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
+                  style={{ transformOrigin: `${cx}px ${cy}px`, strokeDasharray: '4 12' }}
+                />
+                <motion.circle
+                  cx={cx} cy={cy} r={r + 48}
+                  fill="none" stroke="rgba(99,102,241,0.05)" strokeWidth="0.8"
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
+                  style={{ transformOrigin: `${cx}px ${cy}px`, strokeDasharray: '2 18' }}
+                />
+
+                {/* Background circle */}
+                <circle cx={cx} cy={cy} r={r + 12}
+                  fill="rgba(6,182,212,0.025)" stroke="rgba(6,182,212,0.08)" strokeWidth="1" />
+
+                {/* Cross edges (outer ring connections) */}
+                {crossEdges.map(([a, b], idx) => (
+                  <motion.line
+                    key={`edge-${idx}`}
+                    x1={nodes[a].x} y1={nodes[a].y}
+                    x2={nodes[b].x} y2={nodes[b].y}
+                    stroke="rgba(6,182,212,0.18)" strokeWidth="1"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 1.4, delay: 0.6 + idx * 0.08, ease: 'easeOut' }}
+                  />
+                ))}
+
+                {/* Spokes to center */}
+                {nodes.map((n, i) => (
+                  <motion.line
+                    key={`spoke-${i}`}
+                    x1={n.x} y1={n.y}
+                    x2={cx} y2={cy}
+                    stroke={`${n.color}30`} strokeWidth="1"
+                    className="dash-flow"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.8 + i * 0.1 }}
+                  />
+                ))}
+
+                {/* Outer nodes */}
+                {nodes.map((n, i) => (
+                  <motion.g
+                    key={`node-${i}`}
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 0.5 + i * 0.1, ease: 'backOut' }}
+                    style={{ transformOrigin: `${n.x}px ${n.y}px` }}
+                  >
+                    {/* Pulse ring */}
+                    <motion.circle
+                      cx={n.x} cy={n.y}
+                      fill="none" stroke={n.color} strokeWidth="0.8"
+                      animate={{ r: [10, 22], opacity: [0.6, 0] }}
+                      transition={{ duration: 2.5, delay: i * 0.4, repeat: Infinity, ease: 'easeOut' }}
+                    />
+                    {/* Outer glow */}
+                    <circle cx={n.x} cy={n.y} r="15"
+                      fill={`${n.color}18`} stroke={`${n.color}40`} strokeWidth="1" />
+                    {/* Inner fill */}
+                    <circle cx={n.x} cy={n.y} r="10"
+                      fill="rgba(10,22,40,0.85)" stroke={n.color} strokeWidth="1.5" />
+                    {/* Symbol */}
+                    <text
+                      x={n.x} y={n.y + 0.5}
+                      textAnchor="middle" dominantBaseline="middle"
+                      fill={n.color} fontSize="8" fontFamily="system-ui"
+                    >
+                      {n.symbol}
+                    </text>
+                    {/* Label */}
+                    <text
+                      x={n.x} y={n.y + 26}
+                      textAnchor="middle" dominantBaseline="middle"
+                      fill="rgba(148,163,184,0.9)" fontSize="7.5" fontFamily="Inter, system-ui"
+                      fontWeight="500"
+                    >
+                      {n.label}
+                    </text>
+                  </motion.g>
+                ))}
+
+                {/* Central AI-EMS node */}
+                <motion.g
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 1.2, ease: 'backOut' }}
+                  style={{ transformOrigin: `${cx}px ${cy}px` }}
+                >
+                  {/* Multi-layer glow */}
+                  <motion.circle
+                    cx={cx} cy={cy} r="36"
+                    fill="none" stroke="rgba(6,182,212,0.12)"
+                    animate={{ r: [36, 50], opacity: [0.4, 0] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: 'easeOut' }}
+                  />
+                  <circle cx={cx} cy={cy} r="32"
+                    fill="rgba(6,182,212,0.06)" stroke="rgba(6,182,212,0.25)" strokeWidth="1" />
+                  <circle cx={cx} cy={cy} r="24"
+                    fill="rgba(10,22,40,0.9)" stroke="rgba(6,182,212,0.5)" strokeWidth="1.5" />
+                  <text x={cx} y={cy - 5}
+                    textAnchor="middle" dominantBaseline="middle"
+                    fill="#06b6d4" fontSize="10" fontFamily="Space Grotesk, system-ui" fontWeight="700"
+                  >
+                    AI-EMS
+                  </text>
+                  <text x={cx} y={cy + 8}
+                    textAnchor="middle" dominantBaseline="middle"
+                    fill="rgba(148,163,184,0.7)" fontSize="6.5" fontFamily="Inter, system-ui"
+                  >
+                    Deep RL
+                  </text>
+                </motion.g>
+
+                {/* Data-flow labels on edges */}
+                {[
+                  { label: 'DRL',   x: (cx + nodes[0].x)/2 + 8,  y: (cy + nodes[0].y)/2 - 6 },
+                  { label: 'Fed.',  x: (cx + nodes[2].x)/2 - 14, y: (cy + nodes[2].y)/2     },
+                  { label: 'P2P',   x: (cx + nodes[4].x)/2 + 8,  y: (cy + nodes[4].y)/2 + 6 },
+                ].map((lbl, i) => (
+                  <text key={i} x={lbl.x} y={lbl.y}
+                    textAnchor="middle"
+                    fill="rgba(6,182,212,0.55)" fontSize="6" fontFamily="JetBrains Mono, monospace"
+                  >
+                    {lbl.label}
+                  </text>
+                ))}
+              </svg>
+
+              {/* Research area chips below diagram */}
+              <motion.div
+                className="flex flex-wrap justify-center gap-2 mt-1"
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 1.8 }}
+              >
+                {['Deep RL', 'Federated Learning', 'EV Charging', 'PV Forecasting', 'Energy Communities'].map(t => (
+                  <span key={t} className="tag-chip text-[10px]">{t}</span>
+                ))}
+              </motion.div>
+            </motion.div>
+
+            {/* Portrait — smaller, below diagram on mobile; overlapping on desktop */}
+            <motion.div
+              className="w-full max-w-[300px] mx-auto lg:hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1.0 }}
+            >
+              <PortraitCard />
+            </motion.div>
+          </div>
         </div>
 
-        {/* Energy grid decoration (secondary, smaller) */}
+        {/* Scroll indicator */}
         <motion.div
-          className="flex justify-center items-center mt-12 opacity-50"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 0.4, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.8 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-slate-600"
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <div className="relative w-48 h-48 sm:w-56 sm:h-56 animate-float-slow">
-            <EnergyGridSVG />
-          </div>
+          <span className="text-[10px] font-mono tracking-widest uppercase">Scroll</span>
+          <ChevronDown className="w-4 h-4" />
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Portrait overlaid at top-right on large screens */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 cursor-pointer"
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5, duration: 0.6 }}
-        onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+        className="absolute top-24 right-0 hidden lg:block w-[260px] xl:w-[300px] pr-8 xl:pr-12 z-20"
+        initial={{ opacity: 0, x: 30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1.0, delay: 0.8 }}
       >
-        <span className="text-xs text-slate-600 font-mono tracking-widest uppercase">Scroll</span>
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
-        >
-          <ChevronDown className="w-5 h-5 text-slate-600" />
-        </motion.div>
+        <PortraitCard />
       </motion.div>
     </section>
-  );
-}
-
-// ── Energy Grid SVG Component ─────────────────────────────────────────────
-function EnergyGridSVG() {
-  return (
-    <svg
-      viewBox="0 0 400 400"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-full h-full"
-      aria-label="Smart grid network topology visualization"
-    >
-      <defs>
-        {/* Glow filter for nodes */}
-        <filter id="glow-cyan" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="4" result="blur" />
-          <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-        </filter>
-        <filter id="glow-center" x="-100%" y="-100%" width="300%" height="300%">
-          <feGaussianBlur stdDeviation="8" result="blur" />
-          <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-        </filter>
-
-        {/* Animated gradient for center node */}
-        <radialGradient id="center-grad" cx="50%" cy="50%" r="50%">
-          <stop offset="0%"   stopColor="#06b6d4" stopOpacity="0.9" />
-          <stop offset="60%"  stopColor="#0e7490" stopOpacity="0.6" />
-          <stop offset="100%" stopColor="#082f49" stopOpacity="0" />
-        </radialGradient>
-
-        {/* Dashed marker for flow lines */}
-        <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
-          <path d="M 0 0 L 10 5 L 0 10 z" fill="#06b6d4" opacity="0.5" />
-        </marker>
-      </defs>
-
-      {/* Outer orbit ring */}
-      <circle cx={cx} cy={cy} r={r} stroke="#1e3a5f" strokeWidth="0.5" strokeDasharray="3 8" />
-
-      {/* Inner orbit ring */}
-      <circle cx={cx} cy={cy} r={r * 0.55} stroke="#1e293b" strokeWidth="0.5" strokeDasharray="2 6" />
-
-      {/* Cross-connections (outer ring edges) */}
-      {crossEdges.map(([a, b], i) => (
-        <line
-          key={`cross-${i}`}
-          x1={nodes[a].x} y1={nodes[a].y}
-          x2={nodes[b].x} y2={nodes[b].y}
-          stroke="#1e3a5f"
-          strokeWidth="0.8"
-          strokeDasharray="3 6"
-        />
-      ))}
-
-      {/* Spokes: outer node → center */}
-      {nodes.map((n, i) => (
-        <g key={`spoke-${i}`}>
-          {/* Static spoke */}
-          <line
-            x1={n.x} y1={n.y}
-            x2={cx}  y2={cy}
-            stroke="#0c2340"
-            strokeWidth="1.2"
-          />
-          {/* Animated flow dashes */}
-          <line
-            x1={n.x} y1={n.y}
-            x2={cx}  y2={cy}
-            stroke={n.color}
-            strokeWidth="1"
-            strokeOpacity="0.5"
-            strokeDasharray="6 8"
-            className="dash-flow"
-            style={{ animationDelay: `${i * 0.18}s`, animationDuration: `${1.8 + i * 0.15}s` }}
-          />
-        </g>
-      ))}
-
-      {/* Center glow blob */}
-      <circle cx={cx} cy={cy} r="60" fill="url(#center-grad)" opacity="0.4" />
-
-      {/* Center pulsing rings */}
-      {[40, 52, 65].map((rr, i) => (
-        <circle
-          key={`pulse-ring-${i}`}
-          cx={cx} cy={cy} r={rr}
-          stroke="#06b6d4"
-          strokeWidth="0.5"
-          strokeOpacity={0.15 - i * 0.04}
-          fill="none"
-          className="animate-pulse-slower"
-          style={{ animationDelay: `${i * 0.5}s` }}
-        />
-      ))}
-
-      {/* Center node */}
-      <circle cx={cx} cy={cy} r="28" fill="#020f1e" stroke="#06b6d4" strokeWidth="1.5" filter="url(#glow-center)" />
-      <circle cx={cx} cy={cy} r="20" fill="#041828" stroke="#06b6d4" strokeWidth="0.5" strokeOpacity="0.4" />
-      <text x={cx} y={cy - 4}  textAnchor="middle" fill="#06b6d4" fontSize="8" fontFamily="JetBrains Mono, monospace" fontWeight="600">AI-EMS</text>
-      <text x={cx} y={cy + 7}  textAnchor="middle" fill="#22d3ee" fontSize="6.5" fontFamily="JetBrains Mono, monospace" opacity="0.7">RL Engine</text>
-
-      {/* Outer nodes */}
-      {nodes.map((n, i) => (
-        <g key={`node-${i}`} filter="url(#glow-cyan)">
-          {/* Pulsing halo */}
-          <circle
-            cx={n.x} cy={n.y} r="20"
-            fill="none"
-            stroke={n.color}
-            strokeWidth="0.5"
-            strokeOpacity="0.2"
-            className="animate-pulse-slow"
-            style={{ animationDelay: `${i * 0.4}s` }}
-          />
-          {/* Node bg */}
-          <circle cx={n.x} cy={n.y} r="14" fill="#050d1a" stroke={n.color} strokeWidth="1.2" strokeOpacity="0.8" />
-          {/* Symbol */}
-          <text
-            x={n.x} y={n.y + 1.5}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            fill={n.color}
-            fontSize="10"
-            fontFamily="system-ui, sans-serif"
-          >
-            {n.symbol}
-          </text>
-          {/* Label */}
-          <text
-            x={n.x}
-            y={n.y + (n.y > cy ? 28 : -22)}
-            textAnchor="middle"
-            fill="#94a3b8"
-            fontSize="8"
-            fontFamily="JetBrains Mono, monospace"
-          >
-            {n.label}
-          </text>
-        </g>
-      ))}
-
-      {/* Corner decoration */}
-      <text x="8" y="16" fill="#1e3a5f" fontSize="7" fontFamily="JetBrains Mono, monospace">Energy Community Topology</text>
-      <text x="8" y="390" fill="#1e3a5f" fontSize="7" fontFamily="JetBrains Mono, monospace">v1.0 · MSCA CLOE · UniGe</text>
-    </svg>
   );
 }
