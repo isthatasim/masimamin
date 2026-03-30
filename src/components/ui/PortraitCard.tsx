@@ -127,7 +127,7 @@ export default function PortraitCard({ className = '' }: PortraitCardProps) {
             )}
 
             {/* Fallback placeholder */}
-            { imageError && (
+            {imageError && (
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-5 z-10">
                 <motion.div
                   className="relative w-32 h-32 rounded-full border border-cyan-500/30 flex items-center justify-center"
@@ -138,12 +138,12 @@ export default function PortraitCard({ className = '' }: PortraitCardProps) {
                   <span className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-cyan-400" />
                 </motion.div>
                 <div className="text-center">
-                  <div className="text-5xl font-display font-bold text-gradient-cyan">MAAN</div>
+                  <div className="text-5xl font-display font-bold text-gradient-cyan">MAA</div>
                   <p className="text-slate-400 text-xs mt-2 font-mono">Muhammad Asim Amin</p>
                   <p className="text-slate-500 text-[10px] mt-1">Upload portrait.jpg → public/images/</p>
                 </div>
               </div>
-            ) : null}
+            )}
 
             {/* Technical corner frames */}
             <div className="absolute inset-0 pointer-events-none z-25" aria-hidden>
@@ -172,7 +172,7 @@ export default function PortraitCard({ className = '' }: PortraitCardProps) {
                 <span className="text-[11px] text-emerald-400 font-mono tracking-wider">Available</span>
               </div>
               <div className="px-3 py-1.5 rounded-full bg-black/55 backdrop-blur-sm border border-cyan-500/25">
-                <span className="text-[10px] text-cyan-400 font-mono">DrP · Genova, Italy</span>
+                <span className="text-[10px] text-cyan-400 font-mono">PhD · Genova, Italy</span>
               </div>
             </div>
 
