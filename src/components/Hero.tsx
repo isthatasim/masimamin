@@ -4,7 +4,7 @@ import { personal, stats } from '../data/content';
 import PortraitCard from './ui/PortraitCard';
 import EnergyParticles from './ui/EnergyParticles';
 
-// ── Smart-Grid Network Diagram ──────────────────────────────────
+// ── Smart-Grid Network Diagram ─────────────────────────────────
 const cx = 220; const cy = 220; const r = 165;
 const nodeCount = 7;
 
@@ -154,14 +154,16 @@ export default function Hero() {
                   fill="none" stroke="rgba(6,182,212,0.07)" strokeWidth="1"
                   animate={{ rotate: 360 }}
                   transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
-                  style={{ transformOrigin: `${cx}px ${cy}px`, strokeDasharray: '4 12' }}
+                  strokeDa!� '4 12'
+                  style={{ transformOrigin: `${cx}px ${cy}px` }}
                 />
                 <motion.circle
                   cx={cx} cy={cy} r={r + 48}
                   fill="none" stroke="rgba(99,102,241,0.05)" strokeWidth="0.8"
                   animate={{ rotate: -360 }}
                   transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
-                  style={{ transformOrigin: `${cx}px ${cy}px`, strokeDasharray: '2 18' }}
+                  strokeDa!� '2 18'
+                  style={{ transformOrigin: `${cx}px ${cy}px` }}
                 />
 
                 {/* Background circle */}
@@ -198,11 +200,11 @@ export default function Hero() {
                 {/* Outer nodes */}
                 {nodes.map((n, i) => (
                   <motion.g
-                    key={`node-${i}`}
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 0.5 + i * 0.1, ease: 'backOut' }}
-                    style={{ transformOrigin: `${n.x}px ${n.y}px` }}
+                     key={`node-${i}`}
+                     initial={{ scale: 0, opacity: 0 }}
+                     animate={{ scale: 1, opacity: 1 }}
+                     transition={{ duration: 0.5, delay: 0.5 + i * 0.1, ease: 'backOut' }}
+                     style={{ transformOrigin: `${n.x}px ${n.y}px` }}
                   >
                     {/* Pulse ring — uses scale instead of r animation for TypeScript compat */}
                     <motion.circle
@@ -275,7 +277,7 @@ export default function Hero() {
                 {[
                   { label: 'DRL',   x: (cx + nodes[0].x)/2 + 8,  y: (cy + nodes[0].y)/2 - 6 },
                   { label: 'Fed.',  x: (cx + nodes[2].x)/2 - 14, y: (cy + nodes[2].y)/2     },
-                  { label: 'P2P',   x: (cx + nodes[4].x)/2 + 8,  y: (cy + nodes[4].y)/2 + 6 },
+                  { label: 'P2P',   x: (cx + nodes[4].x)/2 + 8,  y: (cy + nodes[4].y) /2 + 6 },
                 ].map((lbl, i) => (
                   <text key={i} x={lbl.x} y={lbl.y}
                     textAnchor="middle"
@@ -284,30 +286,30 @@ export default function Hero() {
                     {lbl.label}
                   </text>
                 ))}
-              </svg>
+                </svg>
 
-              {/* Research area chips below diagram */}
-              <motion.div
-                className="flex flex-wrap justify-center gap-2 mt-1"
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 1.8 }}
-              >
-                {['Deep RL', 'Federated Learning', 'EV Charging', 'PV Forecasting', 'Energy Communities'].map(t => (
-                  <span key={t} className="tag-chip text-[10px]">{t}</span>
-                ))}
+                {/* Research area chips below diagram */}
+                <motion.div
+                  className="flex flex-wrap justify-center gap-2 mt-1"
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 1.8 }}
+                >
+                  {['Deep RL', 'Federated Learning', 'EV Charging', 'PV Forecasting', 'Energy Communities'].map(t => (
+                    <span key={t} className="tag-chip text-[10px]">{t}</span>
+                  ))}
+                </motion.div>
               </motion.div>
-            </motion.div>
 
-            {/* Portrait — smaller, below diagram on mobile; overlapping on desktop */}
-            <motion.div
-              className="w-full max-w-[300px] mx-auto lg:hidden"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 1.0 }}
-            >
-              <PortraitCard />
-            </motion.div>
+              {/* Portrait — smaller, below diagram on mobile; overlapping on desktop */}
+              <motion.div
+                className="w-full max-w-[300px] mx-auto lg:hidden"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 1.0 }}
+              >
+                <PortraitCard />
+              </motion.div>
           </div>
         </div>
 
