@@ -32,7 +32,7 @@ const containerVariants = {
 };
 const itemVariants = {
   hidden:  { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.21,0.47,0.32,0.98] as number[] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.21,0.47,0.32,0.98] as [number, number, number, number] } },
 };
 
 export default function Hero() {
@@ -132,7 +132,7 @@ export default function Hero() {
               className="relative w-full"
               initial={{ opacity: 0, scale: 0.88 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.1, delay: 0.3, ease: [0.22, 0.61, 0.36, 1] as number[] }}
+              transition={{ duration: 1.1, delay: 0.3, ease: [0.22, 0.61, 0.36, 1] as [number, number, number, number] }}
             >
               {/* Outer glow behind SVG */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden>
