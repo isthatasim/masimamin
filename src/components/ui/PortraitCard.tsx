@@ -59,7 +59,7 @@ export default function PortraitCard({ className = '' }: PortraitCardProps) {
           style={!isMobile ? { rotateX: sRotateX, rotateY: sRotateY, transformStyle: 'preserve-3d', perspective: '1000px' } : {}}
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: [0.22, 0.61, 0.36, 1] }}
+          transition={{ duration: 0.8, ease: [0.22, 0.61, 0.36, 1] as [number, number, number, number] }}
           data-cursor="portrait"
         >
           {/* Glow halo behind */}
