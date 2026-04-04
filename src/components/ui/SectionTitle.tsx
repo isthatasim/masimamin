@@ -41,7 +41,7 @@ export default function SectionTitle({
       className={`flex flex-col gap-3 ${alignClass}`}
       initial={{ opacity: 0, y: 20 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
+      transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] }}
     >
       {eyebrow && (
         <motion.div
