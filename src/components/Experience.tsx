@@ -40,7 +40,8 @@ export default function Experience() {
             {/* Animated vertical line */}
             <motion.div
               className="absolute left-4 sm:left-5 top-0 bottom-0 w-px bg-gradient-to-b from-cyan-500/40 via-slate-700/40 to-transparent"
-              initial={{ scaleY: 0, originY: 0 }}
+              style={{ originY: 0 }}
+              initial={{ scaleY: 0 }}
               whileInView={{ scaleY: 1 }}
               transition={{ duration: 1, ease: 'easeOut' }}
               viewport={{ once: true }}
@@ -86,7 +87,7 @@ export default function Experience() {
                             ${isExpanded ? 'border-slate-600/60' : ''}
                           `}
                         >
-                          {/* Header row — always visible */}
+                          {/* Header row â always visible */}
                           <button
                             className="w-full text-left p-5 flex items-start justify-between gap-3 group"
                             onClick={() => setExpandedId(isExpanded ? null : exp.id)}
