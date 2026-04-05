@@ -77,7 +77,8 @@ export default function SectionTitle({
       {/* Decorative underline with spring animation */}
       <motion.div
         className="flex items-center gap-1.5 mt-1"
-        initial={{ width: 0, originX: align === 'center' ? 0.5 : 0 }}
+        style={{ originX: align === 'center' ? 0.5 : 0 }}
+        initial={{ width: 0 }}
         animate={isInView ? { width: 'auto' } : {}}
         transition={{ duration: 0.8, delay: 0.2, type: 'spring', stiffness: 200, damping: 20 }}
       >
