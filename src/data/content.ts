@@ -13,11 +13,11 @@ export const personal = {
   location: 'Genoa, Italy',
   email: 'masim.amin@yahoo.com',
   phone: '+39 389 7657633',
-  linkedin: 'https://www.linkedin.com/in/masimamin',
+  linkedin: 'https://www.linkedin.com/in/masim40',
   github: 'https://github.com/isthatasim',
-  scholar: 'https://scholar.google.com/citations?user=masimamin', // TODO: replace with actual Scholar ID
+  scholar: 'https://scholar.google.com/citations?user=qq7dHikAAAAJ&hl=en', // TODO: replace with actual Scholar ID
   website: 'https://sites.google.com/view/masimamin/home',
-  publons: 'https://publons.com/researcher/masimamin',
+  publons: 'https://www.webofscience.com/wos/author/record/AAF-2199-2021',
   cvUrl: '/masimamin/cv/MAsimAmin_CV.pdf', // place your CV PDF in public/cv/
   summary: `PhD candidate in Electrical Engineering at the University of Genova, funded by the Marie Sklodowska-Curie
   Actions (CLOE Project, Horizon Europe). My research sits at the intersection of advanced machine learning and
