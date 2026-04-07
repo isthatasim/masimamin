@@ -6,6 +6,7 @@ export default {
   ],
   theme: {
     extend: {
+      opacity: { '12': '0.12' },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         display: ['Space Grotesk', 'system-ui', 'sans-serif'],
