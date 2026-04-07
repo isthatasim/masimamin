@@ -8,7 +8,7 @@ export const personal = {
   shortName: 'M. Asim Amin',
   initials: 'MAA',
   title: 'PhD Researcher Â· AI-Driven Power Systems & Smart Grids',
-  subtitle: 'Marie Sklodowska-Curie Early Stage Researcher â CLOE Project (Horizon Europe)',
+  subtitle: 'Marie Sklodowska-Curie Early Stage Researcher CLOE Project (Horizon Europe)',
   tagline: 'Advancing Energy Intelligence Through Machine Learning',
   location: 'Genoa, Italy',
   email: 'masim.amin@yahoo.com',
@@ -108,7 +108,7 @@ export const experience = [
     org: 'University of Genova',
     department: 'DITEN Department',
     location: 'Genoa, Italy',
-    period: 'Jun 2023 â Jun 2026',
+    period: 'Jun 2023 to Jun 2026',
     type: 'Academic Research',
     current: true,
     highlights: [
@@ -123,10 +123,10 @@ export const experience = [
   {
     id: 'nis-visiting',
     role: 'Visiting Research Fellow (Marie Sklodowska-Curie)',
-    org: 'University of NiÅ¡',
+    org: 'University of Nis, Serbia',
     department: 'Faculty of Electronic Engineering',
-    location: 'NiÅ¡, Serbia',
-    period: 'Jan 2025 â May 2025',
+    location: 'Nis, Serbia',
+    period: 'Jan 2025 to May 2025',
     type: 'Visiting Research',
     current: false,
     highlights: [
@@ -142,7 +142,7 @@ export const experience = [
     org: 'Tsinghua University (Shenzhen Campus)',
     department: '',
     location: 'Shenzhen, China',
-    period: 'Sep 2020 â Mar 2023',
+    period: 'Sep 2020 to Mar 2023',
     type: 'Academic Research',
     current: false,
     highlights: [
@@ -159,7 +159,7 @@ export const experience = [
     org: 'Growatt New Energy Technology',
     department: '',
     location: 'Shenzhen, China',
-    period: 'Oct 2019 â Apr 2020',
+    period: 'Oct 2019 to Apr 2020',
     type: 'Industry',
     current: false,
     highlights: [
@@ -191,7 +191,7 @@ export const experience = [
     org: 'Renewable Stars (PVT) Limited',
     department: '',
     location: 'Islamabad, Pakistan',
-    period: 'Sep 2014 â Aug 2015',
+    period: 'Sep 2014 to Aug 2015',
     type: 'Industry',
     current: false,
     highlights: [
@@ -208,7 +208,7 @@ export const education = [
     specialization: 'Artificial Intelligence & Power Systems',
     institution: 'University of Genova',
     location: 'Genoa, Italy',
-    period: '2023 â 2026 (Expected)',
+    period: '2023 to 2026 (Expected)',
     department: 'DITEN â Department of Electrical, Electronic and Telecommunications Engineering and Naval Architecture',
     thesis: 'Advanced Machine Learning Enabled Modern Power System',
     scholarship: 'Marie Sklodowska-Curie Actions (MSCA) â CLOE Project (Horizon Europe)',
@@ -224,7 +224,7 @@ export const education = [
     specialization: '',
     institution: "Xi'an Jiaotong University",
     location: "Xi'an, China",
-    period: '2015 â 2017',
+    period: '2015 to 2017',
     department: 'School of Electrical Engineering',
     thesis: 'Control Design of Multi-terminal HVDC Grid and its Fault Analysis under DC Side Contingencies',
     scholarship: 'Chinese Government Scholarship (Full Scholarship)',
@@ -247,7 +247,7 @@ export const education = [
     pecReg: 'ELECT/48365',
     highlights: [
       'Best Final Year Project in Power Engineering â IEEE AEPEX, UCET, IUB',
-      'ICT R&D Fund NGIRI Grant â PKR 100,000 for Bachelor Final Year Project',
+      'ICT R&D Fund NGIRI Grant of PKR 100,000 for Bachelor Final Year Project',
       'Focus: microgrid control, HIL simulation, power systems fundamentals',
     ],
   },
@@ -322,20 +322,12 @@ export const publications = {
   ],
   journalsUnderReview: [
     {
-      id: 'S3',
+      id: 'S2',
       authors: 'La Fata A., M. Asim Amin, Brignone M., Procopio R., Bonfiglio A., Invernizzi M.',
       title: 'Optimal Microgrid Dispatching through Timely Updated Forecast of Renewables.',
       venue: 'IEEE Transactions on Industry Applications',
       status: 'Under Review',
       if: 4.5,
-    },
-    {
-      id: 'S2',
-      authors: 'M. Asim Amin, Jia Y.',
-      title: 'Constrained Aggregated Approach for Charging Station Using Federated Multi-Agent Deep Reinforcement Learning.',
-      venue: 'Journal of Cleaner Production',
-      status: 'Under Review â First Revision',
-      if: 10.0,
     },
     {
       id: 'S1',
@@ -347,14 +339,6 @@ export const publications = {
     },
   ],
   bookChapters: [
-    {
-      id: 'B1',
-      authors: 'M. Asim Amin, Waseem M., Jia Y.',
-      title: 'Future Trends and Challenges in AI-Powered Energy Management Systems.',
-      venue: "Taylor & Francis Series in Sustainable Engineering and Science",
-      year: 2025,
-      status: 'Under Review â Revision Submitted',
-    },
   ],
   workingPapers: [
     {
@@ -460,7 +444,7 @@ export const projects = [
     contribution: 'Demonstrated STL-ensemble approach outperforms individual models; applicable to operational EMS with minimal computational overhead.',
     tags: ['PV Nowcasting', 'STL Decomposition', 'Ensemble Learning', 'XGBoost', 'LSTM'],
     color: 'amber',
-    status: 'Published â ATEE 2025',
+    status: 'Published in ATEE 2025',
   },
   {
     id: 'microgrid-dispatch',
@@ -496,7 +480,7 @@ export const projects = [
     contribution: 'Published in IEEE Transactions on Industry Applications; demonstrated cost reductions >20% vs. non-cooperative baselines.',
     tags: ['HEMS', 'Multi-Agent', 'DRL', 'IEEE TIA', 'Home Energy'],
     color: 'violet',
-    status: 'Published â IEEE TIA 2022',
+    status: 'Published in IEEE TIA 2022',
   },
 ];
 
