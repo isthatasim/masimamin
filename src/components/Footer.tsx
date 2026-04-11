@@ -96,7 +96,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="py-5 border-t border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-slate-600">
-            Â© {new Date().getFullYear()} Muhammad Asim Amin Â· Built with React, TypeScript, Vite &amp; Tailwind CSS
+            ÃÂ© {new Date().getFullYear()} Muhammad Asim Amin ÃÂ· Built with React, TypeScript, Vite &amp; Tailwind CSS
           </p>
           <button
             onClick={scrollToTop}
@@ -109,7 +109,7 @@ export default function Footer() {
         </div>
       </div>
       <div style={{display:'flex',justifyContent:'center',padding:'16px 0'}}>
-    <img src="/masimamin/logo.png" alt="Asim Amin Logo" style={{height:'60px',width:'auto',marginBottom:'12px',opacity:0.9}} />
+    <img src="/masimamin/logo.jpg" alt="Asim Amin Logo" style={{height:'60px',width:'auto',marginBottom:'12px',opacity:0.9}} />
   </div>
 </footer>
   );
