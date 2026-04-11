@@ -6,8 +6,8 @@
 export const personal = {
   name: 'Muhammad Asim Amin',
   shortName: 'M. Asim Amin',
-  initials: 'MAA',
-  title: 'PhD Researcher ÃÂ· AI-Driven Power Systems & Smart Grids',
+  initials: 'Asim',
+  title: 'PhD Researcher· AI-Driven Power Systems & Smart Grids',
   subtitle: 'Marie Sklodowska-Curie Early Stage Researcher CLOE Project (Horizon Europe)',
   tagline: 'Advancing Energy Intelligence Through Machine Learning',
   location: 'Genoa, Italy',
@@ -204,23 +204,23 @@ export const experience = [
 export const education = [
   {
     id: 'phd',
-    degree: 'PhD in Engineering Ã¢ÂÂ Electrical Engineering',
+    degree: 'PhD in Engineering - Electrical Engineering',
     specialization: 'Artificial Intelligence & Power Systems',
     institution: 'University of Genova',
     location: 'Genoa, Italy',
     period: '2023 toÂÂ 2026 (Expected)',
-    department: 'DITEN Ã¢ÂÂ Department of Electrical, Electronic and Telecommunications Engineering and Naval Architecture',
+    department: 'DITEN - Department of Electrical, Electronic and Telecommunications Engineering and Naval Architecture',
     thesis: 'Advanced Machine Learning Enabled Modern Power System',
-    scholarship: 'Marie Sklodowska-Curie Actions (MSCA) Ã¢ÂÂ CLOE Project (Horizon Europe)',
+    scholarship: 'Marie Sklodowska-Curie Actions (MSCA) - CLOE Project (Horizon Europe)',
     highlights: [
       'MSCA Early Stage Researcher Ã¢ÂÂ CLOE Project, Horizon Europe framework',
-      'Visiting Research Fellow, University of NiÃÂ¡, Serbia (JanÃ¢ÂÂMay 2025)',
+      'Visiting Research Fellow, University of Nis, Serbia (Jan to May 2025)',
       'Research: deep RL, federated learning, EMS, energy communities, EV charging, PV forecasting',
     ],
   },
   {
     id: 'meng',
-    degree: 'Master of Engineering Ã¢ÂÂ Electrical Engineering',
+    degree: 'Master of Engineering in Electrical Engineering',
     specialization: '',
     institution: "Xi'an Jiaotong University",
     location: "Xi'an, China",
@@ -236,11 +236,11 @@ export const education = [
   },
   {
     id: 'beng',
-    degree: 'Bachelor of Engineering Ã¢ÂÂ Electrical (Power) Engineering',
+    degree: 'Bachelor of Engineering in Electrical (Power) Engineering',
     specialization: '',
     institution: 'The Islamia University of Bahawalpur',
     location: 'Bahawalpur, Pakistan',
-    period: '2010 Ã¢ÂÂ 2014',
+    period: '2010 to 2014',
     department: '',
     thesis: 'Smart Monitoring, Analysis & Control of Lab-based Micro-Grid Through Hardware-in-the-Loop (HIL) Simulation using Simulink',
     gpa: '3.45 / 4.00',
@@ -329,14 +329,7 @@ export const publications = {
       status: 'Under Review',
       if: 4.5,
     },
-    {
-      id: 'S1',
-      authors: 'M. Asim Amin, Jia Y.',
-      title: 'End-User Charging Optimization for Flexibility Management in Energy Communities based on Deep Reinforcement Learning.',
-      venue: 'IEEE Journal: Protection and Control of Modern Power Systems',
-      status: 'Under Review',
-      if: 11.9,
-    },
+
   ],
   bookChapters: [
   ],
@@ -522,7 +515,7 @@ export const awards = [
   {
     id: 'msca',
     title: 'Marie Sklodowska-Curie Actions (MSCA) Fellowship',
-    org: 'European Commission Ã¢ÂÂ Horizon Europe',
+    org: 'European Commission Horizon Europe',
     year: '2023',
     description: 'Prestigious EU-funded Early Stage Researcher position under the CLOE (Community Learning and Optimization for Energy) project. Competitively selected from international applicants.',
     tier: 'major',
@@ -560,7 +553,7 @@ export const peerReview = [
   'Computers & Electrical Engineering (Elsevier)',
   'Renewable and Sustainable Energy Reviews (Elsevier)',
   'Energy Reports (Elsevier)',
-  'Machine Learning Ã¢ÂÂ Springer Nature',
+  'Machine Learning in Springer Nature',
   'Frontiers in Energy Research',
 ];
 
