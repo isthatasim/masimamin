@@ -28,7 +28,7 @@ export default function Education() {
           <SectionTitle
             eyebrow="Education"
             title="Academic Background"
-            subtitle="Three degrees across three continents — from Pakistan to China to Italy."
+            subtitle="Three degrees across three continents  from Pakistan to China to Italy."
             accentWord="Academic"
           />
 
