@@ -90,7 +90,7 @@ export default function About() {
               <p className="text-slate-400 leading-[1.85] text-base">
                 With over a decade of combined academic and industry experience spanning{' '}
                 <span className="text-slate-300">Italy, China, Serbia, and Pakistan</span>,
-                I bridge rigorous theoretical work with real-world engineering Ã¢ÂÂ from
+                I bridge rigorous theoretical work with real-world engineering ÃÂ¢ÃÂÃÂ from
                 hardware-in-the-loop lab validation to deployed energy community platforms.
                 Expected PhD graduation: <span className="text-slate-200 font-medium">June 2026</span>.
               </p>
