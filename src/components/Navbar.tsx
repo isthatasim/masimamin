@@ -70,8 +70,8 @@ export default function Navbar() {
               <div className="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center group-hover:bg-cyan-500/20 transition-colors">
                 <Zap className="w-4 h-4 text-cyan-400" />
               </div>
-              <span className="font-display font-bold text-slate-200 text-sm sm:text-base hidden xs:block">
-                M. Asim <span className="text-cyan-400">Amin</span>
+              <span className="font-display font-bold text-slate-200 text-sm sm:text-base hidden xs:block"><img src="/masimamin/logo.jpg" alt="logo" style={{height:'36px',width:'auto',marginRight:'8px',verticalAlign:'middle',objectFit:'contain'}} />
+          M. Asim <span className="text-cyan-400">Amin</span>
               </span>
             </motion.a>
 
