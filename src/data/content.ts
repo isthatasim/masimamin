@@ -1,13 +1,13 @@
-// ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
-// CONTENT DATA ÃÂ¢ÃÂÃÂ Muhammad Asim Amin Portfolio
+// ÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂ
+// CONTENT DATA ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Muhammad Asim Amin Portfolio
 // Single source of truth. Edit this file to update any section of the site.
-// ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ
+// ÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂ
 
 export const personal = {
   name: 'Muhammad Asim Amin',
   shortName: 'M. Asim Amin',
   initials: 'Asim',
-  title: 'PhD ResearcherÂ· AI-Driven Power Systems & Smart Grids',
+  title: 'PhD ResearcherÃ· AI-Driven Power Systems & Smart Grids',
   subtitle: 'Marie Sklodowska-Curie Early Stage Researcher CLOE Project (Horizon Europe)',
   tagline: 'Advancing Energy Intelligence Through Machine Learning',
   location: 'Genoa, Italy',
@@ -22,7 +22,7 @@ export const personal = {
   image: '/masimamin/profile.png',     // profile photo // place your CV PDF in public/cv/
   summary: `PhD candidate in Electrical Engineering at the University of Genova, funded by the Marie Sklodowska-Curie
   Actions (CLOE Project, Horizon Europe). My research sits at the intersection of advanced machine learning and
-  modern power systems ÃÂ¢ÃÂÃÂ applying deep reinforcement learning, federated learning, and predictive analytics to
+  modern power systems ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ applying deep reinforcement learning, federated learning, and predictive analytics to
   energy management systems, EV charging coordination, energy communities, and renewable energy forecasting.
   With over a decade of combined academic and industry experience across Italy, China, Serbia, and Pakistan,
   I bridge rigorous theoretical work with real-world implementation, from laboratory hardware-in-the-loop
@@ -160,7 +160,7 @@ export const experience = [
     org: 'Growatt New Energy Technology',
     department: '',
     location: 'Shenzhen, China',
-    period: 'Oct 2019 toÃÂÃÂ Apr 2020',
+    period: 'Oct 2019 toÃÂÃÂÃÂÃÂ Apr 2020',
     type: 'Industry',
     current: false,
     highlights: [
@@ -175,7 +175,7 @@ export const experience = [
     org: 'CYG SUNRI CO., Ltd. (Shenzhen NARI)',
     department: '',
     location: 'Shenzhen, China',
-    period: 'Sep 2017 ÃÂ¢ÃÂÃÂ Sep 2019',
+    period: 'Sep 2017 ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Sep 2019',
     type: 'Industry',
     current: false,
     highlights: [
@@ -192,7 +192,7 @@ export const experience = [
     org: 'Renewable Stars (PVT) Limited',
     department: '',
     location: 'Islamabad, Pakistan',
-    period: 'Sep 2014 toÃÂÃÂ Aug 2015',
+    period: 'Sep 2014 toÃÂÃÂÃÂÃÂ Aug 2015',
     type: 'Industry',
     current: false,
     highlights: [
@@ -205,17 +205,17 @@ export const experience = [
 export const education = [
   {
     id: 'phd',
-    degree: 'PhD in Engineering -Â Electrical Engineering',
+    degree: 'PhD in Engineering -ÃÂ Electrical Engineering',
     specialization: 'Artificial Intelligence & Power Systems',
     institution: 'University of Genova',
     location: 'Genoa, Italy',
-    period: '2023 toÃÂÃÂ 2026 (Expected)',
+    period: '2023 toÃÂÃÂÃÂÃÂ 2026 (Expected)',
     department: 'DITEN - Department of Electrical, Electronic and Telecommunications Engineering and Naval Architecture',
     thesis: 'Advanced Machine Learning Enabled Modern Power System',
     scholarship: 'Marie Sklodowska-Curie Actions (MSCA) - CLOE Project (Horizon Europe)',
     highlights: [
-      'MSCA Early Stage Researcher ÃÂ¢ÃÂÃÂ CLOE Project, Horizon Europe framework',
-      'Visiting Research Fellow, University of Nis, Serbia (Jan to ÂMay 2025)',
+      'MSCA Early Stage Researcher ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ CLOE Project, Horizon Europe framework',
+      'Visiting Research Fellow, University of Nis, Serbia (Jan to ÃÂMay 2025)',
       'Research: deep RL, federated learning, EMS, energy communities, EV charging, PV forecasting',
     ],
   },
@@ -247,7 +247,7 @@ export const education = [
     gpa: '3.45 / 4.00',
     pecReg: 'ELECT/48365',
     highlights: [
-      'Best Final Year Project in Power Engineering ÃÂ¢ÃÂÃÂ IEEE AEPEX, UCET, IUB',
+      'Best Final Year Project in Power Engineering ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ IEEE AEPEX, UCET, IUB',
       'ICT R&D Fund NGIRI Grant of PKR 100,000 for Bachelor Final Year Project',
       'Focus: microgrid control, HIL simulation, power systems fundamentals',
     ],
@@ -262,7 +262,7 @@ export const publications = {
       title: 'Energy Trading in Energy Communities Through Load Management Using Deep Reinforcement Learning.',
       venue: 'Energy',
       year: 2025,
-      status: 'Under Review ÃÂ¢ÃÂÃÂ First Revision',
+      status: 'Under Review ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ First Revision',
       if: 9.4,
       note: 'Under Review',
     },
@@ -299,7 +299,7 @@ export const publications = {
       title: 'Renewable Energy Maximization for Pelagic Islands Network of Microgrids Through Battery Swapping Using Deep Reinforcement Learning.',
       venue: 'IEEE Access',
       year: 2023,
-      vol: 'Vol. 11, pp. 86196ÃÂ¢ÃÂÃÂ86213',
+      vol: 'Vol. 11, pp. 86196ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ86213',
       status: 'Published',
     },
     {
@@ -308,7 +308,7 @@ export const publications = {
       title: 'Two-Stage Cooperative Intelligent Home Energy Management System for Optimal Scheduling.',
       venue: 'IEEE Transactions on Industry Applications',
       year: 2022,
-      vol: 'Vol. 58, No. 4, pp. 5423ÃÂ¢ÃÂÃÂ5437',
+      vol: 'Vol. 58, No. 4, pp. 5423ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ5437',
       status: 'Published',
     },
     {
@@ -411,7 +411,7 @@ export const projects = [
     problem: 'Coordinating distributed energy resources (PV, storage, EVs, flexible loads) in a real university campus energy community to minimize costs and maximize renewable self-consumption.',
     method: 'Deep reinforcement learning (SAC/PPO) combined with PV forecasting (LSTM + ensemble) for real-time dispatch optimization and demand flexibility management.',
     tools: ['Python', 'TensorFlow', 'OpenAI Gym', 'MATLAB', 'OpenDSS'],
-    contribution: 'End-to-end EMS platform integrating forecasting, RL-based dispatch, and demand response ÃÂ¢ÃÂÃÂ deployed on a real campus pilot with measurable performance improvements.',
+    contribution: 'End-to-end EMS platform integrating forecasting, RL-based dispatch, and demand response ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ deployed on a real campus pilot with measurable performance improvements.',
     tags: ['Deep RL', 'EMS', 'PV Forecasting', 'Energy Community', 'Real Pilot'],
     color: 'cyan',
     status: 'Ongoing',
@@ -421,7 +421,7 @@ export const projects = [
     title: 'Federated Multi-Agent RL for EV Charging Stations',
     subtitle: 'Distributed Coordination Under Privacy Constraints',
     problem: 'Managing multiple EV charging stations in a distribution network while preserving user data privacy and handling heterogeneous charging patterns at scale.',
-    method: 'Federated multi-agent deep reinforcement learning with a constrained aggregation approach ÃÂ¢ÃÂÃÂ agents learn locally and share only model updates, not raw data.',
+    method: 'Federated multi-agent deep reinforcement learning with a constrained aggregation approach ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ agents learn locally and share only model updates, not raw data.',
     tools: ['Python', 'PyTorch', 'Federated Learning', 'OpenAI Gym', 'OpenDSS'],
     contribution: 'Novel privacy-preserving framework achieving competitive charging performance with centralized baselines; submitted to Journal of Cleaner Production (IF: 10.0).',
     tags: ['Federated RL', 'MARL', 'EV Charging', 'Privacy-Preserving', 'Distribution Networks'],
@@ -438,7 +438,7 @@ export const projects = [
     contribution: 'Demonstrated STL-ensemble approach outperforms individual models; applicable to operational EMS with minimal computational overhead.',
     tags: ['PV Nowcasting', 'STL Decomposition', 'Ensemble Learning', 'XGBoost', 'LSTM'],
     color: 'amber',
-    status: 'Published inÃÂÃÂ ATEE 2025',
+    status: 'Published inÃÂÃÂÃÂÃÂ ATEE 2025',
   },
   {
     id: 'microgrid-dispatch',
@@ -455,7 +455,7 @@ export const projects = [
   {
     id: 'hil-platform',
     title: 'Hardware-in-the-Loop Energy Systems Platform',
-    subtitle: 'Lab-Based Real-Time Validation at University of NiÃÂÃÂ¡',
+    subtitle: 'Lab-Based Real-Time Validation at University of NiÃÂÃÂÃÂÃÂ¡',
     problem: 'Bridging the gap between algorithm simulation and real-world deployment through laboratory-grade real-time hardware validation.',
     method: 'HIL simulation platform using PSCAD, MATLAB/Simulink, and real-time target hardware to validate energy management and control algorithms before deployment.',
     tools: ['PSCAD', 'MATLAB/Simulink', 'HIL Hardware', 'Real-Time Target'],
@@ -474,7 +474,7 @@ export const projects = [
     contribution: 'Published in IEEE Transactions on Industry Applications; demonstrated cost reductions >20% vs. non-cooperative baselines.',
     tags: ['HEMS', 'Multi-Agent', 'DRL', 'IEEE TIA', 'Home Energy'],
     color: 'violet',
-    status: 'Published inÃÂÃÂ IEEE TIA 2022',
+    status: 'Published inÃÂÃÂÃÂÃÂ IEEE TIA 2022',
   },
 ];
 
@@ -531,7 +531,7 @@ export const awards = [
   },
   {
     id: 'fyp-award',
-    title: 'Best Final Year Project ÃÂ¢ÃÂÃÂ Power Engineering',
+    title: 'Best Final Year Project ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Power Engineering',
     org: 'IEEE AEPEX, UCET, IUB',
     year: '2014',
     description: 'Awarded Best Final Year Project in Power Engineering for the HIL-based microgrid monitoring and control system at the IEEE Annual Exhibition of Projects (AEPEX).',
@@ -539,7 +539,7 @@ export const awards = [
   },
   {
     id: 'ngiri',
-    title: 'ICT R&D Fund ÃÂ¢ÃÂÃÂ National Grassroots Research Initiative Grant',
+    title: 'ICT R&D Fund ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ National Grassroots Research Initiative Grant',
     org: 'ICT R&D Fund, Pakistan',
     year: '2014',
     description: 'Competitive research grant (PKR 100,000) awarded for the Bachelor Final Year Project on smart microgrid monitoring through HIL simulation.',
@@ -570,12 +570,12 @@ export const professionalDevelopment = [
     year: '2023',
   },
   {
-    title: 'Community Renewable Energy ÃÂ¢ÃÂÃÂ Financing, Participation & Environmental Protection',
-    org: 'Summer School Energy 2023, Leuphana UniversitÃÂÃÂ¤t LÃÂÃÂ¼neburg, Germany',
+    title: 'Community Renewable Energy ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Financing, Participation & Environmental Protection',
+    org: 'Summer School Energy 2023, Leuphana UniversitÃÂÃÂÃÂÃÂ¤t LÃÂÃÂÃÂÃÂ¼neburg, Germany',
     year: '2023',
   },
   {
-    title: 'IEEE Webinar Courses ÃÂ¢ÃÂÃÂ Power Systems & Smart Grid',
+    title: 'IEEE Webinar Courses ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ Power Systems & Smart Grid',
     org: 'IEEE',
     year: 'Various',
   },
