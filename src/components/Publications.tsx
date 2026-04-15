@@ -1,5 +1,5 @@
 /**
- * Publications — clean academic layout.
+ * Publications  clean academic layout.
  * Removed: status badges, IF badges, bracket ID tags.
  * Kept: authors (MAA highlighted), title, venue, year, DOI.
  */
@@ -205,7 +205,7 @@ export default function Publications() {
                     </button>
                   )}
                   <p className="text-xs text-slate-600 mt-3 font-mono">
-                    17 total conference papers (2021–2025). Showing selected highlights.
+                    17 total conference papers (20212025). Showing selected highlights.
                   </p>
                 </div>
               )}
@@ -262,7 +262,7 @@ export default function Publications() {
                   'Computers & Electrical Engineering',
                   'Renewable & Sustainable Energy Reviews',
                   'Energy Reports',
-                  'Machine Learning — Springer',
+                  'Machine Learning  Springer',
                   'Frontiers in Energy Research',
                 ].map((v) => (
                   <span key={v} className="text-xs px-2.5 py-1 rounded border border-white/[0.07] text-slate-400 bg-white/[0.02]">
