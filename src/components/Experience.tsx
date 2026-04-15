@@ -87,7 +87,7 @@ export default function Experience() {
                             ${isExpanded ? 'border-slate-600/60' : ''}
                           `}
                         >
-                          {/* Header row â always visible */}
+                          {/* Header row  always visible */}
                           <button
                             className="w-full text-left p-5 flex items-start justify-between gap-3 group"
                             onClick={() => setExpandedId(isExpanded ? null : exp.id)}
