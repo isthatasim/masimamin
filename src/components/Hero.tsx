@@ -4,18 +4,18 @@ import { personal, stats } from '../data/content';
 import PortraitCard from './ui/PortraitCard';
 import EnergyParticles from './ui/EnergyParticles';
 
-// ── Smart-Grid Network Diagram ──────────────────────────────────
+// ââ Smart-Grid Network Diagram ââââââââââââââââââââââââââââââââââ
 const cx = 220; const cy = 220; const r = 165;
 const nodeCount = 7;
 
 const nodeData = [
-  { label: 'Solar PV',   symbol: '☀',  color: '#fbbf24', glow: 'rgba(251,191,36,0.55)'  },
-  { label: 'Wind',       symbol: '⟳',  color: '#22d3ee', glow: 'rgba(34,211,238,0.55)'  },
-  { label: 'EV Fleet',   symbol: '⚡',  color: '#818cf8', glow: 'rgba(129,140,248,0.55)' },
-  { label: 'Prosumer',   symbol: '⌂',  color: '#34d399', glow: 'rgba(52,211,153,0.55)'  },
-  { label: 'Storage',    symbol: '▣',  color: '#f472b6', glow: 'rgba(244,114,182,0.55)' },
-  { label: 'Grid',       symbol: '≋',  color: '#06b6d4', glow: 'rgba(6,182,212,0.55)'   },
-  { label: 'Community',  symbol: '◉',  color: '#a78bfa', glow: 'rgba(167,139,250,0.55)' },
+  { label: 'Solar PV',   symbol: 'â',  color: '#fbbf24', glow: 'rgba(251,191,36,0.55)'  },
+  { label: 'Wind',       symbol: 'â³',  color: '#22d3ee', glow: 'rgba(34,211,238,0.55)'  },
+  { label: 'EV Fleet',   symbol: 'â¡',  color: '#818cf8', glow: 'rgba(129,140,248,0.55)' },
+  { label: 'Prosumer',   symbol: 'â',  color: '#34d399', glow: 'rgba(52,211,153,0.55)'  },
+  { label: 'Storage',    symbol: 'â£',  color: '#f472b6', glow: 'rgba(244,114,182,0.55)' },
+  { label: 'Grid',       symbol: 'â',  color: '#06b6d4', glow: 'rgba(6,182,212,0.55)'   },
+  { label: 'Community',  symbol: 'â',  color: '#a78bfa', glow: 'rgba(167,139,250,0.55)' },
 ];
 
 const nodes = nodeData.map((n, i) => {
@@ -57,7 +57,7 @@ export default function Hero() {
       <div className="section-container relative z-10 pt-24 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-6 items-center">
 
-          {/* ── Left Column: Text ─────────────────────────────────── */}
+          {/* ââ Left Column: Text âââââââââââââââââââââââââââââââââââ */}
           <motion.div
             className="flex flex-col gap-6"
             variants={containerVariants}
@@ -124,10 +124,10 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* ── Right Column: Diagram + Portrait ──────────────────── */}
+          {/* ââ Right Column: Diagram + Portrait ââââââââââââââââââââ */}
           <div className="relative flex flex-col items-center gap-6">
 
-            {/* Smart-Grid Network Diagram — big and central */}
+            {/* Smart-Grid Network Diagram â big and central */}
             <motion.div
               className="relative w-full"
               initial={{ opacity: 0, scale: 0.88 }}
@@ -206,7 +206,7 @@ export default function Hero() {
                     transition={{ duration: 0.5, delay: 0.5 + i * 0.1, ease: 'backOut' }}
                     style={{ transformOrigin: `${n.x}px ${n.y}px` }}
                   >
-                    {/* Pulse ring — uses scale instead of r animation for TypeScript compat */}
+                    {/* Pulse ring â uses scale instead of r animation for TypeScript compat */}
                     <motion.circle
                       cx={n.x} cy={n.y} r={16}
                       fill="none" stroke={n.color} strokeWidth="0.8"
@@ -247,7 +247,7 @@ export default function Hero() {
                   transition={{ duration: 0.8, delay: 1.2, ease: 'backOut' }}
                   style={{ transformOrigin: `${cx}px ${cy}px` }}
                 >
-                  {/* Multi-layer glow — scale pulse instead of r animation */}
+                  {/* Multi-layer glow â scale pulse instead of r animation */}
                   <motion.circle
                     cx={cx} cy={cy} r={43}
                     fill="none" stroke="rgba(6,182,212,0.12)"
@@ -301,7 +301,7 @@ export default function Hero() {
               </motion.div>
             </motion.div>
 
-            {/* Portrait — smaller, below diagram on mobile; overlapping on desktop */}
+            {/* Portrait â smaller, below diagram on mobile; overlapping on desktop */}
             <motion.div
               className="w-full max-w-[300px] mx-auto lg:hidden"
               initial={{ opacity: 0 }}
