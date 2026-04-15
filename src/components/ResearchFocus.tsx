@@ -34,7 +34,7 @@ export default function ResearchFocus() {
           <SectionTitle
             eyebrow="Research Focus"
             title="Core Research Domains"
-            subtitle="Spanning AI methodology, power engineering, and systems integration — with deployment-grade validation."
+            subtitle="Spanning AI methodology, power engineering, and systems integration  with deployment-grade validation."
             accentWord="Research"
           />
 
