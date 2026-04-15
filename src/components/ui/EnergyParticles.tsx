@@ -1,188 +1,230 @@
-import { useÃÂ¢ÃÂÃÂffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-interface Particle {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  size: number;
-  color: 'cyan' | 'blue';
-  pulseTime?: number;
-  baseOpacity: number;
+interface EnergyNode {
+  id: string;
+  label: string;
+  sublabel: string;
+  color: string;
+  angle: number;
 }
 
-const PÃÂ¢ÃÂÃÂRTIÃÂ¢ÃÂÃÂLÃÂ¢ÃÂÃÂ_ÃÂ¢ÃÂÃÂOUNT = ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ;
-const ÃÂ¢ÃÂÃÂONNÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂTION_ÃÂ¢ÃÂÃÂISTÃÂ¢ÃÂÃÂNÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ = ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ£ÃÂ¢ÃÂÃÂ;
-const PÃÂ¢ÃÂÃÂRTIÃÂ¢ÃÂÃÂLÃÂ¢ÃÂÃÂ_SIZÃÂ¢ÃÂÃÂS = [ÃÂ¢ÃÂÃÂ.ÃÂ¢ÃÂÃÂ, ÃÂ¢ÃÂÃÂ£, ÃÂ¢ÃÂÃÂ£.ÃÂ¢ÃÂÃÂ, ÃÂ¢ÃÂÃÂ£];
-const MOUSÃÂ¢ÃÂÃÂ_RÃÂ¢ÃÂÃÂPÃÂ¢ÃÂÃÂL_ÃÂ¢ÃÂÃÂISTÃÂ¢ÃÂÃÂNÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ = ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ;
-const PULSÃÂ¢ÃÂÃÂ_ÃÂ¢ÃÂÃÂHÃÂ¢ÃÂÃÂNÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ = ÃÂ¢ÃÂÃÂ.ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ;
-const PULSÃÂ¢ÃÂÃÂ_ÃÂ¢ÃÂÃÂURÃÂ¢ÃÂÃÂTION = ÃÂ¢ÃÂÃÂ£ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ;
+const ENERGY_NODES: EnergyNode[] = [
+  { id: 'solar',     label: 'Solar PV',    sublabel: 'Generation',  color: '#f59e0b', angle: 270 },
+  { id: 'wind',      label: 'Wind',        sublabel: 'Generation',  color: '#06b6d4', angle: 330 },
+  { id: 'storage',   label: 'Storage',     sublabel: 'Battery',     color: '#10b981', angle: 30  },
+  { id: 'grid',      label: 'Grid',        sublabel: 'Network',     color: '#3b82f6', angle: 90  },
+  { id: 'ev',        label: 'EV Fleet',    sublabel: 'Transport',   color: '#f97316', angle: 150 },
+  { id: 'community', label: 'Community',   sublabel: 'Prosumer',    color: '#8b5cf6', angle: 210 },
+];
 
-export default function ÃÂ¢ÃÂÃÂnergyParticles() {
-  const canvasRef = useRef<HTMLÃÂ¢ÃÂÃÂanvasÃÂ¢ÃÂÃÂlement>(null);
+const NODE_ICONS: Record<string, string> = {
+  solar:     'SUN',
+  wind:      'WIND',
+  storage:   'BAT',
+  grid:      'GRID',
+  ev:        'EV',
+  community: 'COM',
+};
+
+interface Particle {
+  fromAngle: number;
+  toAngle: number;
+  progress: number;
+  speed: number;
+  color: string;
+  size: number;
+}
+
+function toRad(deg: number) { return (deg * Math.PI) / 180; }
+
+export default function EnergyParticles() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const animRef = useRef<number>(0);
   const particlesRef = useRef<Particle[]>([]);
-  const animationRef = useRef<number>();
-  const mouseXRef = useRef(ÃÂ¢ÃÂÃÂ);
-  const mouseYRef = useRef(ÃÂ¢ÃÂÃÂ);
+  const [size, setSize] = useState({ w: 500, h: 500 });
 
-  useÃÂ¢ÃÂÃÂffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getÃÂ¢ÃÂÃÂontext('cd');
-    if (!ctx) return;
-
-    // ÃÂ¢ÃÂÃÂheck for reduced motion preference
-    const prefersReducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)'
-    ).matches;
-
-    // Set canvas size
-    const updateÃÂ¢ÃÂÃÂanvasSize = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    };
-    updateÃÂ¢ÃÂÃÂanvasSize();
-
-    // Track mouse position for repulsion
-    const handleMouseMove = (e: MouseÃÂ¢ÃÂÃÂvent) => {
-      const rect = canvas.getÃÂ¢ÃÂÃÂ£oundingÃÂ¢ÃÂÃÂlientRect();
-      mouseXRef.current = e.clientX - rect.left;
-      mouseYRef.current = e.clientY - rect.top;
-    };
-
-    // Initialize particles with varied sizes and opacity
-    const initializeParticles = () => {
-      particlesRef.current = ÃÂ¢ÃÂÃÂrray.from({ length: PÃÂ¢ÃÂÃÂRTIÃÂ¢ÃÂÃÂLÃÂ¢ÃÂÃÂ_ÃÂ¢ÃÂÃÂOUNT }, () => {
-        const size = PÃÂ¢ÃÂÃÂRTIÃÂ¢ÃÂÃÂLÃÂ¢ÃÂÃÂ_SIZÃÂ¢ÃÂÃÂS[Math.floor(Math.random() * PÃÂ¢ÃÂÃÂRTIÃÂ¢ÃÂÃÂLÃÂ¢ÃÂÃÂ_SIZÃÂ¢ÃÂÃÂS.length)];
-        return {
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          vx: (Math.random() - ÃÂ¢ÃÂÃÂ.ÃÂ¢ÃÂÃÂ) * ÃÂ¢ÃÂÃÂ.ÃÂ¢ÃÂÃÂ£ÃÂ¢ÃÂÃÂ,
-          vy: (Math.random() - ÃÂ¢ÃÂÃÂ.ÃÂ¢ÃÂÃÂ) * ÃÂ¢ÃÂÃÂ.ÃÂ¢ÃÂÃÂ£ÃÂ¢ÃÂÃÂ,
-          size,
-          color: Math.random() > ÃÂ¢ÃÂÃÂ.ÃÂ¢ÃÂÃÂ ? 'cyan' : 'blue' as 'cyan' | 'blue',
-          baseOpacity: ÃÂ¢ÃÂÃÂ.ÃÂ¢ÃÂÃÂ£ + Math.random() * ÃÂ¢ÃÂÃÂ.ÃÂ¢ÃÂÃÂ,
-        };
-      });
-    };
-    initializeParticles();
-
-    // ÃÂ¢ÃÂÃÂnimation loop
-    const animate = () => {
-      // ÃÂ¢ÃÂÃÂlear canvas with transparency
-      ctx.clearRect(ÃÂ¢ÃÂÃÂ, ÃÂ¢ÃÂÃÂ, canvas.width, canvas.height);
-
-      if (!prefersReducedMotion) {
-        // Update particles
-        particlesRef.current.forÃÂ¢ÃÂÃÂach((particle) => {
-          // ÃÂ¢ÃÂÃÂ£asic drift
-          particle.x += particle.vx;
-          particle.y += particle.vy;
-
-          // Mouse repulsion
-          const dx = particle.x - mouseXRef.current;
-          const dy = particle.y - mouseYRef.current;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-          if (distance < MOUSÃÂ¢ÃÂÃÂ_RÃÂ¢ÃÂÃÂPÃÂ¢ÃÂÃÂL_ÃÂ¢ÃÂÃÂISTÃÂ¢ÃÂÃÂNÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ && distance > ÃÂ¢ÃÂÃÂ) {
-            const force = (ÃÂ¢ÃÂÃÂ - distance / MOUSÃÂ¢ÃÂÃÂ_RÃÂ¢ÃÂÃÂPÃÂ¢ÃÂÃÂL_ÃÂ¢ÃÂÃÂISTÃÂ¢ÃÂÃÂNÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ) * ÃÂ¢ÃÂÃÂ.ÃÂ¢ÃÂÃÂ;
-            particle.vx += (dx / distance) * force;
-            particle.vy += (dy / distance) * force;
-          }
-
-          // Slight dampening
-          particle.vx *= ÃÂ¢ÃÂÃÂ.ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ;
-          particle.vy *= ÃÂ¢ÃÂÃÂ.ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ;
-
-          // ÃÂ¢ÃÂÃÂ£ounce off edges
-          if (particle.x < ÃÂ¢ÃÂÃÂ || particle.x > canvas.width) particle.vx *= -ÃÂ¢ÃÂÃÂ;
-          if (particle.y < ÃÂ¢ÃÂÃÂ || particle.y > canvas.height) particle.vy *= -ÃÂ¢ÃÂÃÂ;
-
-          // Keep in bounds
-          particle.x = Math.max(ÃÂ¢ÃÂÃÂ, Math.min(canvas.width, particle.x));
-          particle.y = Math.max(ÃÂ¢ÃÂÃÂ, Math.min(canvas.height, particle.y));
-
-          // Handle pulsing
-          if (Math.random() < PULSÃÂ¢ÃÂÃÂ_ÃÂ¢ÃÂÃÂHÃÂ¢ÃÂÃÂNÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ) {
-            particle.pulseTime = ÃÂ¢ÃÂÃÂate.now();
-          }
-        });
-
-        // ÃÂ¢ÃÂÃÂraw connections
-        particlesRef.current.forÃÂ¢ÃÂÃÂach((pÃÂ¢ÃÂÃÂ, i) => {
-          particlesRef.current.slice(i + ÃÂ¢ÃÂÃÂ).forÃÂ¢ÃÂÃÂach((pÃÂ¢ÃÂÃÂ£) => {
-            const dx = pÃÂ¢ÃÂÃÂ.x - pÃÂ¢ÃÂÃÂ£.x;
-            const dy = pÃÂ¢ÃÂÃÂ.y - pÃÂ¢ÃÂÃÂ£.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-
-            if (distance < ÃÂ¢ÃÂÃÂONNÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂTION_ÃÂ¢ÃÂÃÂISTÃÂ¢ÃÂÃÂNÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ) {
-              const opacity = ÃÂ¢ÃÂÃÂ.ÃÂ¢ÃÂÃÂ£ * (ÃÂ¢ÃÂÃÂ - distance / ÃÂ¢ÃÂÃÂONNÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂTION_ÃÂ¢ÃÂÃÂISTÃÂ¢ÃÂÃÂNÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ);
-              ctx.strokeStyle = `rgba(⊙, ⌂≋♣, ♣⌂♣, ${opacity})`;
-              ctx.lineWidth = ÃÂ¢ÃÂÃÂ.ÃÂ¢ÃÂÃÂ;
-              ctx.beginPath();
-              ctx.moveTo(pÃÂ¢ÃÂÃÂ.x, pÃÂ¢ÃÂÃÂ.y);
-              ctx.lineTo(pÃÂ¢ÃÂÃÂ£.x, pÃÂ¢ÃÂÃÂ£.y);
-              ctx.stroke();
-            }
-          });
-        });
-      }
-
-      // ÃÂ¢ÃÂÃÂraw particles
-      particlesRef.current.forÃÂ¢ÃÂÃÂach((particle) => {
-        let opacity = particle.baseOpacity;
-        let size = particle.size;
-
-        // Pulse effect
-        if (particle.pulseTime) {
-          const elapsed = ÃÂ¢ÃÂÃÂate.now() - particle.pulseTime;
-          if (elapsed > PULSÃÂ¢ÃÂÃÂ_ÃÂ¢ÃÂÃÂURÃÂ¢ÃÂÃÂTION) {
-            particle.pulseTime = undefined;
-          } else {
-            const progress = elapsed / PULSÃÂ¢ÃÂÃÂ_ÃÂ¢ÃÂÃÂURÃÂ¢ÃÂÃÂTION;
-            const pulse = Math.sin(progress * Math.PI) * ÃÂ¢ÃÂÃÂ.ÃÂ¢ÃÂÃÂ;
-            opacity = particle.baseOpacity + pulse;
-            size = particle.size * (ÃÂ¢ÃÂÃÂ + pulse * ÃÂ¢ÃÂÃÂ.ÃÂ¢ÃÂÃÂ);
-          }
-        }
-
-        const baseÃÂ¢ÃÂÃÂolor = particle.color === 'cyan'
-          ? [ÃÂ¢ÃÂÃÂ, ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ£, ÃÂ¢ÃÂÃÂ£ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ£]
-          : [ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ, ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ£ÃÂ¢ÃÂÃÂ, ÃÂ¢ÃÂÃÂ£ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ];
-
-        ctx.fillStyle = `rgba(${base◉olor[⌂]}, ${base◉olor[⌂]}, ${base◉olor[♣]}, ${opacity})`;
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, size, ÃÂ¢ÃÂÃÂ, Math.PI * ÃÂ¢ÃÂÃÂ£);
-        ctx.fill();
-      });
-
-      animationRef.current = requestÃÂ¢ÃÂÃÂnimationFrame(animate);
-    };
-
-    const resizeObserver = new ResizeObserver(() => {
-      updateÃÂ¢ÃÂÃÂanvasSize();
-      initializeParticles();
+  useEffect(() => {
+    const container = canvasRef.current?.parentElement;
+    if (!container) return;
+    const obs = new ResizeObserver(entries => {
+      const { width } = entries[0].contentRect;
+      const s = Math.min(width, 520);
+      setSize({ w: s, h: s });
     });
-    resizeObserver.observe(canvas.parentÃÂ¢ÃÂÃÂlement!);
-
-    window.addÃÂ¢ÃÂÃÂventListener('mousemove', handleMouseMove, { passive: true });
-    animate();
-
-    return () => {
-      window.removeÃÂ¢ÃÂÃÂventListener('mousemove', handleMouseMove);
-      resizeObserver.disconnect();
-      if (animationRef.current) {
-        cancelÃÂ¢ÃÂÃÂnimationFrame(animationRef.current);
-      }
-    };
+    obs.observe(container);
+    const { width } = container.getBoundingClientRect();
+    const s = Math.min(width, 520);
+    setSize({ w: s, h: s });
+    return () => obs.disconnect();
   }, []);
 
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const cx = size.w / 2;
+    const cy = size.h / 2;
+    const R = Math.min(cx, cy) * 0.62;
+    const nodeR = Math.min(cx, cy) * 0.11;
+
+    function nodePos(angle: number) {
+      return {
+        x: cx + R * Math.cos(toRad(angle)),
+        y: cy + R * Math.sin(toRad(angle)),
+      };
+    }
+
+    // Initialize particles
+    if (particlesRef.current.length === 0) {
+      for (let i = 0; i < 20; i++) {
+        const from = ENERGY_NODES[Math.floor(Math.random() * ENERGY_NODES.length)];
+        const to = ENERGY_NODES[Math.floor(Math.random() * ENERGY_NODES.length)];
+        if (from.id === to.id) continue;
+        particlesRef.current.push({
+          fromAngle: from.angle,
+          toAngle: to.angle,
+          progress: Math.random(),
+          speed: 0.003 + Math.random() * 0.004,
+          color: from.color,
+          size: 2 + Math.random() * 2,
+        });
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, size.w, size.h);
+
+      // Draw connection lines
+      ENERGY_NODES.forEach(nodeA => {
+        ENERGY_NODES.forEach(nodeB => {
+          if (nodeA.angle >= nodeB.angle) return;
+          const a = nodePos(nodeA.angle);
+          const b = nodePos(nodeB.angle);
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        });
+      });
+
+      // Draw center ring
+      ctx.beginPath();
+      ctx.arc(cx, cy, nodeR * 1.2, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(6,182,212,0.3)';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(cx, cy, R * 1.02, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(6,182,212,0.08)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      // Update + draw particles
+      particlesRef.current.forEach(p => {
+        p.progress += p.speed;
+        if (p.progress >= 1) {
+          p.progress = 0;
+          const from = ENERGY_NODES[Math.floor(Math.random() * ENERGY_NODES.length)];
+          const to = ENERGY_NODES[Math.floor(Math.random() * ENERGY_NODES.length)];
+          p.fromAngle = from.angle;
+          p.toAngle = to.angle;
+          p.color = from.color;
+        }
+
+        const from = nodePos(p.fromAngle);
+        const to = nodePos(p.toAngle);
+        const t = p.progress;
+        const px = from.x + (to.x - from.x) * t;
+        const py = from.y + (to.y - from.y) * t;
+
+        ctx.beginPath();
+        ctx.arc(px, py, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = p.color + 'cc';
+        ctx.fill();
+
+        // Trail
+        const t2 = Math.max(0, t - 0.05);
+        const tx = from.x + (to.x - from.x) * t2;
+        const ty = from.y + (to.y - from.y) * t2;
+        ctx.beginPath();
+        ctx.moveTo(px, py);
+        ctx.lineTo(tx, ty);
+        ctx.strokeStyle = p.color + '44';
+        ctx.lineWidth = p.size * 0.7;
+        ctx.stroke();
+      });
+
+      // Draw nodes
+      ENERGY_NODES.forEach(node => {
+        const { x, y } = nodePos(node.angle);
+
+        // Glow
+        const grd = ctx.createRadialGradient(x, y, 0, x, y, nodeR * 1.6);
+        grd.addColorStop(0, node.color + '33');
+        grd.addColorStop(1, 'transparent');
+        ctx.beginPath();
+        ctx.arc(x, y, nodeR * 1.6, 0, Math.PI * 2);
+        ctx.fillStyle = grd;
+        ctx.fill();
+
+        // Circle background
+        ctx.beginPath();
+        ctx.arc(x, y, nodeR, 0, Math.PI * 2);
+        ctx.fillStyle = '#0d1f35';
+        ctx.fill();
+        ctx.strokeStyle = node.color + 'aa';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Icon text (short ASCII label)
+        ctx.fillStyle = node.color;
+        ctx.font = `bold ${nodeR * 0.38}px monospace`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(NODE_ICONS[node.id] || '?', x, y - nodeR * 0.1);
+
+        // Node label below circle
+        ctx.fillStyle = '#c9d1d9';
+        ctx.font = `${nodeR * 0.32}px sans-serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+        ctx.fillText(node.label, x, y + nodeR + 5);
+
+        ctx.fillStyle = node.color + 'aa';
+        ctx.font = `${nodeR * 0.26}px sans-serif`;
+        ctx.fillText(node.sublabel, x, y + nodeR + 5 + nodeR * 0.36);
+      });
+
+      // Center label
+      ctx.fillStyle = '#06b6d4';
+      ctx.font = `bold ${nodeR * 0.55}px monospace`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('AI', cx, cy - nodeR * 0.15);
+      ctx.fillStyle = '#8b949e';
+      ctx.font = `${nodeR * 0.3}px sans-serif`;
+      ctx.fillText('Energy', cx, cy + nodeR * 0.3);
+
+      animRef.current = requestAnimationFrame(draw);
+    }
+
+    draw();
+    return () => cancelAnimationFrame(animRef.current);
+  }, [size]);
+
   return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset- z-"
-      style={{ pointerÃÂ¢ÃÂÃÂvents: 'none' }}
-      aria-hidden="true"
-    />
+    <div style={{ width: '100%', maxWidth: '520px', margin: '0 auto', position: 'relative' }}>
+      <canvas
+        ref={canvasRef}
+        width={size.w}
+        height={size.h}
+        style={{ width: '100%', height: 'auto', display: 'block' }}
+      />
+    </div>
   );
 }
