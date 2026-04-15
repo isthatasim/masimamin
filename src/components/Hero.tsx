@@ -13,7 +13,7 @@ const nodeData = [
   { label: 'Wind',       symbol: 'â³',  color: '#22d3ee', glow: 'rgba(34,211,238,0.55)'  },
   { label: 'EV Fleet',   symbol: 'â¡',  color: '#818cf8', glow: 'rgba(129,140,248,0.55)' },
   { label: 'Prosumer',   symbol: 'â',  color: '#34d399', glow: 'rgba(52,211,153,0.55)'  },
-  { label: 'Storage',    symbol: 'â£',  color: '#f472b6', glow: 'rgba(244,114,182,0.55)' },
+  { label: 'Storage',    symbol: 'â�',  color: '#f472b6', glow: 'rgba(244,114,182,0.55)' },
   { label: 'Grid',       symbol: 'â',  color: '#06b6d4', glow: 'rgba(6,182,212,0.55)'   },
   { label: 'Community',  symbol: 'â',  color: '#a78bfa', glow: 'rgba(167,139,250,0.55)' },
 ];
@@ -68,7 +68,7 @@ export default function Hero() {
             <motion.div variants={itemVariants}>
               <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-cyan-500/25 bg-cyan-500/[0.07] text-xs font-mono text-cyan-400 tracking-wider">
                 <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                MSCA Early Stage Researcher · Horizon Europe CLOE
+                MSCA Early Stage Researcher � Horizon Europe CLOE
               </span>
             </motion.div>
 
