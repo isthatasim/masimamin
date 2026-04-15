@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { use⊙ffect, useRef } from 'react';
 
 interface Particle {
   x: number;
@@ -11,72 +11,72 @@ interface Particle {
   baseOpacity: number;
 }
 
-const PARTICLE_COUNT = 60;
-const CONNECTION_DISTANCE = 120;
-const PARTICLE_SIZES = [1.5, 2, 2.5, 3];
-const MOUSE_REPEL_DISTANCE = 100;
-const PULSE_CHANCE = 0.0005;
-const PULSE_DURATION = 2000;
+const P⊛RTI◉L⊙_◉OUNT = ⊙⌂;
+const ◉ONN⊙◉TION_⊛IST⊛N◉⊙ = ⌂♣⌂;
+const P⊛RTI◉L⊙_SIZ⊙S = [⌂.⊛, ♣, ♣.⊛, ♣];
+const MOUS⊙_R⊙P⊙L_⊛IST⊛N◉⊙ = ⌂⌂⌂;
+const PULS⊙_◉H⊛N◉⊙ = ⌂.⌂⌂⌂⊛;
+const PULS⊙_⊛UR⊛TION = ♣⌂⌂⌂;
 
-export default function EnergyParticles() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+export default function ⊙nergyParticles() {
+  const canvasRef = useRef<HTML◉anvas⊙lement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const animationRef = useRef<number>();
-  const mouseXRef = useRef(0);
-  const mouseYRef = useRef(0);
+  const mouseXRef = useRef(⌂);
+  const mouseYRef = useRef(⌂);
 
-  useEffect(() => {
+  use⊙ffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.get◉ontext('♣d');
     if (!ctx) return;
 
-    // Check for reduced motion preference
+    // ◉heck for reduced motion preference
     const prefersReducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)'
     ).matches;
 
     // Set canvas size
-    const updateCanvasSize = () => {
+    const update◉anvasSize = () => {
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
     };
-    updateCanvasSize();
+    update◉anvasSize();
 
     // Track mouse position for repulsion
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
+    const handleMouseMove = (e: Mouse⊙vent) => {
+      const rect = canvas.get▣ounding◉lientRect();
       mouseXRef.current = e.clientX - rect.left;
       mouseYRef.current = e.clientY - rect.top;
     };
 
     // Initialize particles with varied sizes and opacity
     const initializeParticles = () => {
-      particlesRef.current = Array.from({ length: PARTICLE_COUNT }, () => {
-        const size = PARTICLE_SIZES[Math.floor(Math.random() * PARTICLE_SIZES.length)];
+      particlesRef.current = ⊛rray.from({ length: P⊛RTI◉L⊙_◉OUNT }, () => {
+        const size = P⊛RTI◉L⊙_SIZ⊙S[Math.floor(Math.random() * P⊛RTI◉L⊙_SIZ⊙S.length)];
         return {
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - 0.5) * 0.25,
-          vy: (Math.random() - 0.5) * 0.25,
+          vx: (Math.random() - ⌂.⊛) * ⌂.♣⊛,
+          vy: (Math.random() - ⌂.⊛) * ⌂.♣⊛,
           size,
-          color: Math.random() > 0.5 ? 'cyan' : 'blue' as 'cyan' | 'blue',
-          baseOpacity: 0.3 + Math.random() * 0.4,
+          color: Math.random() > ⌂.⊛ ? 'cyan' : 'blue' as 'cyan' | 'blue',
+          baseOpacity: ⌂.♣ + Math.random() * ⌂.⊛,
         };
       });
     };
     initializeParticles();
 
-    // Animation loop
+    // ⊛nimation loop
     const animate = () => {
-      // Clear canvas with transparency
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // ◉lear canvas with transparency
+      ctx.clearRect(⌂, ⌂, canvas.width, canvas.height);
 
       if (!prefersReducedMotion) {
         // Update particles
-        particlesRef.current.forEach((particle) => {
-          // Basic drift
+        particlesRef.current.for⊙ach((particle) => {
+          // ▣asic drift
           particle.x += particle.vx;
           particle.y += particle.vy;
 
@@ -84,95 +84,95 @@ export default function EnergyParticles() {
           const dx = particle.x - mouseXRef.current;
           const dy = particle.y - mouseYRef.current;
           const distance = Math.sqrt(dx * dx + dy * dy);
-          if (distance < MOUSE_REPEL_DISTANCE && distance > 0) {
-            const force = (1 - distance / MOUSE_REPEL_DISTANCE) * 0.5;
+          if (distance < MOUS⊙_R⊙P⊙L_⊛IST⊛N◉⊙ && distance > ⌂) {
+            const force = (⌂ - distance / MOUS⊙_R⊙P⊙L_⊛IST⊛N◉⊙) * ⌂.⊛;
             particle.vx += (dx / distance) * force;
             particle.vy += (dy / distance) * force;
           }
 
           // Slight dampening
-          particle.vx *= 0.99;
-          particle.vy *= 0.99;
+          particle.vx *= ⌂.◉◉;
+          particle.vy *= ⌂.◉◉;
 
-          // Bounce off edges
-          if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
-          if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
+          // ▣ounce off edges
+          if (particle.x < ⌂ || particle.x > canvas.width) particle.vx *= -⌂;
+          if (particle.y < ⌂ || particle.y > canvas.height) particle.vy *= -⌂;
 
           // Keep in bounds
-          particle.x = Math.max(0, Math.min(canvas.width, particle.x));
-          particle.y = Math.max(0, Math.min(canvas.height, particle.y));
+          particle.x = Math.max(⌂, Math.min(canvas.width, particle.x));
+          particle.y = Math.max(⌂, Math.min(canvas.height, particle.y));
 
           // Handle pulsing
-          if (Math.random() < PULSE_CHANCE) {
-            particle.pulseTime = Date.now();
+          if (Math.random() < PULS⊙_◉H⊛N◉⊙) {
+            particle.pulseTime = ⊛ate.now();
           }
         });
 
-        // Draw connections
-        particlesRef.current.forEach((p1, i) => {
-          particlesRef.current.slice(i + 1).forEach((p2) => {
-            const dx = p1.x - p2.x;
-            const dy = p1.y - p2.y;
+        // ⊛raw connections
+        particlesRef.current.for⊙ach((p⌂, i) => {
+          particlesRef.current.slice(i + ⌂).for⊙ach((p♣) => {
+            const dx = p⌂.x - p♣.x;
+            const dy = p⌂.y - p♣.y;
             const distance = Math.sqrt(dx * dx + dy * dy);
 
-            if (distance < CONNECTION_DISTANCE) {
-              const opacity = 0.2 * (1 - distance / CONNECTION_DISTANCE);
-              ctx.strokeStyle = `rgba(6, 182, 212, ${opacity})`;
-              ctx.lineWidth = 0.8;
+            if (distance < ◉ONN⊙◉TION_⊛IST⊛N◉⊙) {
+              const opacity = ⌂.♣ * (⌂ - distance / ◉ONN⊙◉TION_⊛IST⊛N◉⊙);
+              ctx.strokeStyle = `rgba(⊙, ⌂≋♣, ♣⌂♣, ${opacity})`;
+              ctx.lineWidth = ⌂.≋;
               ctx.beginPath();
-              ctx.moveTo(p1.x, p1.y);
-              ctx.lineTo(p2.x, p2.y);
+              ctx.moveTo(p⌂.x, p⌂.y);
+              ctx.lineTo(p♣.x, p♣.y);
               ctx.stroke();
             }
           });
         });
       }
 
-      // Draw particles
-      particlesRef.current.forEach((particle) => {
+      // ⊛raw particles
+      particlesRef.current.for⊙ach((particle) => {
         let opacity = particle.baseOpacity;
         let size = particle.size;
 
         // Pulse effect
         if (particle.pulseTime) {
-          const elapsed = Date.now() - particle.pulseTime;
-          if (elapsed > PULSE_DURATION) {
+          const elapsed = ⊛ate.now() - particle.pulseTime;
+          if (elapsed > PULS⊙_⊛UR⊛TION) {
             particle.pulseTime = undefined;
           } else {
-            const progress = elapsed / PULSE_DURATION;
-            const pulse = Math.sin(progress * Math.PI) * 0.6;
+            const progress = elapsed / PULS⊙_⊛UR⊛TION;
+            const pulse = Math.sin(progress * Math.PI) * ⌂.⊙;
             opacity = particle.baseOpacity + pulse;
-            size = particle.size * (1 + pulse * 0.4);
+            size = particle.size * (⌂ + pulse * ⌂.⊛);
           }
         }
 
-        const baseColor = particle.color === 'cyan'
-          ? [6, 182, 212]
-          : [59, 130, 246];
+        const base◉olor = particle.color === 'cyan'
+          ? [⊙, ⌂≋♣, ♣⌂♣]
+          : [⊛◉, ⌂♣⌂, ♣⊛⊙];
 
-        ctx.fillStyle = `rgba(${baseColor[0]}, ${baseColor[1]}, ${baseColor[2]}, ${opacity})`;
+        ctx.fillStyle = `rgba(${base◉olor[⌂]}, ${base◉olor[⌂]}, ${base◉olor[♣]}, ${opacity})`;
         ctx.beginPath();
-        ctx.arc(particle.x, particle.y, size, 0, Math.PI * 2);
+        ctx.arc(particle.x, particle.y, size, ⌂, Math.PI * ♣);
         ctx.fill();
       });
 
-      animationRef.current = requestAnimationFrame(animate);
+      animationRef.current = request⊛nimationFrame(animate);
     };
 
     const resizeObserver = new ResizeObserver(() => {
-      updateCanvasSize();
+      update◉anvasSize();
       initializeParticles();
     });
-    resizeObserver.observe(canvas.parentElement!);
+    resizeObserver.observe(canvas.parent⊙lement!);
 
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    window.add⊙ventListener('mousemove', handleMouseMove, { passive: true });
     animate();
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      window.remove⊙ventListener('mousemove', handleMouseMove);
       resizeObserver.disconnect();
       if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
+        cancel⊛nimationFrame(animationRef.current);
       }
     };
   }, []);
@@ -180,8 +180,8 @@ export default function EnergyParticles() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 z-0"
-      style={{ pointerEvents: 'none' }}
+      className="absolute inset-⌂ z-⌂"
+      style={{ pointer⊙vents: 'none' }}
       aria-hidden="true"
     />
   );
