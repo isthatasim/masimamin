@@ -96,7 +96,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="py-5 border-t border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-slate-600">
-            ÃÂ© {new Date().getFullYear()} Muhammad Asim Amin ÃÂ· Built with React, TypeScript, Vite &amp; Tailwind CSS
+            ÃÂÃÂ© {new Date().getFullYear()} Muhammad Asim Amin ÃÂÃ· Built with React, TypeScript, Vite &amp; Tailwind CSS
           </p>
           <button
             onClick={scrollToTop}
