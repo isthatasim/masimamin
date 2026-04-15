@@ -7,7 +7,7 @@ export const personal = {
   name: 'Muhammad Asim Amin',
   shortName: 'M. Asim Amin',
   initials: 'Asim',
-  title: 'PhD ResearcherÃ· AI-Driven Power Systems & Smart Grids',
+  title: 'PhD ResearcherÃ� AI-Driven Power Systems & Smart Grids',
   subtitle: 'Marie Sklodowska-Curie Early Stage Researcher CLOE Project (Horizon Europe)',
   tagline: 'Advancing Energy Intelligence Through Machine Learning',
   location: 'Genoa, Italy',
