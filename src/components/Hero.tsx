@@ -127,7 +127,7 @@ export default function Hero() {
           {/* ââ Right Column: Diagram + Portrait ââââââââââââââââââââ */}
           <div className="relative flex flex-col items-center gap-6">
 
-            {/* Smart-Grid Network Diagram â big and central */}
+            {/* Smart-Grid Network Diagram — big and central */}
             <motion.div
               className="relative w-full"
               initial={{ opacity: 0, scale: 0.88 }}
@@ -206,7 +206,7 @@ export default function Hero() {
                     transition={{ duration: 0.5, delay: 0.5 + i * 0.1, ease: 'backOut' }}
                     style={{ transformOrigin: `${n.x}px ${n.y}px` }}
                   >
-                    {/* Pulse ring â uses scale instead of r animation for TypeScript compat */}
+                    {/* Pulse ring — uses scale instead of r animation for TypeScript compat */}
                     <motion.circle
                       cx={n.x} cy={n.y} r={16}
                       fill="none" stroke={n.color} strokeWidth="0.8"
@@ -247,7 +247,7 @@ export default function Hero() {
                   transition={{ duration: 0.8, delay: 1.2, ease: 'backOut' }}
                   style={{ transformOrigin: `${cx}px ${cy}px` }}
                 >
-                  {/* Multi-layer glow â scale pulse instead of r animation */}
+                  {/* Multi-layer glow — scale pulse instead of r animation */}
                   <motion.circle
                     cx={cx} cy={cy} r={43}
                     fill="none" stroke="rgba(6,182,212,0.12)"
@@ -301,7 +301,7 @@ export default function Hero() {
               </motion.div>
             </motion.div>
 
-            {/* Portrait â smaller, below diagram on mobile; overlapping on desktop */}
+            {/* Portrait — smaller, below diagram on mobile; overlapping on desktop */}
             <motion.div
               className="w-full max-w-[300px] mx-auto lg:hidden"
               initial={{ opacity: 0 }}
