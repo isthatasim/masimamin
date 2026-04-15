@@ -59,7 +59,7 @@ export default function Projects() {
           <SectionTitle
             eyebrow="Projects"
             title="Selected Research Projects"
-            subtitle="Core research projects with direct deployment relevance — from campus energy communities to federated charging networks."
+            subtitle="Core research projects with direct deployment relevance  from campus energy communities to federated charging networks."
             accentWord="Research"
           />
 
