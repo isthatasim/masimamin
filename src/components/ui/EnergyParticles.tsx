@@ -1,4 +1,4 @@
-import { use⊙ffect, useRef } from 'react';
+import { useâffect, useRef } from 'react';
 
 interface Particle {
   x: number;
@@ -11,72 +11,72 @@ interface Particle {
   baseOpacity: number;
 }
 
-const P⊛RTI◉L⊙_◉OUNT = ⊙⌂;
-const ◉ONN⊙◉TION_⊛IST⊛N◉⊙ = ⌂♣⌂;
-const P⊛RTI◉L⊙_SIZ⊙S = [⌂.⊛, ♣, ♣.⊛, ♣];
-const MOUS⊙_R⊙P⊙L_⊛IST⊛N◉⊙ = ⌂⌂⌂;
-const PULS⊙_◉H⊛N◉⊙ = ⌂.⌂⌂⌂⊛;
-const PULS⊙_⊛UR⊛TION = ♣⌂⌂⌂;
+const PâRTIâLâ_âOUNT = ââ;
+const âONNââTION_âISTâNââ = ââ£â;
+const PâRTIâLâ_SIZâS = [â.â, â£, â£.â, â£];
+const MOUSâ_RâPâL_âISTâNââ = âââ;
+const PULSâ_âHâNââ = â.ââââ;
+const PULSâ_âURâTION = â£âââ;
 
-export default function ⊙nergyParticles() {
-  const canvasRef = useRef<HTML◉anvas⊙lement>(null);
+export default function ânergyParticles() {
+  const canvasRef = useRef<HTMLâanvasâlement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const animationRef = useRef<number>();
-  const mouseXRef = useRef(⌂);
-  const mouseYRef = useRef(⌂);
+  const mouseXRef = useRef(â);
+  const mouseYRef = useRef(â);
 
-  use⊙ffect(() => {
+  useâffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.get◉ontext('♣d');
+    const ctx = canvas.getâontext('cd');
     if (!ctx) return;
 
-    // ◉heck for reduced motion preference
+    // âheck for reduced motion preference
     const prefersReducedMotion = window.matchMedia(
       '(prefers-reduced-motion: reduce)'
     ).matches;
 
     // Set canvas size
-    const update◉anvasSize = () => {
+    const updateâanvasSize = () => {
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
     };
-    update◉anvasSize();
+    updateâanvasSize();
 
     // Track mouse position for repulsion
-    const handleMouseMove = (e: Mouse⊙vent) => {
-      const rect = canvas.get▣ounding◉lientRect();
+    const handleMouseMove = (e: Mouseâvent) => {
+      const rect = canvas.getâ£oundingâlientRect();
       mouseXRef.current = e.clientX - rect.left;
       mouseYRef.current = e.clientY - rect.top;
     };
 
     // Initialize particles with varied sizes and opacity
     const initializeParticles = () => {
-      particlesRef.current = ⊛rray.from({ length: P⊛RTI◉L⊙_◉OUNT }, () => {
-        const size = P⊛RTI◉L⊙_SIZ⊙S[Math.floor(Math.random() * P⊛RTI◉L⊙_SIZ⊙S.length)];
+      particlesRef.current = ârray.from({ length: PâRTIâLâ_âOUNT }, () => {
+        const size = PâRTIâLâ_SIZâS[Math.floor(Math.random() * PâRTIâLâ_SIZâS.length)];
         return {
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          vx: (Math.random() - ⌂.⊛) * ⌂.♣⊛,
-          vy: (Math.random() - ⌂.⊛) * ⌂.♣⊛,
+          vx: (Math.random() - â.â) * â.â£â,
+          vy: (Math.random() - â.â) * â.â£â,
           size,
-          color: Math.random() > ⌂.⊛ ? 'cyan' : 'blue' as 'cyan' | 'blue',
-          baseOpacity: ⌂.♣ + Math.random() * ⌂.⊛,
+          color: Math.random() > â.â ? 'cyan' : 'blue' as 'cyan' | 'blue',
+          baseOpacity: â.â£ + Math.random() * â.â,
         };
       });
     };
     initializeParticles();
 
-    // ⊛nimation loop
+    // ânimation loop
     const animate = () => {
-      // ◉lear canvas with transparency
-      ctx.clearRect(⌂, ⌂, canvas.width, canvas.height);
+      // âlear canvas with transparency
+      ctx.clearRect(â, â, canvas.width, canvas.height);
 
       if (!prefersReducedMotion) {
         // Update particles
-        particlesRef.current.for⊙ach((particle) => {
-          // ▣asic drift
+        particlesRef.current.forâach((particle) => {
+          // â£asic drift
           particle.x += particle.vx;
           particle.y += particle.vy;
 
@@ -84,95 +84,95 @@ export default function ⊙nergyParticles() {
           const dx = particle.x - mouseXRef.current;
           const dy = particle.y - mouseYRef.current;
           const distance = Math.sqrt(dx * dx + dy * dy);
-          if (distance < MOUS⊙_R⊙P⊙L_⊛IST⊛N◉⊙ && distance > ⌂) {
-            const force = (⌂ - distance / MOUS⊙_R⊙P⊙L_⊛IST⊛N◉⊙) * ⌂.⊛;
+          if (distance < MOUSâ_RâPâL_âISTâNââ && distance > â) {
+            const force = (â - distance / MOUSâ_RâPâL_âISTâNââ) * â.â;
             particle.vx += (dx / distance) * force;
             particle.vy += (dy / distance) * force;
           }
 
           // Slight dampening
-          particle.vx *= ⌂.◉◉;
-          particle.vy *= ⌂.◉◉;
+          particle.vx *= â.ââ;
+          particle.vy *= â.ââ;
 
-          // ▣ounce off edges
-          if (particle.x < ⌂ || particle.x > canvas.width) particle.vx *= -⌂;
-          if (particle.y < ⌂ || particle.y > canvas.height) particle.vy *= -⌂;
+          // â£ounce off edges
+          if (particle.x < â || particle.x > canvas.width) particle.vx *= -â;
+          if (particle.y < â || particle.y > canvas.height) particle.vy *= -â;
 
           // Keep in bounds
-          particle.x = Math.max(⌂, Math.min(canvas.width, particle.x));
-          particle.y = Math.max(⌂, Math.min(canvas.height, particle.y));
+          particle.x = Math.max(â, Math.min(canvas.width, particle.x));
+          particle.y = Math.max(â, Math.min(canvas.height, particle.y));
 
           // Handle pulsing
-          if (Math.random() < PULS⊙_◉H⊛N◉⊙) {
-            particle.pulseTime = ⊛ate.now();
+          if (Math.random() < PULSâ_âHâNââ) {
+            particle.pulseTime = âate.now();
           }
         });
 
-        // ⊛raw connections
-        particlesRef.current.for⊙ach((p⌂, i) => {
-          particlesRef.current.slice(i + ⌂).for⊙ach((p♣) => {
-            const dx = p⌂.x - p♣.x;
-            const dy = p⌂.y - p♣.y;
+        // âraw connections
+        particlesRef.current.forâach((pâ, i) => {
+          particlesRef.current.slice(i + â).forâach((pâ£) => {
+            const dx = pâ.x - pâ£.x;
+            const dy = pâ.y - pâ£.y;
             const distance = Math.sqrt(dx * dx + dy * dy);
 
-            if (distance < ◉ONN⊙◉TION_⊛IST⊛N◉⊙) {
-              const opacity = ⌂.♣ * (⌂ - distance / ◉ONN⊙◉TION_⊛IST⊛N◉⊙);
+            if (distance < âONNââTION_âISTâNââ) {
+              const opacity = â.â£ * (â - distance / âONNââTION_âISTâNââ);
               ctx.strokeStyle = `rgba(⊙, ⌂≋♣, ♣⌂♣, ${opacity})`;
-              ctx.lineWidth = ⌂.≋;
+              ctx.lineWidth = â.â;
               ctx.beginPath();
-              ctx.moveTo(p⌂.x, p⌂.y);
-              ctx.lineTo(p♣.x, p♣.y);
+              ctx.moveTo(pâ.x, pâ.y);
+              ctx.lineTo(pâ£.x, pâ£.y);
               ctx.stroke();
             }
           });
         });
       }
 
-      // ⊛raw particles
-      particlesRef.current.for⊙ach((particle) => {
+      // âraw particles
+      particlesRef.current.forâach((particle) => {
         let opacity = particle.baseOpacity;
         let size = particle.size;
 
         // Pulse effect
         if (particle.pulseTime) {
-          const elapsed = ⊛ate.now() - particle.pulseTime;
-          if (elapsed > PULS⊙_⊛UR⊛TION) {
+          const elapsed = âate.now() - particle.pulseTime;
+          if (elapsed > PULSâ_âURâTION) {
             particle.pulseTime = undefined;
           } else {
-            const progress = elapsed / PULS⊙_⊛UR⊛TION;
-            const pulse = Math.sin(progress * Math.PI) * ⌂.⊙;
+            const progress = elapsed / PULSâ_âURâTION;
+            const pulse = Math.sin(progress * Math.PI) * â.â;
             opacity = particle.baseOpacity + pulse;
-            size = particle.size * (⌂ + pulse * ⌂.⊛);
+            size = particle.size * (â + pulse * â.â);
           }
         }
 
-        const base◉olor = particle.color === 'cyan'
-          ? [⊙, ⌂≋♣, ♣⌂♣]
-          : [⊛◉, ⌂♣⌂, ♣⊛⊙];
+        const baseâolor = particle.color === 'cyan'
+          ? [â, âââ£, â£ââ£]
+          : [ââ, ââ£â, â£ââ];
 
         ctx.fillStyle = `rgba(${base◉olor[⌂]}, ${base◉olor[⌂]}, ${base◉olor[♣]}, ${opacity})`;
         ctx.beginPath();
-        ctx.arc(particle.x, particle.y, size, ⌂, Math.PI * ♣);
+        ctx.arc(particle.x, particle.y, size, â, Math.PI * â£);
         ctx.fill();
       });
 
-      animationRef.current = request⊛nimationFrame(animate);
+      animationRef.current = requestânimationFrame(animate);
     };
 
     const resizeObserver = new ResizeObserver(() => {
-      update◉anvasSize();
+      updateâanvasSize();
       initializeParticles();
     });
-    resizeObserver.observe(canvas.parent⊙lement!);
+    resizeObserver.observe(canvas.parentâlement!);
 
-    window.add⊙ventListener('mousemove', handleMouseMove, { passive: true });
+    window.addâventListener('mousemove', handleMouseMove, { passive: true });
     animate();
 
     return () => {
-      window.remove⊙ventListener('mousemove', handleMouseMove);
+      window.removeâventListener('mousemove', handleMouseMove);
       resizeObserver.disconnect();
       if (animationRef.current) {
-        cancel⊛nimationFrame(animationRef.current);
+        cancelânimationFrame(animationRef.current);
       }
     };
   }, []);
@@ -180,8 +180,8 @@ export default function ⊙nergyParticles() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-⌂ z-⌂"
-      style={{ pointer⊙vents: 'none' }}
+      className="absolute inset- z-"
+      style={{ pointerâvents: 'none' }}
       aria-hidden="true"
     />
   );
