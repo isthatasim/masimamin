@@ -1,81 +1,32 @@
-import type { ElementType } from 'react';
-import { Brain, Zap, Network, Sun, Grid3X3, Share2, Cpu } from 'lucide-react';
-import { researchFocus } from '../data/content';
-import SectionTitle from './ui/SectionTitle';
-import { StaggerContainer, StaggerItem } from './ui/AnimatedSection';
-import TiltCard from './ui/TiltCard';
-
-const iconMap: Record<string, ElementType> = {
-  brain: Brain, zap: Zap, network: Network, sun: Sun,
-  grid: Grid3X3, share2: Share2, cpu: Cpu,
-};
-
-const colorTokens: Record<string, {
-  border: string; bg: string; icon: string; badge: string; glow: string;
-}> = {
-  cyan:    { border:'border-cyan-500/25',    bg:'bg-cyan-500/[0.05]',    icon:'text-cyan-400',    badge:'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',    glow:'rgba(6,182,212,0.18)' },
-  indigo:  { border:'border-indigo-500/25',  bg:'bg-indigo-500/[0.05]',  icon:'text-indigo-400',  badge:'bg-indigo-500/10 text-indigo-400 border-indigo-500/20',  glow:'rgba(129,140,248,0.18)' },
-  emerald: { border:'border-emerald-500/25', bg:'bg-emerald-500/[0.05]', icon:'text-emerald-400', badge:'bg-emerald-500/10 text-emerald-400 border-emerald-500/20', glow:'rgba(52,211,153,0.18)' },
-  amber:   { border:'border-amber-500/25',   bg:'bg-amber-500/[0.05]',   icon:'text-amber-400',   badge:'bg-amber-500/10 text-amber-400 border-amber-500/20',   glow:'rgba(251,191,36,0.18)' },
-  violet:  { border:'border-violet-500/25',  bg:'bg-violet-500/[0.05]',  icon:'text-violet-400',  badge:'bg-violet-500/10 text-violet-400 border-violet-500/20',  glow:'rgba(167,139,250,0.18)' },
-  pink:    { border:'border-pink-500/25',    bg:'bg-pink-500/[0.05]',    icon:'text-pink-400',    badge:'bg-pink-500/10 text-pink-400 border-pink-500/20',    glow:'rgba(244,114,182,0.18)' },
-  teal:    { border:'border-teal-500/25',    bg:'bg-teal-500/[0.05]',    icon:'text-teal-400',    badge:'bg-teal-500/10 text-teal-400 border-teal-500/20',    glow:'rgba(20,184,166,0.18)' },
-};
+const AREAS = [
+  { icon:'RL', color:'#06b6d4', bg:'rgba(6,182,212,0.08)',   border:'rgba(6,182,212,0.25)',   title:'Deep Reinforcement Learning',  desc:'Multi-agent DRL for real-time energy dispatch, demand response, and autonomous grid control with deployment-grade performance.' },
+  { icon:'FL', color:'#3b82f6', bg:'rgba(59,130,246,0.08)',  border:'rgba(59,130,246,0.25)',  title:'Federated Learning',            desc:'Privacy-preserving distributed intelligence for energy communities — collaborative model training without exposing sensitive data.' },
+  { icon:'EC', color:'#8b5cf6', bg:'rgba(139,92,246,0.08)', border:'rgba(139,92,246,0.25)', title:'Energy Communities',            desc:'AI-driven frameworks for peer-to-peer energy trading, shared storage optimization, and collective self-consumption.' },
+  { icon:'SG', color:'#10b981', bg:'rgba(16,185,129,0.08)', border:'rgba(16,185,129,0.25)', title:'Smart Grid Systems',            desc:'Intelligent EMS for prosumers, microgrids, and distribution networks with predictive analytics and real-world validation.' },
+  { icon:'EV', color:'#f59e0b', bg:'rgba(245,158,11,0.08)', border:'rgba(245,158,11,0.25)', title:'EV Fleet Coordination',         desc:'Optimal RL-based scheduling and smart charging for electric vehicle fleets, supporting grid stability and renewable integration.' },
+  { icon:'AI', color:'#ec4899', bg:'rgba(236,72,153,0.08)', border:'rgba(236,72,153,0.25)', title:'AI for Power Systems',          desc:'Transformer architectures, GNNs, and predictive models applied to power flow, fault detection, and energy forecasting.' },
+];
 
 export default function ResearchFocus() {
   return (
-    <section
-      id="research"
-      className="relative py-24 overflow-hidden"
-      style={{ background: 'rgba(10,22,40,0.88)' }}
-    >
-      <div className="section-container relative z-10">
-        <div className="flex flex-col gap-12">
-          <SectionTitle
-            eyebrow="Research Focus"
-            title="Core Research Domains"
-            subtitle="Spanning AI methodology, power engineering, and systems integration  with deployment-grade validation."
-            accentWord="Research"
-          />
-
-          {/* Cards with fade-away hover group */}
-          <StaggerContainer
-            className="hover-fade-group grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
-            staggerDelay={0.06}
-          >
-            {researchFocus.map((item) => {
-              const Icon = iconMap[item.icon] ?? Brain;
-              const c = colorTokens[item.color] ?? colorTokens['cyan'];
-
-              return (
-                <StaggerItem key={item.id}>
-                  <TiltCard glowColor={c.glow} maxTilt={5}>
-                    <div className={`hover-fade glass-card flex flex-col gap-3.5 p-5 h-full border ${c.border}`}>
-                      {/* Icon */}
-                      <div className={`w-10 h-10 rounded-xl border flex items-center justify-center ${c.bg} ${c.border}`}>
-                        <Icon className={`w-5 h-5 ${c.icon}`} />
-                      </div>
-
-                      {/* Title + description */}
-                      <div className="flex flex-col gap-2 flex-1">
-                        <h3 className="text-sm font-semibold text-slate-100 leading-snug">{item.title}</h3>
-                        <p className="text-xs text-slate-400 leading-[1.7] flex-1">{item.description}</p>
-                      </div>
-
-                      {/* Tags */}
-                      <div className="flex flex-wrap gap-1.5 pt-1">
-                        {item.tags.map((tag) => (
-                          <span key={tag} className={`text-[10px] px-2 py-0.5 rounded border font-mono ${c.badge}`}>
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </TiltCard>
-                </StaggerItem>
-              );
-            })}
-          </StaggerContainer>
+    <section className="py-24 border-t border-slate-900">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-2xl mb-12">
+          <p className="section-label">Expertise</p>
+          <h2 className="section-heading">Research Areas</h2>
+          <p className="text-slate-500 text-sm mt-3">Spanning AI methodology, power engineering, and distributed systems — with a focus on practical energy transition solutions.</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {AREAS.map(a => (
+            <div key={a.title} className="card">
+              <div className="w-10 h-10 rounded-lg flex items-center justify-center text-xs font-bold mb-4"
+                style={{ background: a.bg, border: '1px solid ' + a.border, color: a.color }}>
+                {a.icon}
+              </div>
+              <h3 className="text-slate-200 font-semibold text-sm mb-2">{a.title}</h3>
+              <p className="text-slate-500 text-xs leading-relaxed">{a.desc}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
