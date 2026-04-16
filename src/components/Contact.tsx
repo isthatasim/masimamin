@@ -1,178 +1,45 @@
-import { useState } from 'react';
-import { Mail, Linkedin, Github, Globe, BookOpen, Download, ExternalLink, Copy, Check } from 'lucide-react';
 import { personal } from '../data/content';
-import SectionTitle from './ui/SectionTitle';
-import AnimatedSection, { StaggerContainer, StaggerItem } from './ui/AnimatedSection';
-import GridBackground from './ui/GridBackground';
-import TiltCard from './ui/TiltCard';
 
-const contactLinks = [
-  {
-    icon: Mail,
-    label: 'Email',
-    value: personal.email,
-    href: `mailto:${personal.email}`,
-    color: 'cyan',
-    description: 'Primary contact for collaboration enquiries',
-  },
-  {
-    icon: Linkedin,
-    label: 'LinkedIn',
-    value: 'linkedin.com/in/masimamin',
-    href: personal.linkedin,
-    color: 'indigo',
-    description: 'Professional profile and publications',
-  },
-  {
-    icon: Github,
-    label: 'GitHub',
-    value: 'github.com/isthatasim',
-    href: personal.github,
-    color: 'slate',
-    description: 'Code repositories and research implementations',
-  },
-  {
-    icon: BookOpen,
-    label: 'Google Scholar',
-    value: 'Scholar Profile',
-    href: personal.scholar,
-    color: 'amber',
-    description: 'Full publication record and citation metrics',
-  },
-  {
-    icon: Globe,
-    label: 'Personal Website',
-    value: 'Google Sites Portfolio',
-    href: personal.website,
-    color: 'emerald',
-    description: 'Research overview and project summaries',
-  },
+const LINKS = [
+  { icon:'@', label:'Email',         value:'masim.amin@yahoo.com',     href:'mailto:masim.amin@yahoo.com' },
+  { icon:'GH', label:'GitHub',       value:'github.com/isthatasim',    href:'https://github.com/isthatasim' },
+  { icon:'IN', label:'LinkedIn',     value:'LinkedIn Profile',          href:'https://linkedin.com' },
+  { icon:'GS', label:'Google Scholar',value:'Scholar Profile',         href:'https://scholar.google.com' },
 ];
-
-const colorConf: Record<string, { icon: string; border: string; bg: string; glow: string }> = {
-  cyan:   { icon: 'text-cyan-400',   border: 'border-cyan-500/25',   bg: 'bg-cyan-500/5 hover:bg-cyan-500/10', glow: 'rgba(6,182,212,0.2)' },
-  indigo: { icon: 'text-indigo-400', border: 'border-indigo-500/25', bg: 'bg-indigo-500/5 hover:bg-indigo-500/10', glow: 'rgba(129,140,248,0.2)' },
-  slate:  { icon: 'text-slate-300',  border: 'border-slate-600/40',  bg: 'bg-slate-800/50 hover:bg-slate-800/80', glow: 'rgba(148,163,184,0.2)' },
-  amber:  { icon: 'text-amber-400',  border: 'border-amber-500/25',  bg: 'bg-amber-500/5 hover:bg-amber-500/10', glow: 'rgba(251,191,36,0.2)' },
-  emerald:{ icon: 'text-emerald-400',border: 'border-emerald-500/25',bg: 'bg-emerald-500/5 hover:bg-emerald-500/10', glow: 'rgba(52,211,153,0.2)' },
-};
-
-function CopyEmail() {
-  const [copied, setCopied] = useState(false);
-  const copy = () => {
-    navigator.clipboard.writeText(personal.email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-  return (
-    <button
-      onClick={copy}
-      className="flex items-center gap-1.5 text-xs text-slate-500 hover:text-cyan-400 transition-colors cursor-pointer"
-      title="Copy email"
-      data-cursor="button"
-    >
-      {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-      {copied ? 'Copied!' : 'Copy email'}
-    </button>
-  );
-}
 
 export default function Contact() {
   return (
-    <section id="contact" className="relative py-24 bg-gradient-to-b from-navy-950 to-navy-900 overflow-hidden">
-      <GridBackground />
-
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: 'radial-gradient(ellipse 70% 50% at 50% 100%, rgba(6,182,212,0.06) 0%, transparent 60%)',
-        }}
-      />
-
-      <div className="section-container relative z-10">
-        <div className="flex flex-col gap-12">
-          <SectionTitle
-            eyebrow="Contact"
-            title="Let's Collaborate"
-            subtitle="Open to research collaborations, postdoctoral opportunities, and academic or industry partnerships in AI-driven energy systems."
-            accentWord="Collaborate"
-            align="center"
-          />
-
-          <div className="max-w-3xl mx-auto w-full flex flex-col gap-8">
-            {/* Collaboration message */}
-            <AnimatedSection delay={0.1} className="text-center">
-              <div className="glass-card p-6">
-                <p className="text-sm text-slate-300 leading-relaxed mb-4">
-                  I am actively engaged in international research collaboration and welcome discussions
-                  on topics spanning deep reinforcement learning for energy systems, federated AI,
-                  EV charging optimization, energy community design, and renewable energy forecasting.
-                  If you are a researcher, postdoctoral supervisor, or R&D team working in these areas,
-                  I would be glad to connect.
-                </p>
-                <div className="flex flex-wrap justify-center gap-3">
-                  <a href={`mailto:${personal.email}`} className="btn-primary text-sm" data-cursor="button">
-                    <Mail className="w-4 h-4" />
-                    Get in Touch
-                  </a>
-                  <a href={personal.cvUrl} download className="btn-outline text-sm" data-cursor="button">
-                    <Download className="w-4 h-4" />
-                    Download Full CV
-                  </a>
-                </div>
+    <section className="py-24 border-t border-slate-900">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-xl mx-auto text-center mb-12">
+          <p className="section-label">Get In Touch</p>
+          <h2 className="section-heading">Contact</h2>
+          <p className="text-slate-500 text-sm mt-3 leading-relaxed">
+            Open to research collaborations, speaking invitations, and discussions about AI-driven energy systems.
+          </p>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-2xl mx-auto">
+          {LINKS.map(c => (
+            <a key={c.label} href={c.href}
+              target={c.href.startsWith('mailto') ? undefined : '_blank'}
+              rel="noopener noreferrer"
+              className="card flex flex-col items-center text-center gap-2 hover:border-cyan-500/40 group" style={{padding:'1.25rem 1rem'}}>
+              <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 text-xs font-bold group-hover:bg-cyan-500/20 transition-colors">
+                {c.icon}
               </div>
-            </AnimatedSection>
-
-            {/* Contact links */}
-            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-3" staggerDelay={0.08}>
-              {contactLinks.map((link) => {
-                const Icon = link.icon;
-                const c = colorConf[link.color] ?? colorConf['slate'];
-                return (
-                  <StaggerItem key={link.label}>
-                    <TiltCard glowColor={c.glow}>
-                      <a
-                        href={link.href}
-                        target={link.href.startsWith('mailto') ? undefined : '_blank'}
-                        rel={link.href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
-                        className={`flex items-start gap-4 p-4 rounded-xl border transition-all duration-200 group
-                          ${c.border} ${c.bg} cursor-pointer h-full`}
-                        data-cursor="button"
-                      >
-                        <div className={`shrink-0 w-10 h-10 rounded-lg flex items-center justify-center bg-slate-900/60 border ${c.border}`}>
-                          <Icon className={`w-5 h-5 ${c.icon}`} />
-                        </div>
-                        <div className="flex flex-col gap-0.5 min-w-0 flex-1">
-                          <div className="flex items-center gap-1.5">
-                            <span className="text-sm font-semibold text-slate-200 group-hover:text-slate-100">{link.label}</span>
-                            <ExternalLink className="w-3 h-3 text-slate-600 group-hover:text-slate-400 transition-colors" />
-                          </div>
-                          <span className={`text-xs font-mono truncate ${c.icon}`}>{link.value}</span>
-                          <span className="text-xs text-slate-500 leading-snug mt-0.5">{link.description}</span>
-                        </div>
-                      </a>
-                    </TiltCard>
-                  </StaggerItem>
-                );
-              })}
-            </StaggerContainer>
-
-            {/* Email with copy */}
-            <AnimatedSection delay={0.4} className="flex justify-center">
-              <div className="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-slate-800/40 border border-slate-700/40">
-                <span className="font-mono text-sm text-slate-300">{personal.email}</span>
-                <CopyEmail />
+              <div>
+                <div className="text-slate-300 text-xs font-semibold">{c.label}</div>
+                <div className="text-slate-600 text-xs mt-0.5 truncate max-w-full">{c.value}</div>
               </div>
-            </AnimatedSection>
-
-            {/* Location note */}
-            <AnimatedSection delay={0.45} className="text-center">
-              <p className="text-xs text-slate-600">
-                Based in {personal.location} · Available for international collaboration and remote engagement
-              </p>
-            </AnimatedSection>
-          </div>
+            </a>
+          ))}
+        </div>
+        <div className="text-center mt-10">
+          <a href={personal.cvUrl} target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-full border border-cyan-500/30 text-cyan-400 font-medium text-sm hover:bg-cyan-500/10 transition-all">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Full CV
+          </a>
         </div>
       </div>
     </section>
