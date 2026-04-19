@@ -2,13 +2,12 @@ import { useState, useEffect } from 'react';
 import { personal } from '../data/content';
 
 const NAV = [
-  { label: 'About',        href: '#about' ,,}
-  { label: "Education", href: "#education" },
-  { label: 'Research',     href: '#research' },
-  { label: 'Experience',   href: '#experience' },
+  { label: 'Research', href: '#research' },
+  { label: 'Education', href: '#education' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Publications', href: '#publications' },
-  { label: 'Projects',     href: '#projects' },
-  { label: 'Contact',      href: '#contact' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Contact', href: '#contact' }
 ];
 
 export default function Navbar() {
