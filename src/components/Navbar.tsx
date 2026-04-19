@@ -23,7 +23,9 @@ export default function Navbar() {
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-slate-700/50' : 'bg-transparent'
+      scrolled
+        ? 'bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-slate-700/50'
+        : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-14">
@@ -50,9 +52,9 @@ export default function Navbar() {
             onClick={() => setOpen(!open)}
             aria-label="Toggle menu"
           >
-            <div className="w-5 h-0.5 bg-current mb-1 transition-all" />
-            <div className="w-5 h-0.5 bg-current mb-1 transition-all" />
-            <div className="w-5 h-0.5 bg-current transition-all" />
+            <div className="w-5 h-0.5 bg-current mb-1" />
+            <div className="w-5 h-0.5 bg-current mb-1" />
+            <div className="w-5 h-0.5 bg-current" />
           </button>
         </div>
 
