@@ -1,46 +1,90 @@
-import * as content from "../data/content";
-
-function flatten(val: any): any[] {
-  if (!val) return [];
-  if (Array.isArray(val)) return val;
-  if (typeof val === "object") {
-    return Object.values(val).reduce((acc: any[], v: any) => Array.isArray(v) ? acc.concat(v) : acc, []);
-  }
-  return [];
-}
-
-const projs = flatten((content as any).projects || (content as any).portfolio || (content as any).works);
+import { projects } from "../data/content";
 
 export default function Projects() {
+  if (!projects || projects.length === 0) return null;
+
   return (
-    <section className="py-24 border-t border-slate-900">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mb-12">
-          <p className="section-label">Work</p>
-          <h2 className="section-heading">Projects</h2>
+    <section id="projects" className="py-20 bg-slate-900/50">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Section header */}
+        <div className="text-center mb-14">
+          <h2 className="text-3xl font-bold text-white mb-3">Projects</h2>
+          <div className="w-16 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full" />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-          {projs.map((p: any, i: number) => (
-            <div key={i} className="card flex flex-col">
-              <div className="flex items-start justify-between mb-3">
-                <div className="w-9 h-9 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-xs font-bold">
-                  P{i + 1}
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {projects.map((p, i) => (
+            <div
+              key={p.id || i}
+              className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-6 hover:border-cyan-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-cyan-500/5 hover:-translate-y-0.5 flex flex-col"
+              style={{ borderTopColor: p.color || undefined, borderTopWidth: p.color ? '2px' : undefined }}
+            >
+              {/* Header */}
+              <div className="flex items-start justify-between gap-3 mb-3">
+                <div>
+                  <h3 className="text-base font-bold text-white leading-snug">{p.title}</h3>
+                  {p.subtitle && (
+                    <p className="text-xs text-cyan-400 mt-0.5 font-medium">{p.subtitle}</p>
+                  )}
                 </div>
-                {p.github && (
-                  <a href={p.github} target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-slate-300 text-xs font-mono">GH</a>
+                {p.status && (
+                  <span className={`text-xs px-2.5 py-1 rounded-full shrink-0 font-medium ${
+                    p.status === 'Completed' || p.status === 'Published'
+                      ? 'bg-green-500/15 text-green-400 border border-green-500/25'
+                      : p.status === 'Ongoing' || p.status === 'In Progress'
+                      ? 'bg-blue-500/15 text-blue-400 border border-blue-500/25'
+                      : 'bg-slate-700 text-slate-300'
+                  }`}>
+                    {p.status}
+                  </span>
                 )}
               </div>
-              <h3 className="text-slate-200 font-semibold text-sm mb-2">{p.title || p.name || ""}</h3>
-              <p className="text-slate-500 text-xs leading-relaxed flex-1">
-                {Array.isArray(p.description) ? p.description.join(" ") : (p.description || "")}
-              </p>
-              {(p.tech || p.tags || p.technologies || []).length > 0 && (
-                <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-slate-800">
-                  {(p.tech || p.tags || p.technologies || []).slice(0, 5).map((t: string) => (
-                    <span key={t} className="tag tag-purple">{t}</span>
-                  ))}
+
+              {/* Problem */}
+              {p.problem && (
+                <div className="mb-3">
+                  <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1">Problem</p>
+                  <p className="text-sm text-slate-300 leading-relaxed">{p.problem}</p>
                 </div>
               )}
+
+              {/* Method / Approach */}
+              {p.method && (
+                <div className="mb-3">
+                  <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1">Approach</p>
+                  <p className="text-sm text-slate-300 leading-relaxed">{p.method}</p>
+                </div>
+              )}
+
+              {/* Contribution / Outcome */}
+              {p.contribution && (
+                <div className="mb-4">
+                  <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1">Outcome</p>
+                  <p className="text-sm text-slate-300 leading-relaxed">{p.contribution}</p>
+                </div>
+              )}
+
+              {/* Tools / Tags */}
+              <div className="mt-auto">
+                {p.tools && p.tools.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5 mb-2">
+                    {p.tools.map((t, j) => (
+                      <span key={j} className="text-xs px-2 py-0.5 bg-cyan-500/10 text-cyan-400 rounded border border-cyan-500/20">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                )}
+                {p.tags && p.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5">
+                    {p.tags.map((t, j) => (
+                      <span key={j} className="text-xs px-2 py-0.5 bg-slate-700/60 text-slate-400 rounded border border-slate-600/50">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           ))}
         </div>
