@@ -8,7 +8,6 @@ export default function About() {
   return (
     <section id="about" className="py-20 bg-slate-900/50">
       <div className="max-w-6xl mx-auto px-6">
-        {/* Section header */}
         <div className="text-center mb-14">
           <h2 className="text-3xl font-bold text-white mb-3">About Me</h2>
           <div className="w-16 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full" />
@@ -23,8 +22,6 @@ export default function About() {
                 ))
               : <p className="text-slate-300 leading-relaxed text-sm">{personal.summary}</p>
             }
-
-            {/* Links */}
             <div className="flex flex-wrap gap-3 pt-2">
               {personal.scholar && (
                 <a href={personal.scholar} target="_blank" rel="noopener noreferrer"
