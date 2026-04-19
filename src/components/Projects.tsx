@@ -1,19 +1,15 @@
-import * as content from"../data/content";
+import * as content from "../data/content";
 
 function flatten(val: any): any[] {
   if (!val) return [];
   if (Array.isArray(val)) return val;
   if (typeof val === "object") {
-    return Object.values(val).reduce((acc: any[], v: any) => {
-      if (Array.isArray(v)) return acc.concat(v);
-      return acc;
-    }, []);
+    return Object.values(val).reduce((acc: any[], v: any) => Array.isArray(v) ? acc.concat(v) : acc, []);
   }
   return [];
 }
 
-const raw = (content as any).projects || (content as any).portfolio || (content as any).works || [];
-const projs = flatten(raw);
+const projs = flatten((content as any).projects || (content as any).portfolio || (content as any).works);
 
 export default function Projects() {
   return (
@@ -28,19 +24,19 @@ export default function Projects() {
             <div key={i} className="card flex flex-col">
               <div className="flex items-start justify-between mb-3">
                 <div className="w-9 h-9 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 text-xs font-bold">
-                  P{i+1}
+                  P{i + 1}
                 </div>
                 {p.github && (
                   <a href={p.github} target="_blank" rel="noopener noreferrer" className="text-slate-600 hover:text-slate-300 text-xs font-mono">GH</a>
                 )}
               </div>
-              <h3 className="text-slate-200 font-semibold text-sm mb-2">{p.title||p.name||""}</h3>
+              <h3 className="text-slate-200 font-semibold text-sm mb-2">{p.title || p.name || ""}</h3>
               <p className="text-slate-500 text-xs leading-relaxed flex-1">
-                {Array.isArray(p.description) ? p.description.join(" ") : (p.description||"")}
+                {Array.isArray(p.description) ? p.description.join(" ") : (p.description || "")}
               </p>
-              {(p.tech||p.tags||p.technologies||[]).length > 0 && (
+              {(p.tech || p.tags || p.technologies || []).length > 0 && (
                 <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-slate-800">
-                  {(p.tech||p.tags||p.technologies||[]).slice(0,5).map((t: string) => (
+                  {(p.tech || p.tags || p.technologies || []).slice(0, 5).map((t: string) => (
                     <span key={t} className="tag tag-purple">{t}</span>
                   ))}
                 </div>
