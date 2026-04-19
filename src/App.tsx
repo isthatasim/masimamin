@@ -9,7 +9,7 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 
 interface EBState { hasError: boolean; error?: Error; }
-interface EBProps { children: ReactNode; name: string; }
+interface EBProps  { children: ReactNode; name: string; }
 
 class EB extends Component<EBProps, EBState> {
   constructor(props: EBProps) {
@@ -41,9 +41,7 @@ export default function App() {
       <EB name="Navbar"><Navbar /></EB>
 
       <main>
-        <EB name="Hero">
-          <Hero />
-        </EB>
+        <EB name="Hero"><Hero /></EB>
 
         <section id="about">
           <EB name="About"><About /></EB>
