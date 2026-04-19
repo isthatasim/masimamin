@@ -6,7 +6,6 @@ export default function Education() {
   return (
     <section id="education" className="py-20 bg-slate-950">
       <div className="max-w-5xl mx-auto px-6">
-        {/* Section header */}
         <div className="text-center mb-14">
           <h2 className="text-3xl font-bold text-white mb-3">Education</h2>
           <div className="w-16 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full" />
