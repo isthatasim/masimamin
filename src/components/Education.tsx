@@ -1,56 +1,70 @@
-import * as content from "../data/content";
-type Deg={degree?:string;title?:string;name?:string;field?:string;major?:string;subject?:string;program?:string;institution?:string;university?:string;school?:string;organization?:string;period?:string;date?:string;year?:string|number;duration?:string;location?:string;country?:string;description?:string|string[];thesis?:string;dissertation?:string;gpa?:string|number;grade?:string;highlights?:string[];achievements?:string[];tags?:string[];skills?:string[];};
-function getEdu():Deg[]{
-  const raw=(content as any).education||(content as any).educations||(content as any).degrees||(content as any).academic||(content as any).academicBackground||[];
-  if(Array.isArray(raw))return raw;
-  if(typeof raw==="object")return Object.values(raw).reduce((a:Deg[],v:any)=>Array.isArray(v)?a.concat(v):a,[]);
-  return[];
-}
-const degrees=getEdu();
-const LBL=["PhD","MSc","BSc","MA","BA","MEng","BEng"];
-function lbl(d:Deg,i:number){const t=(d.degree||d.title||d.name||"").toLowerCase();for(const l of LBL)if(t.includes(l.toLowerCase()))return l;return LBL[i]||"Deg";}
-export default function Education(){
-  if(!degrees.length)return null;
-  return(
-    <section className="py-24 border-t border-slate-900" id="education">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mb-12">
-          <p className="section-label">Academic Background</p>
-          <h2 className="section-heading">Education</h2>
+import { education } from "../data/content";
+
+export default function Education() {
+  if (!education || education.length === 0) return null;
+
+  return (
+    <section id="education" className="py-20 bg-slate-950">
+      <div className="max-w-5xl mx-auto px-6">
+        {/* Section header */}
+        <div className="text-center mb-14">
+          <h2 className="text-3xl font-bold text-white mb-3">Education</h2>
+          <div className="w-16 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full" />
         </div>
+
         <div className="space-y-6">
-          {degrees.map((d:Deg,i:number)=>(
-            <div key={i} className="card hover:border-cyan-500/30">
-              <div className="flex flex-wrap items-start justify-between gap-4">
-                <div className="flex gap-4 flex-1 min-w-0">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center">
-                    <span className="text-cyan-400 font-bold text-xs font-mono">{lbl(d,i)}</span>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-slate-100 font-semibold text-base">{d.degree||d.title||d.name||""}</h3>
-                    {(d.field||d.major||d.subject||d.program)&&<p className="text-cyan-400 text-sm mt-0.5">{d.field||d.major||d.subject||d.program}</p>}
-                    <p className="text-slate-400 text-sm mt-1">{d.institution||d.university||d.school||d.organization||""}{(d.location||d.country)&&<span className="text-slate-600"> &middot; {d.location||d.country}</span>}</p>
-                    {(d.thesis||d.dissertation)&&<p className="text-slate-500 text-xs mt-2 italic">Thesis: {d.thesis||d.dissertation}</p>}
-                    {d.description&&<p className="text-slate-400 text-sm mt-2 leading-relaxed">{Array.isArray(d.description)?d.description.join(" "):d.description}</p>}
-                    {(d.highlights||d.achievements||[]).length>0&&(
-                      <ul className="mt-3 space-y-1">
-                        {(d.highlights||d.achievements||[]).map((h:string,j:number)=>(
-                          <li key={j} className="text-slate-500 text-xs flex gap-2"><span className="text-cyan-500">&middot;</span>{h}</li>
-                        ))}
-                      </ul>
-                    )}
-                    {(d.tags||d.skills||[]).length>0&&(
-                      <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-slate-800">
-                        {(d.tags||d.skills||[]).map((t:string)=>(<span key={t} className="tag tag-cyan">{t}</span>))}
-                      </div>
-                    )}
-                  </div>
+          {education.map((d, i) => (
+            <div key={d.id || i}
+                 className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-6 hover:border-cyan-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/5">
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-4">
+                <div>
+                  <h3 className="text-lg font-bold text-white">{d.degree}</h3>
+                  {d.specialization && (
+                    <p className="text-cyan-400 font-medium text-sm mt-0.5">{d.specialization}</p>
+                  )}
+                  <p className="text-slate-300 text-sm mt-1">
+                    {d.institution}
+                    {d.department && <span className="text-slate-400"> — {d.department}</span>}
+                  </p>
+                  {d.location && (
+                    <p className="text-slate-500 text-xs mt-0.5">📍 {d.location}</p>
+                  )}
                 </div>
-                <div className="flex flex-col items-end gap-2 flex-shrink-0">
-                  {(d.period||d.date||d.duration||d.year)&&<span className="tag tag-blue">{d.period||d.date||d.duration||String(d.year)}</span>}
-                  {(d.gpa||d.grade)&&<span className="tag tag-green">GPA: {d.gpa||d.grade}</span>}
+                <div className="flex flex-col items-start md:items-end gap-1.5 shrink-0">
+                  <span className="text-xs px-3 py-1 bg-slate-700 text-slate-300 rounded-full">{d.period}</span>
+                  {d.gpa && (
+                    <span className="text-xs px-3 py-1 bg-cyan-500/15 text-cyan-400 rounded-full border border-cyan-500/25">
+                      GPA: {d.gpa}
+                    </span>
+                  )}
                 </div>
               </div>
+
+              {d.thesis && (
+                <div className="mb-3 p-3 bg-slate-900/50 rounded-lg border-l-2 border-cyan-500/50">
+                  <p className="text-xs text-slate-400 font-medium mb-0.5">Thesis</p>
+                  <p className="text-sm text-slate-300 italic">"{d.thesis}"</p>
+                </div>
+              )}
+
+              {d.scholarship && (
+                <div className="mb-3">
+                  <span className="text-xs px-2 py-1 bg-amber-500/15 border border-amber-500/30 text-amber-400 rounded-full">
+                    🏆 {d.scholarship}
+                  </span>
+                </div>
+              )}
+
+              {d.highlights && d.highlights.length > 0 && (
+                <ul className="space-y-1.5">
+                  {d.highlights.map((h, j) => (
+                    <li key={j} className="flex items-start gap-2 text-sm text-slate-300">
+                      <span className="text-cyan-500 mt-1 text-xs shrink-0">▸</span>
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           ))}
         </div>
