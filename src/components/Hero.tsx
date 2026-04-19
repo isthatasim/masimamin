@@ -7,7 +7,7 @@ const SOCIAL: SocialLink[] = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/masim40",                           color: "#3b82f6", icon: "in" },
   { label: "GitHub",   href: "https://github.com/isthatasim",                                color: "#8b5cf6", icon: "GH" },
   { label: "Publons",  href: "https://www.webofscience.com/wos/author/record/AAF-2199-2021",  color: "#10b981", icon: "WS" },
-  { label: "Email",    href: `mailto:${personal.email}`,                                     color: "#f59e0b", icon: "@"  },
+  { label: "Email",    href: "mailto:masim.amin@yahoo.com",                                     color: "#f59e0b", icon: "@"  },
 ];
 
 export default function Hero() {
