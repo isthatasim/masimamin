@@ -6,22 +6,17 @@ export default function Experience() {
   return (
     <section id="experience" className="py-20 bg-slate-900/50">
       <div className="max-w-5xl mx-auto px-6">
-        {/* Section header */}
         <div className="text-center mb-14">
           <h2 className="text-3xl font-bold text-white mb-3">Experience</h2>
           <div className="w-16 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full" />
         </div>
 
         <div className="relative">
-          {/* Timeline line */}
           <div className="absolute left-6 top-0 bottom-0 w-px bg-slate-700/50 hidden md:block" />
-
           <div className="space-y-8">
             {experience.map((e, i) => (
               <div key={e.id || i} className="relative md:pl-16">
-                {/* Timeline dot */}
                 <div className="absolute left-4 top-6 w-4 h-4 rounded-full border-2 border-cyan-400 bg-slate-900 hidden md:block" />
-
                 <div className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-6 hover:border-cyan-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/5">
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-4">
                     <div>
