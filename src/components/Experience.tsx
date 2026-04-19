@@ -1,19 +1,15 @@
-import * as content from"../data/content";
+import * as content from "../data/content";
 
 function flatten(val: any): any[] {
   if (!val) return [];
   if (Array.isArray(val)) return val;
   if (typeof val === "object") {
-    return Object.values(val).reduce((acc: any[], v: any) => {
-      if (Array.isArray(v)) return acc.concat(v);
-      return acc;
-    }, []);
+    return Object.values(val).reduce((acc: any[], v: any) => Array.isArray(v) ? acc.concat(v) : acc, []);
   }
   return [];
 }
 
-const raw = (content as any).experience || (content as any).experiences || (content as any).workExperience || [];
-const exps = flatten(raw);
+const exps = flatten((content as any).experience || (content as any).experiences || (content as any).workExperience);
 
 export default function Experience() {
   return (
@@ -32,27 +28,31 @@ export default function Experience() {
                 <div className="card hover:border-cyan-500/30">
                   <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
                     <div>
-                      <h3 className="text-slate-200 font-semibold">{e.title||e.role||e.position||e.name||""}</h3>
-                      <div className="text-cyan-400 text-sm">{e.organization||e.company||e.institution||e.employer||""}</div>
-                      {e.location && <span className="text-slate-600 text-xs"> · {e.location}</span>}
+                      <h3 className="text-slate-200 font-semibold">{e.title || e.role || e.position || e.name || ""}</h3>
+                      <div className="text-cyan-400 text-sm">{e.organization || e.company || e.institution || e.employer || ""}</div>
+                      {e.location && <span className="text-slate-600 text-xs"> &middot; {e.location}</span>}
                     </div>
-                    <span className="tag tag-blue flex-shrink-0">{e.period||e.date||e.duration||e.year||""}</span>
+                    <span className="tag tag-blue flex-shrink-0">{e.period || e.date || e.duration || e.year || ""}</span>
                   </div>
                   {e.description && (
                     <p className="text-slate-400 text-sm leading-relaxed">
                       {Array.isArray(e.description) ? e.description.join(" ") : e.description}
                     </p>
                   )}
-                  {(e.highlights||e.achievements||[]).length > 0 && (
+                  {(e.highlights || e.achievements || []).length > 0 && (
                     <ul className="mt-3 space-y-1">
-                      {(e.highlights||e.achievements||[]).map((h: string, j: number) => (
-                        <li key={j} className="text-slate-500 text-xs flex gap-2"><span className="text-cyan-500">·</span>{h}</li>
+                      {(e.highlights || e.achievements || []).map((h: string, j: number) => (
+                        <li key={j} className="text-slate-500 text-xs flex gap-2">
+                          <span className="text-cyan-500">&middot;</span>{h}
+                        </li>
                       ))}
                     </ul>
                   )}
-                  {(e.tags||e.skills||[]).length > 0 && (
+                  {(e.tags || e.skills || []).length > 0 && (
                     <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-slate-800">
-                      {(e.tags||e.skills||[]).map((t: string) => <span key={t} className="tag tag-cyan">{t}</span>)}
+                      {(e.tags || e.skills || []).map((t: string) => (
+                        <span key={t} className="tag tag-cyan">{t}</span>
+                      ))}
                     </div>
                   )}
                 </div>
