@@ -13,28 +13,48 @@ type Buckets = { journals: Pub[]; conferences: Pub[]; ongoing: Pub[]; other: Pub
 
 function getPubs(): Buckets {
   const out: Buckets = { journals: [], conferences: [], ongoing: [], other: [] };
-  const raw = (content as any).publications;
+
+  // Try every plausible top-level key
+  const raw = (content as any).publications
+    || (content as any).publication
+    || (content as any).papers
+    || (content as any).research
+    || (content as any).academicWork
+    || null;
+
   if (!raw) return out;
+
+  // Shape A: object with category sub-arrays { journals:[...], conferences:[...], ... }
   if (!Array.isArray(raw) && typeof raw === "object") {
     const r = raw as Record<string, any>;
-    out.journals    = Array.isArray(r.journals)    ? r.journals    : Array.isArray(r.journal)    ? r.journal    : [];
-    out.conferences = Array.isArray(r.conferences) ? r.conferences : Array.isArray(r.conference) ? r.conference : [];
+    out.journals    = Array.isArray(r.journals)    ? r.journals
+                    : Array.isArray(r.journal)     ? r.journal
+                    : [];
+    out.conferences = Array.isArray(r.conferences) ? r.conferences
+                    : Array.isArray(r.conference)  ? r.conference
+                    : [];
     out.ongoing     = Array.isArray(r.ongoing)     ? r.ongoing
                     : Array.isArray(r.underReview)  ? r.underReview
                     : Array.isArray(r.preprints)    ? r.preprints
+                    : Array.isArray(r.inProgress)   ? r.inProgress
                     : [];
-    out.other       = Array.isArray(r.other)       ? r.other       : Array.isArray(r.books)      ? r.books      : [];
+    out.other       = Array.isArray(r.other)       ? r.other
+                    : Array.isArray(r.books)        ? r.books
+                    : Array.isArray(r.chapters)     ? r.chapters
+                    : [];
     return out;
   }
+
+  // Shape B: flat array — split by type field or venue clues
   if (Array.isArray(raw)) {
     (raw as Pub[]).forEach(p => {
       const t = ((p.type || p.status || "") as string).toLowerCase();
-      if (t.includes("journal"))                                                      out.journals.push(p);
-      else if (t.includes("conference") || t.includes("workshop"))                   out.conferences.push(p);
-      else if (t.includes("ongoing") || t.includes("review") || t.includes("submit")) out.ongoing.push(p);
-      else if (p.journal || (p.venue && !p.conference))                              out.journals.push(p);
-      else if (p.conference || p.booktitle)                                          out.conferences.push(p);
-      else                                                                            out.other.push(p);
+      if (t.includes("journal"))                                                         out.journals.push(p);
+      else if (t.includes("conference") || t.includes("workshop"))                      out.conferences.push(p);
+      else if (t.includes("ongoing") || t.includes("review") || t.includes("preprint") || t.includes("submit")) out.ongoing.push(p);
+      else if (p.journal || (p.venue && !p.conference))                                 out.journals.push(p);
+      else if (p.conference || p.booktitle)                                             out.conferences.push(p);
+      else                                                                               out.other.push(p);
     });
   }
   return out;
@@ -94,7 +114,7 @@ function CatSection({ title, color, badge, pubs }: CatProps) {
 
 export default function Publications() {
   return (
-    <section className="py-24 border-t border-slate-900">
+    <section className="py-24 border-t border-slate-900" id="publications">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-wrap items-end justify-between gap-4 mb-12">
           <div>
@@ -118,7 +138,7 @@ export default function Publications() {
         <CatSection title="Ongoing / Under Review" color="#f59e0b" badge="~"  pubs={cats.ongoing} />
         <CatSection title="Other Publications"     color="#10b981" badge="+"  pubs={cats.other} />
         {total === 0 && (
-          <p className="text-slate-600 text-sm text-center py-12">No publications data found.</p>
+          <p className="text-slate-600 text-sm text-center py-12">No publications data found in content.ts.</p>
         )}
       </div>
     </section>
