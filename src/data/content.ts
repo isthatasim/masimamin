@@ -13,9 +13,10 @@ export const personal = {
   location: 'Genoa, Italy',
   email: 'masim.amin@yahoo.com',
   phone: '+39 389 7657633',
-  linkedin: 'https://www.linkedin.com/in/masim40',
+  linkedin: 'https://www.linkedin.com/in/masim40/',
   github: 'https://github.com/isthatasim',
-  scholar: 'https://scholar.google.com/citations?user=qq7dHikAAAAJ&hl=en', // TODO: replace with actual Scholar ID
+  scholar: 'https://scholar.google.fr/citations?user=qq7dHikAAAAJ&hl=en',
+  orcid: "https://orcid.org/0000-0001-7480-1845", // TODO: replace with actual Scholar ID
   website: 'https://sites.google.com/view/masimamin/home',
   publons: 'https://www.webofscience.com/wos/author/record/AAF-2199-2021',
   cvUrl: '/masimamin/Asim_Amin_CV_Final.pdf',
