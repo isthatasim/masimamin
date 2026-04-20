@@ -2,12 +2,15 @@ import { useEffect } from "react";
 import { personal } from "../data/content";
 
 const SOCIAL = [
-  { label: "Scholar",      href: "https://scholar.google.com/citations?user=qq7dHikAAAAJ&hl=en", color: "#06b6d4", icon: "GS" },
-  { label: "ResearchGate", href: "https://www.researchgate.net/profile/Muhammad-Asim-Amin-2",  color: "#00ccbb", icon: "RG" },
-  { label: "GitHub",       href: "https://github.com/isthatasim",                               color: "#8b5cf6", icon: "GH" },
-  { label: "LinkedIn",     href: "https://www.linkedin.com/in/masim40",                         color: "#3b82f6", icon: "in" },
-  { label: "Email",        href: `mailto:${personal.email}`,                                   color: "#f59e0b", icon: "@"  },
+  { label: "Scholar",      href: "https://scholar.google.fr/citations?user=qq7dHikAAAAJ&hl=en",           color: "#06b6d4", icon: "GS" },
+  { label: "ResearchGate", href: "https://www.researchgate.net/profile/M-Asim-Amin",                       color: "#00ccbb", icon: "RG" },
+  { label: "WoS",          href: "https://www.webofscience.com/wos/author/record/AAF-2199-2021",           color: "#10b981", icon: "WS" },
+  { label: "ORCID",        href: "https://orcid.org/0000-0001-7480-1845",                                  color: "#a6ce39", icon: "iD" },
+  { label: "LinkedIn",     href: "https://www.linkedin.com/in/masim40/",                                   color: "#3b82f6", icon: "in" },
+  { label: "GitHub",       href: "https://github.com/isthatasim",                                          color: "#8b5cf6", icon: "GH" },
+  { label: "Email",        href: `mailto:${personal.email}`,                                              color: "#f59e0b", icon: "@"  },
 ];
+
 const TAGS = [
   "Reinforcement Learning","Smart Grids","Energy Communities",
   "Federated Learning","Multi-Agent Systems","Demand Response",
@@ -38,7 +41,7 @@ export default function Hero() {
   }, []);
 
   const rawTitle = personal.title || "";
-  const parts = rawTitle.split(/[·\u00b7—\u2014–\u2013|]/);
+  const parts = rawTitle.split(/[··——––|]/);
   const role = parts[0]?.trim() || rawTitle;
   const affiliation = parts[1]?.trim() || "";
 
@@ -50,15 +53,13 @@ export default function Hero() {
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute rounded-full" style={{width:600,height:600,background:"radial-gradient(circle,rgba(6,182,212,.08) 0%,transparent 70%)",top:"-15%",right:"0%"}}/>
         <div className="absolute rounded-full" style={{width:400,height:400,background:"radial-gradient(circle,rgba(99,102,241,.06) 0%,transparent 70%)",bottom:"10%",left:"-5%"}}/>
-        <div className="absolute rounded-full" style={{width:200,height:200,background:"radial-gradient(circle,rgba(6,182,212,.04) 0%,transparent 70%)",top:"40%",left:"40%"}}/>
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-28 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-          {/* ── LEFT ── */}
+          {/* LEFT */}
           <div className="order-2 lg:order-1">
-            {/* Badges */}
             <div className="hero-line flex flex-wrap gap-2 mb-6">
               {[
                 {l:"PhD Researcher",        bg:"rgba(6,182,212,.12)",  bo:"rgba(6,182,212,.45)",  c:"#67e8f9"},
@@ -73,22 +74,21 @@ export default function Hero() {
 
             <div className="hero-line">
               <p className="text-xs font-bold tracking-[.35em] uppercase mb-2" style={{color:"#06b6d4"}}>Hello, I am</p>
-              <h1 className="font-black text-white leading-[1.05] mb-3" style={{fontSize:"clamp(2.6rem,5.5vw,4rem)",letterSpacing:"-0.02em"}}>
+              <h1 className="font-black text-white leading-[1.05] mb-3"
+                style={{fontSize:"clamp(2.6rem,5.5vw,4rem)",letterSpacing:"-0.02em"}}>
                 {personal.name}
               </h1>
             </div>
 
             <div className="hero-line mb-5">
               <p className="font-bold mb-1" style={{fontSize:"1.2rem",color:"#22d3ee",letterSpacing:"-0.01em"}}>{role}</p>
-              {affiliation && (
-                <p className="text-sm font-medium" style={{color:"#475569"}}>{affiliation}</p>
-              )}
+              {affiliation && <p className="text-sm font-medium" style={{color:"#475569"}}>{affiliation}</p>}
             </div>
 
             {heroSummary && (
               <div className="hero-line mb-6">
                 <p className="text-[0.93rem] leading-[1.75] max-w-xl" style={{color:"#94a3b8"}}>
-                  {heroSummary.length > 260 ? heroSummary.slice(0, 260) + "..." : heroSummary}
+                  {heroSummary.length > 260 ? heroSummary.slice(0,260)+"..." : heroSummary}
                 </p>
               </div>
             )}
@@ -131,7 +131,7 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* ── RIGHT — Avatar ── */}
+          {/* RIGHT — Avatar */}
           <div className="order-1 lg:order-2 flex flex-col items-center gap-5">
             <div style={{animation:"float-hero 7s ease-in-out infinite"}}>
               <div className="relative">
@@ -139,25 +139,17 @@ export default function Hero() {
                   style={{background:"radial-gradient(circle,rgba(6,182,212,.3) 0%,rgba(59,130,246,.15) 55%,transparent 80%)"}}/>
                 <div className="relative overflow-hidden rounded-full"
                   style={{width:"clamp(255px,30vw,320px)",height:"clamp(255px,30vw,320px)",
-                    border:"3px solid rgba(6,182,212,.8)",animation:"glow-ring 5s ease-in-out infinite",
-                    boxShadow:"inset 0 0 40px rgba(6,182,212,.08)"}}>
+                    border:"3px solid rgba(6,182,212,.8)",animation:"glow-ring 5s ease-in-out infinite"}}>
                   <div className="absolute inset-0" style={{background:"linear-gradient(145deg,#060d1e,#0b1a30)"}}>
                     <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
                       <g stroke="rgba(6,182,212,.18)" strokeWidth="0.5" fill="none">
-                        <line x1="15" y1="25" x2="55" y2="8"/>
-                        <line x1="55" y1="8"  x2="88" y2="35"/>
-                        <line x1="15" y1="25" x2="45" y2="58"/>
-                        <line x1="45" y1="58" x2="78" y2="78"/>
-                        <line x1="78" y1="78" x2="88" y2="35"/>
-                        <line x1="45" y1="58" x2="88" y2="35"/>
-                        <line x1="8"  y1="68" x2="45" y2="58"/>
-                        <line x1="15" y1="25" x2="8"  y2="68"/>
-                        <line x1="35" y1="12" x2="55" y2="8"/>
-                        <line x1="68" y1="52" x2="78" y2="78"/>
-                        <line x1="55" y1="8"  x2="68" y2="52"/>
-                        <line x1="8"  y1="68" x2="25" y2="88"/>
-                        <line x1="25" y1="88" x2="45" y2="58"/>
-                        <line x1="35" y1="12" x2="15" y2="25"/>
+                        <line x1="15" y1="25" x2="55" y2="8"/>  <line x1="55" y1="8"  x2="88" y2="35"/>
+                        <line x1="15" y1="25" x2="45" y2="58"/> <line x1="45" y1="58" x2="78" y2="78"/>
+                        <line x1="78" y1="78" x2="88" y2="35"/> <line x1="45" y1="58" x2="88" y2="35"/>
+                        <line x1="8"  y1="68" x2="45" y2="58"/> <line x1="15" y1="25" x2="8"  y2="68"/>
+                        <line x1="35" y1="12" x2="55" y2="8"/>  <line x1="68" y1="52" x2="78" y2="78"/>
+                        <line x1="55" y1="8"  x2="68" y2="52"/> <line x1="8"  y1="68" x2="25" y2="88"/>
+                        <line x1="25" y1="88" x2="45" y2="58"/> <line x1="35" y1="12" x2="15" y2="25"/>
                       </g>
                       <g fill="rgba(6,182,212,.9)">
                         <circle cx="15" cy="25" r="1.6"/><circle cx="55" cy="8"  r="1.6"/>
@@ -174,13 +166,13 @@ export default function Hero() {
                       onError={(e)=>{(e.target as HTMLImageElement).style.display="none";}}/>
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center"
-                      style={{fontSize:"5rem",fontWeight:900,color:"#06b6d4",letterSpacing:"-0.04em"}}>
+                      style={{fontSize:"5rem",fontWeight:900,color:"#06b6d4"}}>
                       {personal.initials || "MAA"}
                     </div>
                   )}
                 </div>
                 <div className="absolute w-3.5 h-3.5 rounded-full"
-                  style={{background:"#06b6d4",top:"-5px",left:"50%",transform:"translateX(-50%)",boxShadow:"0 0 12px #06b6d4,0 0 24px rgba(6,182,212,.5)"}}/>
+                  style={{background:"#06b6d4",top:"-5px",left:"50%",transform:"translateX(-50%)",boxShadow:"0 0 12px #06b6d4"}}/>
                 <div className="absolute w-2.5 h-2.5 rounded-full"
                   style={{background:"#3b82f6",bottom:"12px",right:"-5px",boxShadow:"0 0 8px #3b82f6"}}/>
                 <div className="absolute w-2.5 h-2.5 rounded-full"
@@ -201,10 +193,12 @@ export default function Hero() {
               style={{background:"rgba(6,182,212,.06)",border:"1px solid rgba(6,182,212,.2)"}}>
               <p className="text-[10px] font-bold uppercase tracking-widest mb-2" style={{color:"rgba(6,182,212,.6)"}}>Current Focus</p>
               <p className="text-xs leading-relaxed" style={{color:"#94a3b8"}}>
-                AI-driven optimization of local energy communities under <span style={{color:"#67e8f9",fontWeight:600}}>Horizon Europe CLOE</span>
+                AI-driven optimization of local energy communities under{" "}
+                <span style={{color:"#67e8f9",fontWeight:600}}>Horizon Europe CLOE</span>
               </p>
             </div>
           </div>
+
         </div>
       </div>
     </section>
