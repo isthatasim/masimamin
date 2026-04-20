@@ -12,14 +12,10 @@ export default function About() {
           <h2 className="text-3xl font-bold text-white mb-3">About Me</h2>
           <div className="w-16 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full" />
         </div>
-
         <div className="grid lg:grid-cols-3 gap-10">
-          {/* Bio */}
           <div className="lg:col-span-2 space-y-4">
             {paragraphs.length > 0
-              ? paragraphs.map((p, i) => (
-                  <p key={i} className="text-slate-300 leading-relaxed text-sm">{p}</p>
-                ))
+              ? paragraphs.map((p, i) => <p key={i} className="text-slate-300 leading-relaxed text-sm">{p}</p>)
               : <p className="text-slate-300 leading-relaxed text-sm">{personal.summary}</p>
             }
             <div className="flex flex-wrap gap-3 pt-2">
@@ -49,8 +45,6 @@ export default function About() {
               )}
             </div>
           </div>
-
-          {/* Stats */}
           <div className="space-y-4">
             {stats && stats.map((s, i) => (
               <div key={i} className="bg-slate-800/60 border border-slate-700/50 rounded-xl p-5 text-center hover:border-cyan-500/30 transition-colors">
