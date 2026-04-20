@@ -4,98 +4,84 @@ export default function About() {
   const paragraphs = (personal.summary || "").split(/\n+/).filter(Boolean);
 
   return (
-    <section id="about" className="py-20" style={{ background: "rgba(15,23,42,0.6)" }}>
+    <section id="about" className="py-24" style={{background:"rgba(10,15,30,0.7)"}}>
       <div className="max-w-6xl mx-auto px-6">
-        <div className="text-center mb-14">
-          <h2 className="text-3xl font-bold text-white mb-3">About Me</h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full" />
+
+        {/* Section header */}
+        <div className="text-center mb-16">
+          <p className="text-xs font-bold tracking-[.3em] uppercase mb-3" style={{color:"#06b6d4"}}>Get to know me</p>
+          <h2 className="text-4xl font-black text-white mb-4" style={{letterSpacing:"-0.02em"}}>About Me</h2>
+          <div className="w-16 h-1 rounded-full mx-auto mb-4" style={{background:"linear-gradient(90deg,#06b6d4,#3b82f6)"}}/>
+          <p className="text-sm max-w-lg mx-auto" style={{color:"#64748b"}}>
+            Researcher, engineer, and problem-solver working at the intersection of AI and sustainable energy systems.
+          </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-12">
-          {/* Biography — full paragraphs */}
-          <div className="lg:col-span-2">
-            {paragraphs.length > 0 ? (
-              <div className="space-y-4">
-                {paragraphs.map((p, i) => (
-                  <p key={i} className="text-slate-300 leading-relaxed text-[0.925rem]">{p}</p>
-                ))}
-              </div>
-            ) : (
-              <p className="text-slate-400 italic">Summary not available.</p>
-            )}
+        <div className="grid lg:grid-cols-3 gap-12 items-start">
 
-            {/* Profile links row */}
-            <div className="flex flex-wrap gap-3 mt-8">
-              {personal.scholar && (
-                <a href={personal.scholar} target="_blank" rel="noopener noreferrer"
-                   className="flex items-center gap-1.5 text-xs px-4 py-2 rounded-full font-medium transition-all hover:scale-105"
-                   style={{background:"rgba(6,182,212,.1)",border:"1px solid rgba(6,182,212,.35)",color:"#67e8f9"}}>
-                  Google Scholar ↗
+          {/* Biography */}
+          <div className="lg:col-span-2 space-y-5">
+            {paragraphs.length > 0
+              ? paragraphs.map((p, i) => (
+                  <p key={i} className="leading-[1.85] text-[0.925rem]" style={{color:"#94a3b8"}}>{p}</p>
+                ))
+              : <p className="italic" style={{color:"#475569"}}>Biography not available.</p>
+            }
+
+            {/* Profile links */}
+            <div className="flex flex-wrap gap-3 pt-3">
+              {[
+                {href: personal.scholar,  label: "Google Scholar", bg:"rgba(6,182,212,.1)",  bo:"rgba(6,182,212,.35)",  c:"#67e8f9"},
+                {href: personal.linkedin, label: "LinkedIn",        bg:"rgba(59,130,246,.1)", bo:"rgba(59,130,246,.35)", c:"#93c5fd"},
+                {href: personal.publons,  label: "Web of Science",  bg:"rgba(16,185,129,.1)", bo:"rgba(16,185,129,.35)", c:"#6ee7b7"},
+                {href: personal.github,   label: "GitHub",          bg:"rgba(139,92,246,.1)", bo:"rgba(139,92,246,.35)", c:"#c4b5fd"},
+              ].filter(l=>l.href).map(l=>(
+                <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer"
+                   className="text-xs px-4 py-2 rounded-full font-semibold transition-all duration-200 hover:scale-105 hover:brightness-110"
+                   style={{background:l.bg,border:`1px solid ${l.bo}`,color:l.c}}>
+                  {l.label} ↗
                 </a>
-              )}
-              {personal.linkedin && (
-                <a href={personal.linkedin} target="_blank" rel="noopener noreferrer"
-                   className="flex items-center gap-1.5 text-xs px-4 py-2 rounded-full font-medium transition-all hover:scale-105"
-                   style={{background:"rgba(59,130,246,.1)",border:"1px solid rgba(59,130,246,.35)",color:"#93c5fd"}}>
-                  LinkedIn ↗
-                </a>
-              )}
-              {personal.publons && (
-                <a href={personal.publons} target="_blank" rel="noopener noreferrer"
-                   className="flex items-center gap-1.5 text-xs px-4 py-2 rounded-full font-medium transition-all hover:scale-105"
-                   style={{background:"rgba(16,185,129,.1)",border:"1px solid rgba(16,185,129,.35)",color:"#6ee7b7"}}>
-                  Web of Science ↗
-                </a>
-              )}
-              {personal.github && (
-                <a href={personal.github} target="_blank" rel="noopener noreferrer"
-                   className="flex items-center gap-1.5 text-xs px-4 py-2 rounded-full font-medium transition-all hover:scale-105"
-                   style={{background:"rgba(139,92,246,.1)",border:"1px solid rgba(139,92,246,.35)",color:"#c4b5fd"}}>
-                  GitHub ↗
-                </a>
-              )}
+              ))}
               {personal.email && (
                 <a href={`mailto:${personal.email}`}
-                   className="flex items-center gap-1.5 text-xs px-4 py-2 rounded-full font-medium transition-all hover:scale-105"
+                   className="text-xs px-4 py-2 rounded-full font-semibold transition-all duration-200 hover:scale-105"
                    style={{background:"rgba(245,158,11,.1)",border:"1px solid rgba(245,158,11,.35)",color:"#fcd34d"}}>
                   {personal.email}
                 </a>
               )}
-              {/* phone intentionally removed */}
             </div>
           </div>
 
-          {/* Stats + quick info sidebar */}
+          {/* Sidebar: stats + quick info */}
           <div className="flex flex-col gap-4">
             {(stats || []).map((s, i) => (
-              <div key={i}
-                className="rounded-xl p-5 text-center border border-slate-700/40 hover:border-cyan-500/40 transition-colors"
-                style={{ background: "rgba(30,41,59,0.55)" }}>
-                <div className="text-3xl font-extrabold text-cyan-400 mb-1">{s.value}</div>
+              <div key={i} className="rounded-2xl p-5 text-center transition-all duration-200 hover:-translate-y-0.5"
+                style={{background:"rgba(15,23,42,0.7)",border:"1px solid rgba(100,116,139,.25)",boxShadow:"0 2px 20px rgba(0,0,0,.3)"}}>
+                <div className="text-3xl font-black mb-1" style={{color:"#06b6d4",letterSpacing:"-0.03em"}}>{s.value}</div>
                 <div className="text-sm font-semibold text-white mb-0.5">{s.label}</div>
-                {s.sublabel && <div className="text-xs text-slate-400">{s.sublabel}</div>}
+                {s.sublabel && <div className="text-xs" style={{color:"#64748b"}}>{s.sublabel}</div>}
               </div>
             ))}
 
             {(personal.location || personal.website || personal.cvUrl) && (
-              <div className="rounded-xl p-5 border border-slate-700/40 space-y-3"
-                style={{background:"rgba(30,41,59,0.55)"}}>
-                <p className="text-xs font-bold text-slate-400 uppercase tracking-wide">Quick Info</p>
+              <div className="rounded-2xl p-5 space-y-3"
+                style={{background:"rgba(15,23,42,0.7)",border:"1px solid rgba(100,116,139,.25)"}}>
+                <p className="text-xs font-bold uppercase tracking-widest" style={{color:"#475569"}}>Quick Info</p>
                 {personal.location && (
-                  <div className="flex items-start gap-2 text-xs text-slate-300">
-                    <span className="text-cyan-400 mt-0.5">📍</span> {personal.location}
-                  </div>
+                  <p className="flex items-start gap-2 text-xs" style={{color:"#94a3b8"}}>
+                    <span style={{color:"#06b6d4"}}>📍</span>{personal.location}
+                  </p>
                 )}
                 {personal.website && (
                   <a href={personal.website} target="_blank" rel="noopener noreferrer"
-                    className="flex items-start gap-2 text-xs text-cyan-400 hover:text-cyan-300">
-                    <span>🌐</span> Personal Website ↗
+                    className="flex items-start gap-2 text-xs transition-colors hover:text-cyan-300" style={{color:"#06b6d4"}}>
+                    <span>🌐</span>Personal Website ↗
                   </a>
                 )}
                 {personal.cvUrl && (
                   <a href={personal.cvUrl} target="_blank" rel="noopener noreferrer"
-                    className="flex items-start gap-2 text-xs text-cyan-400 hover:text-cyan-300">
-                    <span>📄</span> Download CV ↗
+                    className="flex items-start gap-2 text-xs transition-colors hover:text-cyan-300" style={{color:"#06b6d4"}}>
+                    <span>📄</span>Download CV ↗
                   </a>
                 )}
               </div>
