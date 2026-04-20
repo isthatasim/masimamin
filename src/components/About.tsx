@@ -3,11 +3,18 @@ import { personal, stats } from "../data/content";
 export default function About() {
   const paragraphs = (personal.summary || "").split(/\n+/).filter(Boolean);
 
+  const PROFILE_LINKS = [
+    { href: "https://scholar.google.fr/citations?user=qq7dHikAAAAJ&hl=en",         label: "Google Scholar",  bg:"rgba(6,182,212,.1)",  bo:"rgba(6,182,212,.35)",  c:"#67e8f9" },
+    { href: "https://www.linkedin.com/in/masim40/",                                  label: "LinkedIn",         bg:"rgba(59,130,246,.1)", bo:"rgba(59,130,246,.35)", c:"#93c5fd" },
+    { href: "https://www.webofscience.com/wos/author/record/AAF-2199-2021",          label: "Web of Science",  bg:"rgba(16,185,129,.1)", bo:"rgba(16,185,129,.35)", c:"#6ee7b7" },
+    { href: "https://orcid.org/0000-0001-7480-1845",                                 label: "ORCID",           bg:"rgba(166,206,57,.1)", bo:"rgba(166,206,57,.35)", c:"#d4ed6e" },
+    { href: "https://www.researchgate.net/profile/M-Asim-Amin",                      label: "ResearchGate",    bg:"rgba(0,204,187,.1)",  bo:"rgba(0,204,187,.35)",  c:"#5eead4" },
+    { href: personal.github || "https://github.com/isthatasim",                      label: "GitHub",          bg:"rgba(139,92,246,.1)", bo:"rgba(139,92,246,.35)", c:"#c4b5fd" },
+  ];
+
   return (
     <section id="about" className="py-24" style={{background:"rgba(10,15,30,0.7)"}}>
       <div className="max-w-6xl mx-auto px-6">
-
-        {/* Section header */}
         <div className="text-center mb-16">
           <p className="text-xs font-bold tracking-[.3em] uppercase mb-3" style={{color:"#06b6d4"}}>Get to know me</p>
           <h2 className="text-4xl font-black text-white mb-4" style={{letterSpacing:"-0.02em"}}>About Me</h2>
@@ -18,8 +25,6 @@ export default function About() {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-12 items-start">
-
-          {/* Biography */}
           <div className="lg:col-span-2 space-y-5">
             {paragraphs.length > 0
               ? paragraphs.map((p, i) => (
@@ -29,13 +34,8 @@ export default function About() {
             }
 
             {/* Profile links */}
-            <div className="flex flex-wrap gap-3 pt-3">
-              {[
-                {href: personal.scholar,  label: "Google Scholar", bg:"rgba(6,182,212,.1)",  bo:"rgba(6,182,212,.35)",  c:"#67e8f9"},
-                {href: personal.linkedin, label: "LinkedIn",        bg:"rgba(59,130,246,.1)", bo:"rgba(59,130,246,.35)", c:"#93c5fd"},
-                {href: personal.publons,  label: "Web of Science",  bg:"rgba(16,185,129,.1)", bo:"rgba(16,185,129,.35)", c:"#6ee7b7"},
-                {href: personal.github,   label: "GitHub",          bg:"rgba(139,92,246,.1)", bo:"rgba(139,92,246,.35)", c:"#c4b5fd"},
-              ].filter(l=>l.href).map(l=>(
+            <div className="flex flex-wrap gap-3 pt-4">
+              {PROFILE_LINKS.map(l => (
                 <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer"
                    className="text-xs px-4 py-2 rounded-full font-semibold transition-all duration-200 hover:scale-105 hover:brightness-110"
                    style={{background:l.bg,border:`1px solid ${l.bo}`,color:l.c}}>
@@ -52,7 +52,7 @@ export default function About() {
             </div>
           </div>
 
-          {/* Sidebar: stats + quick info */}
+          {/* Stats + quick info */}
           <div className="flex flex-col gap-4">
             {(stats || []).map((s, i) => (
               <div key={i} className="rounded-2xl p-5 text-center transition-all duration-200 hover:-translate-y-0.5"
