@@ -14,7 +14,7 @@ export const personal = {
   github:      "https://github.com/isthatasim",
   website:     "https://isthatasim.github.io/masimamin/",
   cvUrl:       "",
-  image: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI1MCIgZmlsbD0iIzBmMTcyYSIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjQ4IiBmaWxsPSJub25lIiBzdHJva2U9IiMwNmI2ZDQiIHN0cm9rZS13aWR0aD0iMS41Ii8+PGNpcmNsZSBjeD0iNTAiIGN5PSIzOCIgcj0iMTYiIGZpbGw9IiMxZTRhNWYiLz48ZWxsaXBzZSBjeD0iNTAiIGN5PSI3NSIgcng9IjI0IiByeT0iMTYiIGZpbGw9IiMxZTRhNWYiLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjM4IiByPSIxNCIgZmlsbD0iIzA2YjZkNCIgb3BhY2l0eT0iLjciLz48ZWxsaXBzZSBjeD0iNTAiIGN5PSI3NSIgcng9IjIyIiByeT0iMTQiIGZpbGw9IiMwNmI2ZDQiIG9wYWNpdHk9Ii43Ii8+PHRleHQgeD0iNTAiIHk9IjQzIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9IjgwMCIgZmlsbD0iIzBmMTcyYSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TUE8L3RleHQ+PC9zdmc+",
+  image: "/masimamin/profile.jpg",
   summary: `PhD candidate in Electrical Engineering (Expected June 2026) specialising in AI-driven power and energy systems. Marie Sklodowska-Curie Early Stage Researcher under the Horizon Europe CLOE project at the University of Genova, Italy.
 
 My research sits at the intersection of deep reinforcement learning, federated learning, and smart grid engineering — applied to EV charging optimisation, peer-to-peer energy trading, energy community management, and renewable energy forecasting.
