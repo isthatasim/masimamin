@@ -3,8 +3,7 @@ const NAV=[
   {label:'Home',href:'#home'}
   {label:'Education',href:'#education'},{label:'Research',href:'#research'},
   {label:'Experience',href:'#experience'},{label:'Publications',href:'#publications'},
-  {label:'Projects',href:'#projects'},{label:'Contact',href:'#contact'},
-];
+  {label:'Projects',href:'#projects'},{label:'Contact',href:'#contact'}];
 export default function Navbar(){
   const [open,setOpen]=useState(false);
   const [scrolled,setScrolled]=useState(false);
