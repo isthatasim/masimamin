@@ -57,8 +57,6 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-28 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-
-          {/* LEFT */}
           <div className="order-2 lg:order-1">
             <div className="hero-line flex flex-wrap gap-2 mb-6">
               {[
@@ -125,8 +123,6 @@ export default function Hero() {
               )}
             </div>
           </div>
-
-          {/* RIGHT — Avatar */}
           <div className="order-1 lg:order-2 flex flex-col items-center gap-5">
             <div style={{animation:"float-hero 7s ease-in-out infinite"}}>
               <div className="relative">
