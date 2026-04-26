@@ -1,7 +1,6 @@
 import { Component, ReactNode, ErrorInfo } from "react";
 import Navbar       from "./components/Navbar";
 import Hero         from "./components/Hero";
-import About        from "./components/About";
 import Education    from "./components/Education";
 import Experience   from "./components/Experience";
 import Publications from "./components/Publications";
@@ -36,7 +35,6 @@ export default function App() {
         <EB name="Navbar"><Navbar /></EB>
         <main>
           <EB name="Hero"><Hero /></EB>
-          <section id="about">    <EB name="About"><About /></EB>           </section>
           <section id="education"><EB name="Education"><Education /></EB>   </section>
           <section id="research"> <EB name="Publications"><Publications /></EB> </section>
           <section id="experience"><EB name="Experience"><Experience /></EB></section>
