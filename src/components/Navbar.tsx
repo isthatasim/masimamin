@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 const NAV=[
-  {label:'Home',href:'#home'},{label:'About',href:'#about'},
+  {label:'Home',href:'#home'}
   {label:'Education',href:'#education'},{label:'Research',href:'#research'},
   {label:'Experience',href:'#experience'},{label:'Publications',href:'#publications'},
   {label:'Projects',href:'#projects'},{label:'Contact',href:'#contact'},
