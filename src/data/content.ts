@@ -14,7 +14,7 @@ export const personal = {
   github:      "https://github.com/isthatasim",
   website:     "https://isthatasim.github.io/masimamin/",
   cvUrl:       "",
-  image:       "",
+  image: "https://ui-avatars.com/api/?name=M+Asim+Amin&background=0f172a&color=06b6d4&bold=true&size=256&font-size=0.38&rounded=true",
   summary: `PhD candidate in Electrical Engineering (Expected June 2026) specialising in AI-driven power and energy systems. Marie Sklodowska-Curie Early Stage Researcher under the Horizon Europe CLOE project at the University of Genova, Italy.
 
 My research sits at the intersection of deep reinforcement learning, federated learning, and smart grid engineering — applied to EV charging optimisation, peer-to-peer energy trading, energy community management, and renewable energy forecasting.
@@ -286,13 +286,156 @@ export const publications = {
     },
   ],
   selectedConferences: [
-    { id:"C17", title:"Ensemble Learning Based Photovoltaic Power Nowcasting Through STL Decomposition", authors:"M. Asim Amin et al.", venue:"ATEE 2025", location:"Bucharest, Romania", year:2025 },
-    { id:"C16", title:"Enhanced PV Forecasting Through Machine Learning and Hourly Integration of Latest Weather Data", authors:"La Fata A.L., M. Asim Amin et al.", venue:"ATEE 2025", location:"Bucharest, Romania", year:2025 },
-    { id:"C15", title:"An Efficient Power Dispatching Strategy to Cope with Renewable Energy Sources Uncertainties", authors:"La Fata A.L., M. Asim Amin et al.", venue:"IEEE EEEIC/I&CPS Europe", location:"Crete, Greece", year:2025 },
-    { id:"C13", title:"Cost Optimization Incorporating Photovoltaic Power Forecasts Using Neural Networks in an Energy Management System", authors:"M. Asim Amin et al.", venue:"IEEE SusTech 2025", location:"Los Angeles, USA", year:2025 },
-    { id:"C11", title:"Photovoltaic Power Nowcasting Using Decision-Trees Based Algorithms and Neural Networks", authors:"M. Asim Amin et al.", venue:"IcETRAN 2024, IEEE", year:2024 },
-    { id:"C9",  title:"Profit Maximization by Integrating Demand Response in Multiple VPPs Optimal Scheduling", authors:"M. Asim Amin et al.", venue:"IEEE ICEEST 2022", year:2022 },
-    { id:"C7",  title:"Energy Trading of Multiple Virtual Power Plants Using Deep Reinforcement Learning", authors:"Li J., M. Asim Amin et al.", venue:"IEEE POWERCON 2021", year:2021 },
+    {
+      tag: "C18",
+      title: "Energy Management Through Dynamic Tariff Schemes for the Green Energy and Battery Storage Systems",
+      authors: "S. Hettikanda, M. Waseem and M. Asim Amin",
+      venue: "2025 14th International Conference on Power Science and Engineering (ICPSE), Sapporo, Japan",
+      year: "2025",
+      doi: "10.1109/ICPSE66632.2025.11480663",
+      pages: "34-39",
+      type: "conference"
+    },
+    {
+      tag: "C17",
+      title: "Ensemble Learning Based Photovoltaic Power Nowcasting Through STL Decomposition",
+      authors: "M. Asim Amin, R. Procopio, M. Invernizzi, M. Petronijević and I. Radonjic",
+      venue: "2025 14th International Symposium on Advanced Topics in Electrical Engineering (ATEE), Bucharest, Romania",
+      year: "2025",
+      doi: "10.1109/ATEE66006.2025.11299971",
+      pages: "1-6",
+      type: "conference"
+    },
+    {
+      tag: "C16",
+      title: "Enhanced PV Forecasting Through Machine Learning and Hourly Integration of Latest Weather Data",
+      authors: "A. L. Fata, M. Asim Amin, M. Invernizzi and R. Procopio",
+      venue: "2025 14th International Symposium on Advanced Topics in Electrical Engineering (ATEE), Bucharest, Romania",
+      year: "2025",
+      doi: "10.1109/ATEE66006.2025.11299932",
+      pages: "1-6",
+      type: "conference"
+    },
+    {
+      tag: "C15",
+      title: "An Efficient Power Dispatching Strategy to Cope with Renewable Energy Sources Uncertainties",
+      authors: "A. L. Fata, M. Asim Amin, M. Brignone, M. Invernizzi, A. Bonfiglio and R. Procopio",
+      venue: "2025 IEEE International Conference on Environment and Electrical Engineering / I&CPS Europe (EEEIC), Chania, Crete, Greece",
+      year: "2025",
+      type: "conference"
+    },
+    {
+      tag: "C14",
+      title: "Flexibility Trading Through Load Reshaping in Energy Communities Using Deep Reinforcement Learning",
+      authors: "M. Asim Amin, M. Petronijević, R. Procopio, M. Invernizzi, I. Radonjic Mitic",
+      venue: "Alternative Energy Sources, Materials and Technologies (AESMT'25), Sofia, Bulgaria",
+      year: "2025",
+      type: "conference"
+    },
+    {
+      tag: "C13",
+      title: "Cost Optimization Incorporating Photovoltaic Power Forecasts Using Neural Networks in an Energy Management",
+      authors: "M. Asim Amin, A. La Fata, M. Brignone, M. Invernizzi, R. Procopio, M. Petronijevic, I. Radonjic Mitic",
+      venue: "SusTech 2025, Los Angeles, USA, IEEE",
+      year: "2025",
+      type: "conference"
+    },
+    {
+      tag: "C12",
+      title: "Structurally Tuned LSTM Networks to Nowcast Photovoltaic Power Production",
+      authors: "A. La Fata, M. Asim Amin, M. Invernizzi, R. Procopio",
+      venue: "2024 IEEE International Conference on Environment and Electrical Engineering (EEEIC), Rome, Italy",
+      year: "2024",
+      type: "conference"
+    },
+    {
+      tag: "C11",
+      title: "Photovoltaic Power Nowcasting Using Decision-Trees Based Algorithms and Neural Networks",
+      authors: "M. Asim Amin, A. La Fata, R. Procopio, M. Invernizzi, M. Petronijevic, I. Radonjic Mitic",
+      venue: "2024 11th International Conference on Electrical, Electronic and Computing Engineering (IcETRAN), IEEE",
+      year: "2024",
+      type: "conference"
+    },
+    {
+      tag: "C10",
+      title: "Enhanced Active Power Improvement in Wind Energy Conversion Systems through Rotor Side Converter Current Control of Doubly Fed Induction Generator",
+      authors: "M. A. Khan, M. Waseem, M. Asim Amin, M. Arslan, M. A. Mughal, K. N. Hasan",
+      venue: "2023 33rd Australasian Universities Power Engineering Conference (AUPEC), IEEE",
+      year: "2023",
+      type: "conference"
+    },
+    {
+      tag: "C9",
+      title: "Profit Maximization by Integrating Demand Response in Multiple VPPs Optimal Scheduling",
+      authors: "M. Asim Amin, A. Suleman, T. Korõtko, S. Aziz, M. U. Naseer, N. Ahmad",
+      venue: "2022 International Conference on Electrical Engineering and Sustainable Technologies (ICEEST), IEEE",
+      year: "2022",
+      type: "conference"
+    },
+    {
+      tag: "C8",
+      title: "Smart Scheduling of EVs Through Intelligent Home Energy Management Using Deep Reinforcement Learning",
+      authors: "A. Suleman, M. Asim Amin, M. Fatima, B. Asad, M. Menghwar, M. A. Hashmi",
+      venue: "2022 17th International Conference on Emerging Technologies (ICET), IEEE",
+      year: "2022",
+      type: "conference"
+    },
+    {
+      tag: "C7",
+      title: "Energy Trading of Multiple Virtual Power Plants Using Deep Reinforcement Learning",
+      authors: "J. Li, M. Asim Amin, J. Shi, L. Cheng, F. Lu, B. Geng, A. Liu, S. Zhou",
+      venue: "2021 International Conference on Power System Technology (POWERCON), IEEE",
+      year: "2021",
+      type: "conference"
+    },
+    {
+      tag: "C6",
+      title: "Efficient Reactive Power Control Using Reinforcement Learning Under Inaccurate Power Network Model",
+      authors: "Z. Li, M. Asim Amin, C. Wang, J. Ding, B. Peng, L. Du",
+      venue: "2021 6th International Conference on Power and Renewable Energy (ICPRE)",
+      year: "2021",
+      type: "conference"
+    },
+    {
+      tag: "C5",
+      title: "Parameter Designing Method of Active Damping LCL Filter For Grid-Connected Inverter",
+      authors: "F. Muhammad, W. Lei, M. Asim Amin, W. D. Feng, M. T. Faiz",
+      venue: "2020 IEEE 23rd International Multitopic Conference (INMIC)",
+      year: "2020",
+      type: "conference"
+    },
+    {
+      tag: "C4",
+      title: "Weak Grid Reactive Power Improvement and Voltage Control of MT-HVDC Grid Using APF",
+      authors: "M. Asim Amin, Y. Jia, F. Muhammad, A. Ahmad, M. A. Rustam",
+      venue: "2020 IEEE 23rd International Multitopic Conference (INMIC), IEEE",
+      year: "2020",
+      type: "conference"
+    },
+    {
+      tag: "C3",
+      title: "Efficiency Improvement of Mini Hydro Pump Storage Power Plant Using Archimedes Turbine",
+      authors: "A. Ahmad, M. Asim Amin, A. H. Javed, M. T. Faiz",
+      venue: "Proc. EESD 2016",
+      year: "2016",
+      type: "conference"
+    },
+    {
+      tag: "C2",
+      title: "Power Sharing Through Droop Control for Parallel Inverters with Line Impedance Effect",
+      authors: "A. H. Javed, M. Asim Amin, T. Iqbal, N. Ali",
+      venue: "Proc. EESD 2016",
+      year: "2016",
+      type: "conference"
+    },
+    {
+      tag: "C1",
+      title: "Real-Time Dynamic Performance of Multi-Machine System Using Smart Technology",
+      authors: "M. Asim Amin, M. Mansoor, T. Fiaz, A. Javed",
+      venue: "Proc. IEEC 2016",
+      year: "2016",
+      type: "conference"
+    }
   ],
 };
 
