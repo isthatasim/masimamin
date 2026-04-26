@@ -19,6 +19,7 @@ export default function About() {
           <p className="text-xs font-bold tracking-[.3em] uppercase mb-3" style={{color:"#06b6d4"}}>Get to know me</p>
           <h2 className="text-4xl font-black text-white mb-4" style={{letterSpacing:"-0.02em"}}>About Me</h2>
           <div className="w-16 h-1 rounded-full mx-auto mb-4" style={{background:"linear-gradient(90deg,#06b6d4,#3b82f6)"}}/>
+          {personal.image && <img src={personal.image} alt={personal.name} className="w-full h-full object-cover rounded-full" />}
           <p className="text-sm max-w-lg mx-auto" style={{color:"#64748b"}}>
             Researcher, engineer, and problem-solver working at the intersection of AI and sustainable energy systems.
           </p>
